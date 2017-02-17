@@ -1,3 +1,5 @@
+%!TEX root = ../lectures.tex
+
 \topic{The Number $e$}
 
 We now \emph{define} the number $e = \exp(1)$\index{e@$e$}, in other words $\ln(e) = 1$, making $e$ the \emph{unique} number that makes the area under $1 / t$ precisely $1$.
@@ -6,7 +8,9 @@ Now comes a \emph{crucial} point: $\exp(x)$ is defined for \emph{all} $x \in \R$
 \[
 	\exp(r) = \Big ( \exp(1 \cdot r) = \exp(1)^r \Big ) = e^r
 \]
-to be defined not only for $r \in \Q$, but for all $r$! Note that this is not an equality we prove, but a definition we take. We therefore \emph{define}
+to be defined not only for $r \in \Q$, but for all $r$!
+Note that this is not an equality we prove, but a definition we take.
+We therefore \emph{define}
 \[
 	e^x = \exp(x)
 \]
@@ -19,7 +23,8 @@ This is a very special function, for it is the only (nontrivial) function which 
 \end{theorem}
 
 \begin{proof}
-	By defintion $y = e^x$ is equivalent with $x = \ln(y)$. If we differentiate this implicitly we get
+	By defintion $y = e^x$ is equivalent with $x = \ln(y)$.
+	If we differentiate this implicitly we get
 	\[
 		1 = \frac{1}{y} \cdot \frac{d y}{d x},
 	\]
@@ -30,7 +35,8 @@ This is a very special function, for it is the only (nontrivial) function which 
 \end{proof}
 
 \noindent
-The fact that $e^x$ is now defined for all $x$ helps us to define arbitrary exponentials $a^x$, for $a > 0$. For rational $r$ we have
+The fact that $e^x$ is now defined for all $x$ helps us to define arbitrary exponentials $a^x$, for $a > 0$.
+For rational $r$ we have
 \[
 	\ln(a^r) = r \ln(a),
 \]
@@ -41,7 +47,8 @@ which is equivalent with
 Notice how the right-hand side is defined for all $r$, since $e^x$ is, so we take this as the definition of $a^r$ for all $r \in \R$, with no contradiction arising if $r \in \Q$.
 
 \begin{definition}
-	Let $a > 0$ and $x \in \R$. Then
+	Let $a > 0$ and $x \in \R$.
+	Then
 	\[
 		a^x = e^{x \ln(a)}
 	\]
@@ -72,11 +79,13 @@ Moreover we are finally able to prove the general power rule for derivatives:
 \end{proof}
 
 \noindent
-We can go further. Our exponential $e^x$ is continuous everywhere (since it has a derivative everywhere), whereby we can finally prove for all $\alpha \in \R$ that
+We can go further.
+Our exponential $e^x$ is continuous everywhere (since it has a derivative everywhere), whereby we can finally prove for all $\alpha \in \R$ that
 \[
 	\lim_{x \to c} \big ( f(x) \big )^\alpha = \Big ( \lim_{x \to c} f(x) \Big )^\alpha,
 \]
-provided $\lim\limits_{x \to c} f(x) > 0$. Namely since now by definition $(f(x))^\alpha = e^{\alpha \ln(f(x))}$, so
+provided $\lim\limits_{x \to c} f(x) > 0$.
+Namely since now by definition $(f(x))^\alpha = e^{\alpha \ln(f(x))}$, so
 \[
 	\lim_{x \to c} \big ( f(x) \big )^\alpha = e^{\lim\limits_{x \to c} (\alpha \ln(f(x)))} = e^{\alpha \ln \big ( \lim\limits_{x \to c} f(x) \big )} = \Big ( \lim_{x \to c} f(x) \Big )^\alpha.
 \]
@@ -94,9 +103,11 @@ provided $\lim\limits_{x \to c} f(x) > 0$. Namely since now by definition $(f(x)
 
 \topic{How Fast is Exponential and Logarithmic Growth?}
 
-Both exponential and logarithmic growth approach infinity, but we ask ourselves how quickly. In fact, $e^x$ grows faster than any positive power, and $\ln(x)$ increases more slowly than any positive power. To show this and to compute some useful limits, we first show that $\ln(x) \leq x - 1$ for all $x > 0$:
+Both exponential and logarithmic growth approach infinity, but we ask ourselves how quickly.
+In fact, $e^x$ grows faster than any positive power, and $\ln(x)$ increases more slowly than any positive power. To show this and to compute some useful limits, we first show that $\ln(x) \leq x - 1$ for all $x > 0$:
 
-Let $g(x) = \ln(x) - (x - 1)$ for $x > 0$. We have $g(1) = 0$, and $g'(x) = 1/x - 1$, which is positive for $0 < x < 1$ and negative for $x > 1$.
+Let $g(x) = \ln(x) - (x - 1)$ for $x > 0$.
+We have $g(1) = 0$, and $g'(x) = 1/x - 1$, which is positive for $0 < x < 1$ and negative for $x > 1$.
 
 Therefore $g(x)$ is increasing on ${]{0, 1}[}$ and decreasing on ${]{1, \infty}[}$, whence $g(x) \leq g(1) = 0$ for all $x > 0$, meaning that $\ln(x) - (x - 1) \leq 0$, which by adding $x - 1$ to both sides yields $\ln(x) \leq x - 1$.
 
@@ -113,7 +124,8 @@ This method of studying the derivative of the difference of two functions is a v
 \end{theorem}
 
 \begin{proof}
-	\fakeitem{1} Let $x > 1$, $a > 0$, and $s = a / 2$. Since $\ln(x^s) = s \ln(x)$, our above result $\ln(x) \leq x - 1$ gives us $\ln(x^s) = s \ln(x) \leq x^s - 1 < x^s$, which dividing by $s$ produces
+	\fakeitem{1} Let $x > 1$, $a > 0$, and $s = a / 2$.
+	Since $\ln(x^s) = s \ln(x)$, our above result $\ln(x) \leq x - 1$ gives us $\ln(x^s) = s \ln(x) \leq x^s - 1 < x^s$, which dividing by $s$ produces
 	\[
 		0 < \ln(x) < \frac{x^s}{s}.
 	\]
@@ -131,7 +143,8 @@ This method of studying the derivative of the difference of two functions is a v
 	\]
 	as well.
 
-	\fakeitem{2} We use \fakeitemref{1} and substitute $x = 1/t$. Then as $x \to 0^+$ we have $t \to \infty$, whereby
+	\fakeitem{2} We use \fakeitemref{1} and substitute $x = 1/t$.
+	Then as $x \to 0^+$ we have $t \to \infty$, whereby
 	\[
 		\lim_{x \to 0^+} x^a \ln(x) = \lim_{t \to \infty} \frac{\ln(1 / t)}{t^a} = - \lim_{t \to \infty} \frac{\ln(t)}{t^a} = -0 = 0.
 	\]
@@ -161,12 +174,14 @@ Another interesting limit, and one which is sometimes taken to be the definition
 \begin{proof}
 	For $x = 0$ it is trivially true.
 
-	For $x \neq 0$, take $y = x / n$, with $x$ being fixed. Clearly $y$ tends to $0$ as $n$ tends to infinity, whereby
+	For $x \neq 0$, take $y = x / n$, with $x$ being fixed.
+	Clearly $y$ tends to $0$ as $n$ tends to infinity, whereby
 	\begin{align*}
 		\lim_{n \to \infty} \ln \Big ( \Big ( 1 + \frac{x}{n} \Big )^n \Big ) & = \lim_{n \to \infty} n \ln\Big ( 1 + \frac{x}{n} \Big ) = \lim_{n \to \infty} \frac{\frac{x}{n} n \ln \big ( 1 + \frac{x}{n} \big )}{x / n} \\
 		                                                                      & = x \lim_{y \to 0} \frac{\ln(1 + y)}{y} = x \lim_{y \to 0} \frac{\ln(1 + y) - \ln(1)}{y},
 	\end{align*}
-	which is of course $x f'(1)$ where $f(x) = \ln(x)$, so the limit is $x \cdot 1/1 = x$. Since $\ln(x)$ is continuous, we can take limits in and out of it, so the above becomes
+	which is of course $x f'(1)$ where $f(x) = \ln(x)$, so the limit is $x \cdot 1/1 = x$.
+	Since $\ln(x)$ is continuous, we can take limits in and out of it, so the above becomes
 	\[
 		\lim_{n \to \infty} \ln \Big ( \Big ( 1 + \frac{x}{n} \Big )^n \Big ) = \ln \Big ( \lim_{n \to \infty} \Big ( 1 + \frac{x}{n} \Big )^n \Big ) = x.
 	\]
@@ -182,7 +197,8 @@ Recall how some time ago we computed
 \[
 	\lim_{x \to 0} \frac{\sin(x)}{x} = 1,
 \]
-despite $\sin(x) \to 0$ and $x \to 0$ as $x \to 0$. We call $\sin(x) / x$ an \keyword{intermediate form}\index{intermediate form} of the type ``$0 / 0$'' or $[0 / 0]$, depending on the textbook.
+despite $\sin(x) \to 0$ and $x \to 0$ as $x \to 0$.
+We call $\sin(x) / x$ an \keyword{intermediate form}\index{intermediate form} of the type ``$0 / 0$'' or $[0 / 0]$, depending on the textbook.
 
 The reason we call this an intermediate form is that a limit approaching $0 / 0$ can be equal to anything, or indeed not exist at all.
 
@@ -224,7 +240,9 @@ Another method for computing limits of the form ``$0 / 0$'' or ``$\infty / \inft
 \end{remark}
 
 \begin{proof}
-	This proof is based on defining continuous extensions of $f$ and $g$, namely $F(x) = f(x)$ and $G(x) = g(x)$ for $a < x < b$ and $F(a) = G(a) = 0$. Then $F$ and $G$ are continuous on $[a, x]$ for all $a < x < b$. By the Mean-value theorem,
+	This proof is based on defining continuous extensions of $f$ and $g$, namely $F(x) = f(x)$ and $G(x) = g(x)$ for $a < x < b$ and $F(a) = G(a) = 0$.
+	Then $F$ and $G$ are continuous on $[a, x]$ for all $a < x < b$.
+	By the Mean-value theorem,
 	\[
 		g(x) = G(x) - G(a) = g'(c) (x - a)
 	\]
@@ -234,7 +252,8 @@ Another method for computing limits of the form ``$0 / 0$'' or ``$\infty / \inft
 	\[
 		\frac{f(x)}{g(x)} = \frac{F(x)}{G(x)} = \frac{F(x) - F(a)}{G(x) - G(a)} = \frac{f'(c)}{g'(c)}.
 	\]
-	Now since $a < c < x$, $c$ will approach $a$ from above as $x$ does. Therefore
+	Now since $a < c < x$, $c$ will approach $a$ from above as $x$ does.
+	Therefore
 	\[
 		\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{c \to a^+} \frac{f'(c)}{g'(c)} = L. \qedhere
 	\]
@@ -243,7 +262,8 @@ Another method for computing limits of the form ``$0 / 0$'' or ``$\infty / \inft
 \noindent
 The proof for the left-hand limits is almost identical, and the two-sided result is just the combination of the two.
 
-For limits at $\pm\infty$, we take $y = 1/x$ and study the functions $F(y) = f(1/y)$ and $G(y) = g(1/y)$. Then
+For limits at $\pm\infty$, we take $y = 1/x$ and study the functions $F(y) = f(1/y)$ and $G(y) = g(1/y)$.
+Then
 \[
 	F'(y) = - \frac{f'(1/y)}{y^2} \qquad \text{and} \qquad G'(y) = - \frac{g'(1 / y)}{y^2},
 \]
@@ -264,17 +284,21 @@ The second rule of H\^{o}pital concerns the ``$\infty / \infty$'' case:
 \end{theorem}
 
 \begin{proof}
-	We'll consider limits as $x \to a^-$. The other cases follow in the same was as described above.
+	We'll consider limits as $x \to a^-$.
+	The other cases follow in the same was as described above.
 
-	Let $\varepsilon > 0$. We want to show that
+	Let $\varepsilon > 0$.
+	We want to show that
 	\[
 		\abs[\Big]{\frac{f(x)}{g(x)} - L} < \varepsilon
 	\]
-	if $a - x < \delta$ for some $\delta > 0$. Since
+	if $a - x < \delta$ for some $\delta > 0$.
+	Since
 	\[
 		\frac{f'(x)}{g'(x)} \to L
 	\]
-	and $\abs{g(x)} \to \infty$ as $x \to a^-$, we can pick an $x_0 < a$ in such a way that $\abs{f'(x) / g'(x) - L} < \varepsilon/2$ and $g(x) \neq 0$ for all $x \in {]{x_0, a}[}$. The Generalised mean-value theorem gives
+	and $\abs{g(x)} \to \infty$ as $x \to a^-$, we can pick an $x_0 < a$ in such a way that $\abs{f'(x) / g'(x) - L} < \varepsilon/2$ and $g(x) \neq 0$ for all $x \in {]{x_0, a}[}$.
+	The Generalised mean-value theorem gives
 	\[
 		\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \frac{f'(c)}{g'(c)}
 	\]

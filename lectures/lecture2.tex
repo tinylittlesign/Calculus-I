@@ -1,6 +1,10 @@
-An important type of functions (their importance will be justified throughout the course) are ones that, in some sense, don't jump. That is to say, when we draw their graph on a piece of paper, we (sort of) never need to lift the pen.
+%!TEX root = ../lectures.tex
 
-However it isn't entirely straight forward how to define this. In order to move toward a good definition, we'll discuss two important special cases that cover most, but not all, of our needs.
+An important type of functions (their importance will be justified throughout the course) are ones that, in some sense, don't jump.
+That is to say, when we draw their graph on a piece of paper, we (sort of) never need to lift the pen.
+
+However it isn't entirely straight forward how to define this.
+In order to move toward a good definition, we'll discuss two important special cases that cover most, but not all, of our needs.
 
 \topic{Special Cases}
 
@@ -32,7 +36,8 @@ where $b$ and $c$ are some constants, then $f$ is said to be \keyword{continuous
 \end{romanlist}
 
 \noindent
-The reason for this distinction is hopefully intuitively clear: if we are at an endpoint of the closed interval, we can't hope to find a deleted two-sided neighbourhood around this point for which the function is defined, and therefore by definition it cannot have a two-sided limit at this point. Even so we still want to have a notion of continuity at such a point, so effectively what we do is the following:
+The reason for this distinction is hopefully intuitively clear: if we are at an endpoint of the closed interval, we can't hope to find a deleted two-sided neighbourhood around this point for which the function is defined, and therefore by definition it cannot have a two-sided limit at this point.
+Even so we still want to have a notion of continuity at such a point, so effectively what we do is the following:
 
 We investigate the continuity of a function point by point, in the way that is reasonable depending on the point and its surrounding:
 \begin{itemize}
@@ -55,7 +60,8 @@ Of course mathematicians don't like special cases if they can avoid them, so we 
 \end{definition}
 
 \begin{remark}
-	There is a crucial difference in this epsilon-delta construction compared to that of our limit definition, namely that we don't actually demand that the function is defined anywhere except for the point $a$ itself. However if the function happens to be defined outside of this point $a$, then we impose some restrictions on these exterior points! It is this distinction that captures the subtleties of the second special case above.
+	There is a crucial difference in this epsilon-delta construction compared to that of our limit definition, namely that we don't actually demand that the function is defined anywhere except for the point $a$ itself. However if the function happens to be defined outside of this point $a$, then we impose some restrictions on these exterior points!
+	It is this distinction that captures the subtleties of the second special case above.
 
 	One consequence of this is that a function defined in an isolated point, say $f \colon \Set{1} \to \Set{2}$, defined by $f(1) = 2$, is continuous at that point $x = 1$ (try to prove it using the above defintion!). This might seem strange, but it turns out to be a good property to have, that moreover agrees with much more abstract definitions of continuity found in the field of topology.
 \end{remark}
@@ -112,11 +118,14 @@ This means that there are functions which we call continuous, despite actually b
 	\[
 		f(x) = \frac{1}{x - 7}
 	\]
-	is discontinuous at $x = 7$, but continuous for all other $x \in \R$. But because $x = 7$ doesn't belong to the domain, $f$ is a continuous function anyway!
+	is discontinuous at $x = 7$, but continuous for all other $x \in \R$.
+	But because $x = 7$ doesn't belong to the domain, $f$ is a continuous function anyway!
 \end{example}
 
 \noindent
-We started off talking about the graph of a continuous function sort of not having a jump. Clearly, this isn't entirely true, as evidenced by this example. So with what we now know in hand, a better (and also correct) characterisation is that a continuous function has a graph that has no jumps in any interval in its domain.
+We started off talking about the graph of a continuous function sort of not having a jump.
+Clearly, this isn't entirely true, as evidenced by this example.
+So with what we now know in hand, a better (and also correct) characterisation is that a continuous function has a graph that has no jumps in any interval in its domain.
 
 \topic{Continuous Functions}
 
@@ -145,7 +154,8 @@ We can also combine continuous functions to get new continuous functions:
 \end{theorem}
 
 \begin{proof}
-	We simply use the rules for calculating limits from the last lecture. For instance:
+	We simply use the rules for calculating limits from the last lecture.
+	For instance:
 	\begin{align*}
 		\lim_{x \to c} (f \pm g)(x) & = \lim_{x \to c} \big ( f(x) \pm g(x) \big ) = \lim_{x \to c} f(x) \pm \lim_{x \to c} g(x) \\
 		                            & = f(c) \pm g(c) = (f \pm g)(c)
@@ -180,7 +190,10 @@ A trickier result to prove, but one that is extremely useful is the following:
 \end{theorem}
 
 \begin{proof}
-	Let $\varepsilon > 0$. Because we will need to keep track of whether we're in the domain of $f$ or $g$, we will denote them by $X_f$ and $X_g$, respectively. Further we use $X_{f \circ g}$ to refer to the domain of the composition. We now establish what we know from the assumptions in the theorem.
+	Let $\varepsilon > 0$.
+	Because we will need to keep track of whether we're in the domain of $f$ or $g$, we will denote them by $X_f$ and $X_g$, respectively.
+	Further we use $X_{f \circ g}$ to refer to the domain of the composition.
+	We now establish what we know from the assumptions in the theorem.
 
 	Since $f$ is continuous at $L = \lim\limits_{x \to c} g(x)$, there exists some $\delta_1 > 0$ such that for all $y \in X_f$ with
 	\[
@@ -208,14 +221,16 @@ This means that not only are many of the elementary functions we are used to con
 
 \topic{Removable Discontinuities}
 
-Recalling how functions are by definition discontinuous at any point where they are undefined, it might sometimes be possible to therefore define a function at some point where it wasn't previously defined, in such a way that the new function is continuous. We demonstrate this by example:
+Recalling how functions are by definition discontinuous at any point where they are undefined, it might sometimes be possible to therefore define a function at some point where it wasn't previously defined, in such a way that the new function is continuous.
+We demonstrate this by example:
 
 \begin{example}
 	Recall the function
 	\[
 		f(x) = \frac{x^2 - 1}{x - 1}
 	\]
-	from Example \ref{lec2:linewithhole} in the previous lecture. It is not continuous over all of $\R$, since it isn't even defined in $x = 1$, but it can be redefined to become continuous everywhere.
+	from Example \ref{lec2:linewithhole} in the previous lecture.
+	It is not continuous over all of $\R$, since it isn't even defined in $x = 1$, but it can be redefined to become continuous everywhere.
 
 	Since $\lim\limits_{x \to 1} f(x) = 2$, we \emph{define} a new function $F$ which is $F(x) = f(x)$ for all $x \neq 1$, and $F(1) = 2$, so
 	\[
@@ -225,7 +240,8 @@ Recalling how functions are by definition discontinuous at any point where they 
 		\end{cases}
 		= x + 1,
 	\]
-	which is continuous everywhere. In this case, $x = 1$ is said to be a \keyword{removable discontinuity}\index{discontinuity!removable}, and $F(x)$ is said to be a \keyword{continuous extension}\index{continuity!extension} of $f(x)$.
+	which is continuous everywhere.
+	In this case, $x = 1$ is said to be a \keyword{removable discontinuity}\index{discontinuity!removable}, and $F(x)$ is said to be a \keyword{continuous extension}\index{continuity!extension} of $f(x)$.
 \end{example}
 
 \topic{Continuous Functions on Closed, Finite Intervals}
@@ -289,11 +305,13 @@ We demonstrate their usefulness by a brief example.
 \begin{example}
 	Show that $f(x) = x^3 - 4x + 1$ has a root in the interval $[1, 2]$.
 
-	Note first that $f(1) = 1^3 - 4 (1) + 1 = 1 - 4 + 1 = -2$, and $f(2) = 2^3 - 4(2) + 1 = 8 - 8 + 1 = 1$. Moreover, since $-2 \leq 0 \leq 1$, and since $f$ is continuous (since all polynomials are continuous everywhere), by the intermediate value theorem there must exist some $c \in [1, 2]$ such that $f(c) = 0$.
+	Note first that $f(1) = 1^3 - 4 (1) + 1 = 1 - 4 + 1 = -2$, and $f(2) = 2^3 - 4(2) + 1 = 8 - 8 + 1 = 1$.
+	Moreover, since $-2 \leq 0 \leq 1$, and since $f$ is continuous (since all polynomials are continuous everywhere), by the intermediate value theorem there must exist some $c \in [1, 2]$ such that $f(c) = 0$.
 
 	Note that this tells us that a root of the polynomial exists in this interval, but it doesn't tell us what exactly it is!
 \end{example}
 
 \subsubsection*{Some Notes on Proofs}
 
-Both the Max-min theorem and the Intermediate value theorem seem quite obvious, but actually proving them require some deep insights into upper bounds of sets of real numbers and axiomatic details to do with real numbers. It is beyond the scope of this course, but if we have some spare time and if there is interest we might prove them anyway. The curious student may find details in \cite[Appendix~\rom{3}]{Adams2013}.
+Both the Max-min theorem and the Intermediate value theorem seem quite obvious, but actually proving them require some deep insights into upper bounds of sets of real numbers and axiomatic details to do with real numbers. It is beyond the scope of this course, but if we have some spare time and if there is interest we might prove them anyway.
+The curious student may find details in \cite[Appendix~\rom{3}]{Adams2013}.

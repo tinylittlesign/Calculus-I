@@ -1,10 +1,13 @@
+%!TEX root = ../lectures.tex
+
 \topic{Informal Introduction}
 
 Consider a function such as
 \[
 	f(x) = \frac{2x + 5}{7 - 3x},
 \]
-defined for all $x \neq 7/3$. What happens if we plug in \emph{big} values of $x$? It is then (perhaps) natural to consider $2x$ to be the bigger term of the numerator, and similarly $-3x$ the bigger term in the denominator. Thus
+defined for all $x \neq 7/3$. What happens if we plug in \emph{big} values of $x$? It is then (perhaps) natural to consider $2x$ to be the bigger term of the numerator, and similarly $-3x$ the bigger term in the denominator.
+Thus
 \[
 	f(x) \approx \frac{2x}{-3x} = \frac{2}{-3} = - \frac{2}{3}
 \]
@@ -25,7 +28,8 @@ To describe these two circumstances we introduce the notation
 \noindent
 read as ``the \keyword{limit}\index{limit} as $x$ goes to infinity of $f(x)$,'' and similarly for the second one. We call $\infty$ and $0$ \keyword{limit points}\index{limit point}.
 
-Of course the ``dominating'' argument isn't rigorous\ldots We need proper definition and rules of computation. For instance,
+Of course the ``dominating'' argument isn't rigorous\ldots We need proper definition and rules of computation.
+For instance,
 \[
 	\lim_{x \to \infty} f(x) = \lim_{x \to \infty} \frac{2x + 5}{7 - 3x} = \lim_{x \to \infty} \frac{x (2 + 5/x)}{x (7/x - 3)} = \lim_{x \to \infty} \frac{2 + 5/x}{7/x - 3} = \frac{2 + 0}{0 - 3} = - \frac{2}{3}.
 \]
@@ -74,13 +78,15 @@ Moreover, by studying the plot of the function in Figure \ref{lec2:plotf(x)}, we
 \[
 	\lim_{x \to 7/3^+} f(x) = +\infty \quad \text{and} \quad \lim_{x \to 7/3^+} f(x) = -\infty,
 \]
-where by the superscript $-$ and $+$ mean that the values of $x$ approach $7/3$ either from below or from above. We call the first limit a \keyword{left limit}\index{limit!left} and the second a \keyword{right limit}\index{limit!right}.
+where by the superscript $-$ and $+$ mean that the values of $x$ approach $7/3$ either from below or from above.
+We call the first limit a \keyword{left limit}\index{limit!left} and the second a \keyword{right limit}\index{limit!right}.
 
 We will spend the remainder of this lecture formalising what we mean by these limits and creating computational rules for them, informed by the intuition of what we do above.
 
 \topic{Punctured or Deleted Neighbourhoods}
 
-If we wish to study what happens to a function close to some point (or off at infinity), it is first of all important that our function is defined around this point. More specifically, we require (at least in this course) that the function is defined \emph{for all} $x$ in \emph{some} \keyword{deleted} or \keyword{punctured neighbourhood}\index{deleted neighbourhood}\index{punctured neighbourhood|see {deleted neighbourhood}} of the limit point.
+If we wish to study what happens to a function close to some point (or off at infinity), it is first of all important that our function is defined around this point.
+More specifically, we require (at least in this course) that the function is defined \emph{for all} $x$ in \emph{some} \keyword{deleted} or \keyword{punctured neighbourhood}\index{deleted neighbourhood}\index{punctured neighbourhood|see {deleted neighbourhood}} of the limit point.
 
 We will explain what we mean by this by means of examples.
 
@@ -89,7 +95,8 @@ We will explain what we mean by this by means of examples.
 	\[
 		\Set{x \in \R \given 0 < \abs{x - 6} < \gamma}
 	\]
-	is a \keyword{two-sided deleted neighbourhood} of $x = 6$. Deleted naturally means that the point $x = 6$ itself is excluded.
+	is a \keyword{two-sided deleted neighbourhood} of $x = 6$.
+	Deleted naturally means that the point $x = 6$ itself is excluded.
 
 	Drawn on the number line it looks something like this.
 
@@ -179,7 +186,9 @@ For limits at infinity (or negative infinity) we also need a deleted neighbourho
 
 We will now take the final steps toward a good definition of a limit.
 
-\fakeitem{1} First of all we need the function we are studying to be defined \emph{around} the point of interest, i.e. the limit point. This is the reason we are interested in deleted neighbourhoods around points! In other words, for some function $f \colon X \to Y$ we need there to exist some $\gamma > 0$ such that the deleted neighbourhood
+\fakeitem{1} First of all we need the function we are studying to be defined \emph{around} the point of interest, i.e. the limit point.
+This is the reason we are interested in deleted neighbourhoods around points!
+In other words, for some function $f \colon X \to Y$ we need there to exist some $\gamma > 0$ such that the deleted neighbourhood
 \[
 	\Set{x \in \R \given 0 < \abs{x - a} < \gamma} \subseteq X,
 \]
@@ -245,7 +254,8 @@ for any $\varepsilon > 0$, and regardless of what $\varepsilon$ we choose, we sh
 \[
 	\Set{x \in \R \given 0 < \abs{x - a} < \delta},
 \]
-such that for all $x$ in this deleted neighbourhood, $y = f(x)$ is in the above neighbourhood of $L$. We present a sketch of what this looks like in Figure \ref{lec2:epsilondelta}.
+such that for all $x$ in this deleted neighbourhood, $y = f(x)$ is in the above neighbourhood of $L$.
+We present a sketch of what this looks like in Figure \ref{lec2:epsilondelta}.
 
 Therefore,
 
@@ -266,7 +276,8 @@ Combining these two we have a proper definition of a limit at a point:
 \noindent
 We call this an ``epsilon-delta'' definition.
 
-In order to construct definitions for limits at infinity, left or right limits, or \keyword{improper limits}\index{limit!improper} (meaning that $f(x)$ approaches positive or negative infinity), we simply replace our various neighbourhoods in the above definition by the corresponding types of neighbourhoods. For example:
+In order to construct definitions for limits at infinity, left or right limits, or \keyword{improper limits}\index{limit!improper} (meaning that $f(x)$ approaches positive or negative infinity), we simply replace our various neighbourhoods in the above definition by the corresponding types of neighbourhoods.
+For example:
 
 \begin{definition}[Limit at negative infinity]
 	We say that $f \colon X \to Y$ has the limit $L$ as $x$ approaches $-\infty$ if and only if
@@ -277,11 +288,14 @@ In order to construct definitions for limits at infinity, left or right limits, 
 \end{definition}
 
 \begin{exercise}
-	Feel free to construct definitions for the remaining types of limits. Alternatively, try modify the wording of the original definition by replacing all neighbourhoods with expressions like ``there exists a deleted neighbourhood around the point'', etc, whereby we may acquire a completely general definition (albeit maybe slightly less practical).
+	Feel free to construct definitions for the remaining types of limits.
+	Alternatively, try modify the wording of the original definition by replacing all neighbourhoods with expressions like ``there exists a deleted neighbourhood around the point'', etc, whereby we may acquire a completely general definition (albeit maybe slightly less practical).
 \end{exercise}
 
 \noindent
-The idea that limits concern themselves with deleted neighbourhoods around the limit point is important. That is to say, we don't care about the function's value in the limit point, or even if it is defined there. We illustrate this by example:
+The idea that limits concern themselves with deleted neighbourhoods around the limit point is important.
+That is to say, we don't care about the function's value in the limit point, or even if it is defined there.
+We illustrate this by example:
 
 \begin{example}\label{lec2:linewithhole}
 	Consider the function
@@ -397,21 +411,28 @@ We have used epsilon-delta explicitly to compute a limit in Example \ref{lec2:li
 \end{theorem}
 
 \begin{proof}
-	We will prove some of them. First of all note that, since both $f$ and $g$ must be defined in some punctured neighbourhood of $a$, since they have limits there, the combined functions must as well. For example, if $f$ is defined for $0 < \abs{a - x} < \gamma_f$, and $g$ is defined for $0 < \abs{a - x} < \gamma_g$, then at the very least $f + g$ must be defined for $0 < \abs{a - x} < \min\Set{\gamma_f, \gamma_g}$. By this argument (and similar for the other limits), we find that we are allowed to use our limit definition on these new functions in the first place.
+	We will prove some of them.
+	First of all note that, since both $f$ and $g$ must be defined in some punctured neighbourhood of $a$, since they have limits there, the combined functions must as well.
+	For example, if $f$ is defined for $0 < \abs{a - x} < \gamma_f$, and $g$ is defined for $0 < \abs{a - x} < \gamma_g$, then at the very least $f + g$ must be defined for $0 < \abs{a - x} < \min\Set{\gamma_f, \gamma_g}$.
+	By this argument (and similar for the other limits), we find that we are allowed to use our limit definition on these new functions in the first place.
 
-	The proof technique is invariably the same, in the sense that it boils down to choosing appropriate $\delta$. By definition, for all $\varepsilon_1, \varepsilon_2 > 0$ there exist some $\delta_1, \delta_2 > 0$ such that we have $\abs{f(x) - L} < \varepsilon_1$ whenever $\abs{x - a} < \delta_1$ and $\abs{g(x) - M} < \varepsilon_2$ whenever $\abs{x - a} < \delta_2$.
+	The proof technique is invariably the same, in the sense that it boils down to choosing appropriate $\delta$.
+	By definition, for all $\varepsilon_1, \varepsilon_2 > 0$ there exist some $\delta_1, \delta_2 > 0$ such that we have $\abs{f(x) - L} < \varepsilon_1$ whenever $\abs{x - a} < \delta_1$ and $\abs{g(x) - M} < \varepsilon_2$ whenever $\abs{x - a} < \delta_2$.
 
 	\fakeitem{1} In order to verify that $L + M$ is the limit of $f(x) + g(x)$ as $x$ approaches $a$, we simply compute the distance between these two quantities:
 	\begin{align*}
 		\abs{f(x) + g(x) - (L + M)} & = \abs{(f(x) - L) + (g(x) - M)}                                       \\
 		                            & \leq \abs{f(x) - L} + \abs{g(x) - M} < \varepsilon_1 + \varepsilon_2.
 	\end{align*}
-	Note the use of the triangle inequality. Taking $\varepsilon_1 = \varepsilon_2 = \varepsilon / 2$, with $\varepsilon > 0$ being arbitrary, and also taking $\delta = \min\Set{\delta_1, \delta_2}$, we have that whenever $\abs{x - a} < \delta$, we must have $\abs{(f(x) - g(x)) - (L - M)} < \varepsilon$, so by definition
+	Note the use of the triangle inequality.
+	Taking $\varepsilon_1 = \varepsilon_2 = \varepsilon / 2$, with $\varepsilon > 0$ being arbitrary, and also taking $\delta = \min\Set{\delta_1, \delta_2}$, we have that whenever $\abs{x - a} < \delta$, we must have $\abs{(f(x) - g(x)) - (L - M)} < \varepsilon$, so by definition
 	\[
 		\lim_{x \to a} (f(x) + g(x)) = L + M.
 	\]
 
-	\fakeitem{4} First, the relation between $\varepsilon_2$ and $\delta_2$ is that for \emph{any} $\varepsilon_2$, there must exist a corresponding $\delta$, whereby it must in particular work if we take $\varepsilon_2 = 1$. Thus there exists a $\delta_3$ such that if $\abs{x - a} < \delta_3$, then $\abs{g(x) - M} < 1$. This means that
+	\fakeitem{4} First, the relation between $\varepsilon_2$ and $\delta_2$ is that for \emph{any} $\varepsilon_2$, there must exist a corresponding $\delta$, whereby it must in particular work if we take $\varepsilon_2 = 1$.
+	Thus there exists a $\delta_3$ such that if $\abs{x - a} < \delta_3$, then $\abs{g(x) - M} < 1$.
+	This means that
 	\[
 		\abs{g(x)} = \abs{g(x) - M + M} \leq \abs{g(x) - M} + \abs{M} < 1 + \abs{M}
 	\]
@@ -476,7 +497,8 @@ Finally we present one more useful theoretical result before we use these comput
 \end{remark}
 
 \begin{example}
-	Suppose that $3 - x^2 \leq f(x) \leq 3 + x^2$ holds for all $x \neq 0$. Find the limit of $f(x)$ as $x$ tends to $0$.
+	Suppose that $3 - x^2 \leq f(x) \leq 3 + x^2$ holds for all $x \neq 0$.
+	Find the limit of $f(x)$ as $x$ tends to $0$.
 
 	By our computational rules we have that
 	\[

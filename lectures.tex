@@ -5,7 +5,8 @@
 \usepackage{mathrsfs}         % Load for \mathscr font.
 \usepackage{etoolbox}         % Load to be able to perform conditional tests in macros.
 \usepackage{enumitem}         % Load for more customisable enumerate environments. Specifically better labels.
-\usepackage{hyperref}         % Make the table of contents easier to navigate with hyperlinks.
+\usepackage[hyperfootnotes=false]{hyperref}         % Make the table of contents easier to navigate with hyperlinks.
+                                                    %Footnote hyperlinks supressed because otherwise numberless footnotes produce empty anchor errors.
 \usepackage{thmtools}         % Load to enable end-of-example marks.
 \usepackage{bm}               % We want bold, italicised maths for vectors.
 \usepackage{makeidx}          % We want a pretty index to keep track of all the ideas.
@@ -66,7 +67,7 @@
 }
 \makeatother
 
-% Let us draw pretty angles.
+% Let us draw and name pretty angles.
 \usetikzlibrary{quotes, angles}
 
 % Define a command for drawing circle arcs in TikZ.
@@ -84,6 +85,10 @@
 % Remove the section number from the section name in headers.
 \renewcommand{\sectionmark}[1]{\uppercase{\markboth{#1}{#1}}}
 
+
+% Label sections as 'lecture 1', etc.
+\titleformat{\section}{\normalfont\Large\bfseries}{Lecture \thesection}{1em}{}
+
 % Same in table of contents.
 \renewcommand{\cftsecpresnum}{Lecture\space}
 \newlength\lecturelength
@@ -91,9 +96,6 @@
 \addtolength\cftsecnumwidth{\lecturelength}
 
 \setlength\intextsep{0pt}
-
-% Label sections as 'lecture 1', etc.
-\titleformat{\section}{\normalfont\Large\bfseries}{Lecture \thesection}{1em}{}
 
 % Start indexing
 \makeindex
@@ -116,9 +118,6 @@
 \newcommand{\R}{\ensuremath{\mathbb{R}}}
 \newcommand{\Z}{\ensuremath{\mathbb{Z}}}
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
-\newcommand{\Ll}{\ensuremath{\mathscr{Ll}}}
-\newcommand{\D}{\ensuremath{\mathcal{D}}}
-\newcommand{\Hh}{\ensuremath{\mathcal{H}}}
 
 % Allow overwriting of \Re and \Im.
 \let\Re\relax
@@ -224,8 +223,8 @@
 
 
 % Alias for \section with optional footnote for date.
-\newcommand{\lecture}[2][]{% \lecture{Name}{Date}
-	\section[#2]{#2\ifblank{#1}{}{\footnote{Date: #1.}}}%
+\newcommand{\lecture}[2][]{% \lecture[Date]{Title}
+	\section[#2]{#2\ifblank{#1}{}{\blfootnote{Date: #1.}}}%
 }
 
 % Alias for \subsection that is more semantic.
@@ -249,12 +248,12 @@
 
 \begin{abstract}
 	\noindent
-	These lecture notes are based on the first few chapters of Robert A. Adams's \emph{Calculus: A Complete Course}, \cite{Adams2013}, wherein recommended exercises are also found. All the material covered can be found in there, though the exposition might sometimes be altered. Occasionally there will be small sections marked as `exercise.' These are examples or simpler proofs which are left for the student to think about on their own.  \blfootnote{Last updated \today.}
+	These lecture notes are based on the first few chapters of Robert A. Adams's \emph{Calculus: A Complete Course}, \cite{Adams2013}, wherein recommended exercises are also found. All the material covered can be found in there, though the exposition might sometimes be altered. Occasionally there will be small sections marked as `exercise'. These are examples or simpler proofs which are left for the student to think about on their own.  \blfootnote{Last updated \today.}
 
 	\vspace{1em}
 
 	\noindent
-	Throughout this document, $\qed$ signifies end proof, and $\blacktriangle$ signifies end of example.%, and $\blacklozenge$ signifies end of solution.
+	Throughout this document, $\qed$ signifies end proof, and $\blacktriangle$ signifies end of example.
 \end{abstract}
 
 \tableofcontents
@@ -263,7 +262,7 @@
 \cleardoublepage
 \pagenumbering{arabic}
 
-% Start at lecture 0
+% Start at lecture 0, since the first lecture is preliminary.
 \setcounter{section}{-1}
 
 \lecture[January 16, 2017]{Distance and Functions}
@@ -328,7 +327,6 @@
 \lecture[February 27, 2017]{Integration by Parts}
 
 \input{lectures/lecture12}
-
 
 
 

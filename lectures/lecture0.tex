@@ -1,6 +1,9 @@
+%!TEX root = ../lectures.tex
+
 \topic{The Absolute Value and the Triangle Inequality}
 
-Calculus is the art of using distances to measure changes in things (functions, typically). Since we so far in our mathematical careers live on the real number line (which we denote $\R$)\index{real numbers}, the distance of choice is the absolute value:
+Calculus is the art of using distances to measure changes in things (functions, typically).
+Since we so far in our mathematical careers live on the real number line (which we denote $\R$)\index{real numbers}, the distance of choice is the absolute value:
 
 \begin{definition}[Absolute value]
 	Given a real number $x$, its \keyword{absolute value}\index{absolute value}, denoted $\abs{x}$, is defined as
@@ -14,9 +17,11 @@ Calculus is the art of using distances to measure changes in things (functions, 
 \end{definition}
 
 \noindent
-In a very real sense Calculus (at least in the modern treatment of the subject) always boils down to manipulating this distance in sufficiently clever ways. To this end, we will spend a bit of time recalling some basic properties of the absolute value.
+In a very real sense Calculus (at least in the modern treatment of the subject) always boils down to manipulating this distance in sufficiently clever ways.
+To this end, we will spend a bit of time recalling some basic properties of the absolute value.
 
-The absolute value behaves well under multiplication and division. In particular, we have that for all real $x$
+The absolute value behaves well under multiplication and division.
+In particular, we have that for all real $x$
 \[
 	\abs{-x} = \abs{x},
 \]
@@ -34,7 +39,8 @@ and for all real $x$ and $y$, where $y \neq 0$, we have
 \end{exercise}
 
 \noindent
-On the other hand, the absolute value does not behave quite as well under addition and subtraction. Indeed, we can't guarantee that we maintain equality anymore!
+On the other hand, the absolute value does not behave quite as well under addition and subtraction.
+Indeed, we can't guarantee that we maintain equality anymore!
 
 \begin{theorem}[The triangle inequality]\index{triangle inequality}
 	Let $x$ and $y$ be real numbers. Then
@@ -44,18 +50,23 @@ On the other hand, the absolute value does not behave quite as well under additi
 \end{theorem}
 
 \noindent
-There are many, many ways to prove this. This is one of them:
+There are many, many ways to prove this.
+This is one of them:
 
 \begin{proof}
 	Consider the following equalities:
 	\[
 		\abs{x + y}^2 = (x + y)^2 = x^2 + 2 x y + y^2.
 	\]
-	Now suppose that we replace $x$ with $\abs{x}$ and $y$ with $\abs{y}$. Clearly the squares are unchanged since they're both nonnegative regardless of the sign of $x$ or $y$, but the middle term might change. If one of $x$ and $y$ is negative, we've made the sum bigger by replacing them with their absolute values, and in every other case we've changed nothing. Therefore
+	Now suppose that we replace $x$ with $\abs{x}$ and $y$ with $\abs{y}$.
+	Clearly the squares are unchanged since they're both nonnegative regardless of the sign of $x$ or $y$, but the middle term might change.
+	If one of $x$ and $y$ is negative, we've made the sum bigger by replacing them with their absolute values, and in every other case we've changed nothing.
+	Therefore
 	\[
 		\abs{x + y}^2 = x^2 + 2 x y + y^2 \leq \abs{x}^2 + 2 \abs{x} \abs{y} + \abs{y}^2.
 	\]
-	But this last expression we recognise as $(\abs{x} + \abs{y})^2$, whence $\abs{x + y}^2 \leq (\abs{x} + \abs{y})^2$. By taking (positive) square roots, we get the desired result.
+	But this last expression we recognise as $(\abs{x} + \abs{y})^2$, whence $\abs{x + y}^2 \leq (\abs{x} + \abs{y})^2$.
+	By taking (positive) square roots, we get the desired result.
 \end{proof}
 
 \noindent
@@ -80,7 +91,8 @@ As an exercise in using the triangle inequality, let us consider the following r
 	\[
 		\abs{x} = \abs{(x - y) + y} \leq \abs{x - y} + \abs{y},
 	\]
-	which if we subtract $\abs{y}$ from both sides becomes $\abs{x} - \abs{y} \leq \abs{x - y}$. Similarly, if we start with $\abs{y}$, we get $\abs{y} - \abs{x} \leq \abs{y - x}$, which if we multiply both sides by $-1$ gives us $\abs{x} - \abs{y} \geq - \abs{x - y}$.
+	which if we subtract $\abs{y}$ from both sides becomes $\abs{x} - \abs{y} \leq \abs{x - y}$.
+	Similarly, if we start with $\abs{y}$, we get $\abs{y} - \abs{x} \leq \abs{y - x}$, which if we multiply both sides by $-1$ gives us $\abs{x} - \abs{y} \geq - \abs{x - y}$.
 
 	Combining these two we have $- \abs{x - y} \leq \abs{x} - \abs{y} \leq \abs{x - y}$, which if we take absolute values everywhere means that $\abs[\big]{\abs{x} - \abs{y}} \leq \abs{x - y}$.
 \end{example}
@@ -90,9 +102,12 @@ As an exercise in using the triangle inequality, let us consider the following r
 Since we will spend the next few weeks concerning ourselves with how functions change and what the area underneath their graphs are and so on, it behooves us to define, once and for all, what we mean by a function.
 
 \begin{definition}[Function, domain, codomain, and range]
-	A \keyword{function}\index{function} $f$ on a set $X$ into a set $Y$ is a rule that assigns exactly one element $y \in Y$ to each $x \in X$. We use the notation $f \colon X \to Y$ for the function together with the two sets. We use $y = f(x)$ to denote this unique $y$ corresponding to $x$.
+	A \keyword{function}\index{function} $f$ on a set $X$ into a set $Y$ is a rule that assigns exactly one element $y \in Y$ to each $x \in X$.
+	We use the notation $f \colon X \to Y$ for the function together with the two sets.
+	We use $y = f(x)$ to denote this unique $y$ corresponding to $x$.
 
-	The set $X$ is called the \keyword{domain}\index{domain} of the function and the set $S$ is called its \keyword{codomain}\index{codomain}. By \keyword{range}\index{range} or \keyword{image}\index{image|see {range}} we mean the set $\Set{y = f(x) \given x \in X} \subseteq Y$ containing all elements of $Y$ that we may reach using the function $f$ on its domain $D$.
+	The set $X$ is called the \keyword{domain}\index{domain} of the function and the set $S$ is called its \keyword{codomain}\index{codomain}.
+	By \keyword{range}\index{range} or \keyword{image}\index{image|see {range}} we mean the set $\Set{y = f(x) \given x \in X} \subseteq Y$ containing all elements of $Y$ that we may reach using the function $f$ on its domain $D$.
 \end{definition}
 
 \noindent
@@ -100,7 +115,8 @@ Note that a function strictly speaking depends on its domain and codomain, not j
 
 For example, the functions $f \colon \R \to \R$, $f(x) = x^2$ and $g \colon \R_{\geq 0} \to \R_{\geq 0}$, $g(x) = x^2$ (where we by $\R_{\geq 0}$ mean the nonnegative real numbers) are identical for $x \geq 0$, but $f(-1) = 1$, whereas $g(-1)$ is undefined.
 
-If we do not specify the domain of a function, we implicitly give the function its \keyword{natural domain}\index{domain!natural}, by which we mean all $x \in \R$ such that $f(x) \in \R$, i.e. as big a subset of $\R$ as possible. Similarly when we don't specify the codomain we take it to be the range of the function.
+If we do not specify the domain of a function, we implicitly give the function its \keyword{natural domain}\index{domain!natural}, by which we mean all $x \in \R$ such that $f(x) \in \R$, i.e. as big a subset of $\R$ as possible.
+Similarly when we don't specify the codomain we take it to be the range of the function.
 
 As an example it is then understood that the function $h(x) = \sqrt{x}$ has the set $\R_{\geq 0}$ both as its domain and its codomain.
 
@@ -108,4 +124,5 @@ For two additional properties of functions, suppose that we have a function $f \
 
 We call such a function \keyword{even}\index{function!even} if $f(-x) = f(x)$ for all $x$ in $X$, and we call it \keyword{odd}\index{function!odd} if $f(-x) = - f(x)$ for all $x$ in $X$.
 
-Some odd functions are, for instance, $f_1(x) = x$ and $f_2(x) = \sin(x)$. For even functions, consider perhaps $f_3(x) = \abs{x}$ or $f_4(x) = \cos(x)$. Note that most functions are neither even nor odd, say for example $f_5(x) = 2x + 3$.
+Some odd functions are, for instance, $f_1(x) = x$ and $f_2(x) = \sin(x)$. For even functions, consider perhaps $f_3(x) = \abs{x}$ or $f_4(x) = \cos(x)$.
+Note that most functions are neither even nor odd, say for example $f_5(x) = 2x + 3$.
