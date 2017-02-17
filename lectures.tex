@@ -1,0 +1,354 @@
+\documentclass[english, a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm} % AMS-TEX because of course.
+\usepackage{mathtools}        % Load for, amongst other things, paired delimiters.
+\usepackage{mathrsfs}         % Load for \mathscr font.
+\usepackage{etoolbox}         % Load to be able to perform conditional tests in macros.
+\usepackage{enumitem}         % Load for more customisable enumerate environments. Specifically better labels.
+\usepackage{hyperref}         % Make the table of contents easier to navigate with hyperlinks.
+\usepackage{thmtools}         % Load to enable end-of-example marks.
+\usepackage{bm}               % We want bold, italicised maths for vectors.
+\usepackage{makeidx}          % We want a pretty index to keep track of all the ideas.
+\usepackage{tocbibind}        % Include index and bibliography in table of contents.
+\usepackage{abstract}         % Load in order to more easily manipulate the appearance of abstracts.
+\usepackage{fancyhdr}         % Use to customise the headings to include useful navigation information.
+\usepackage{titlesec}         % Use to add 'Lecture' in front of section headings.
+\usepackage[titles]{tocloft}  % Use to add same in front of sections in the table of contents.
+\usepackage{pgfplots}         % Used for producing pretty graphs of functions.
+\usepackage{wrapfig}          % Used for producing figures in within the text.
+\usepackage{float}            % Force Here placement of floats.
+\usepackage{subcaption}       % Used for subfigures.
+\usepackage{siunitx}          % We sometimes want nicely formatted large numbers and SI units.
+\usepackage{adjustbox}        % Help us center very wide tables.
+
+% Make pgfplots stop complaining about possible issues.
+\pgfplotsset{compat = 1.13}
+
+% Since we'll want to draw areas under curves.
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{patterns}
+
+% Externalise TikZ, because some plots are quite heavy.
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+% Define arrow heads in TikZ that are centred on the endpoints.
+\usetikzlibrary{arrows}
+\makeatletter
+\pgfarrowsdeclare{center*}{center*}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \pgfutil@tempdima=0.4pt%
+  \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \pgfarrowsrightextend{4.5\pgfutil@tempdima}
+}
+{
+  \pgfutil@tempdima=0.4pt%
+  \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \pgfsetdash{}{+0pt}
+  \pgfpathcircle{\pgfqpoint{4.5\pgfutil@tempdima}{0bp}}{4.5\pgfutil@tempdima}
+  \pgfusepathqfillstroke
+}
+
+\pgfarrowsdeclare{centero}{centero}
+{
+  \pgfarrowsleftextend{+-.5\pgflinewidth}
+  \pgfutil@tempdima=0.4pt%
+  \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \pgfarrowsrightextend{4.5\pgfutil@tempdima}
+}
+{
+  \pgfutil@tempdima=0.4pt%
+  \advance\pgfutil@tempdima by.2\pgflinewidth%
+  \pgfsetdash{}{+0pt}
+  \pgfpathcircle{\pgfqpoint{4.5\pgfutil@tempdima}{0bp}}{4.5\pgfutil@tempdima}
+  \pgfusepathqstroke
+}
+\makeatother
+
+% Let us draw pretty angles.
+\usetikzlibrary{quotes, angles}
+
+% Define a command for drawing circle arcs in TikZ.
+\tikzset{
+  pics/circle arc/.style args={#1:#2:#3}{
+    code={
+      \draw[pic actions] (#1:#3) arc(#1:#2:#3);
+    }
+  }
+}
+
+% Make headings
+\pagestyle{headings}
+
+% Remove the section number from the section name in headers.
+\renewcommand{\sectionmark}[1]{\uppercase{\markboth{#1}{#1}}}
+
+% Same in table of contents.
+\renewcommand{\cftsecpresnum}{Lecture\space}
+\newlength\lecturelength
+\settowidth\lecturelength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\lecturelength}
+
+\setlength\intextsep{0pt}
+
+% Label sections as 'lecture 1', etc.
+\titleformat{\section}{\normalfont\Large\bfseries}{Lecture \thesection}{1em}{}
+
+% Start indexing
+\makeindex
+
+% Change name of table of contents
+\renewcommand{\contentsname}{Table of Contents}
+
+% Remove the Abstract title from the abstract.
+\renewcommand{\abstractname}{}    % Clear the title
+\renewcommand{\absnamepos}{empty} % Originally centre
+
+% Define a footnote macro that doesn't leave a mark.
+\makeatletter
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+% Define some common variously styled letters we occasionally need.
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Ll}{\ensuremath{\mathscr{Ll}}}
+\newcommand{\D}{\ensuremath{\mathcal{D}}}
+\newcommand{\Hh}{\ensuremath{\mathcal{H}}}
+
+% Allow overwriting of \Re and \Im.
+\let\Re\relax
+\let\Im\relax
+% Redefine \Re and \Im as Re and Im instead of mathfrak letters.
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
+
+% Declare an image symbol
+\DeclareMathOperator{\im}{im}
+
+% Define a placeholder for functions without arguments.
+\newcommand*{\placeholder}{\makebox[1ex]{\textbf{$\cdot$}}}
+
+
+% Define a plethora of theorem/definition/lemma/etc. environments.
+% Number them all using the same counter.
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definitions}[theorem]{Definitions}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercises}[theorem]{Exercises}
+\newtheorem{problem}[theorem]{Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+% Define special example(s) and solution(s) environments in order to have end-of-environment marks.
+\declaretheorem[
+	style = definition,
+	qed = $\blacktriangle$,
+	sibling = theorem
+]{example}
+\declaretheorem[
+	style = definition,
+	qed = $\blacktriangle$,
+	sibling = theorem
+]{examples}
+
+\declaretheorem[
+	style = definition,
+	qed = $\blacktriangle$,
+	sibling = theorem
+]{counterexample}
+
+\declaretheorem[
+	style = remark,
+	qed = $\blacklozenge$,
+	numbered = no
+]{solution}
+\declaretheorem[
+	style = remark,
+	qed = $\blacklozenge$,
+	numbered = no
+]{solutions}
+
+
+% Number all equations and figures within subsections.
+\numberwithin{equation}{subsection}
+\numberwithin{figure}{subsection}
+
+% Define some fake (i) label macros.
+\newcommand{\fakeitemref}[1]{% \fakeitem{<n>}
+	{\upshape(\emph{\romannumeral 0#1})}}
+\newcommand{\fakeitem}[1]{% \fakeitem{<n>}
+	\fakeitemref{#1}~}
+
+% Make text both bold and emphasised, for keywords in definitions and similar.
+\newcommand{\keyword}[1]{% \keyword{text}
+	{\textbf{\emph{#1}}}}
+
+
+% Redefine \overline to the nicely semantic \conjugate.
+\newcommand*{\conjugate}[1]{\overline{#1}}
+
+
+
+% For all of the below, use \command* to make the delimiters adjust size automatically.
+
+% Defines an absolute value notation. Give it no argument and it'll default to \abs{\placeholder}.
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{% \abs{a}
+	\ifblank{#1}{\placeholder}{#1}%
+}
+
+% Provide semantic notation for describing sets with conditions.
+\providecommand\given{} % Just make sure this exists, so that things don't explode.
+\DeclarePairedDelimiterX{\Set}[1]{\{}{\}}{% \Set{ x \given x > 0}
+	\,\renewcommand\given{\nonscript\:\delimsize\vert\nonscript\:\mathopen{}}#1\,
+}
+
+% Roman numerals
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+
+% Alias for \section with optional footnote for date.
+\newcommand{\lecture}[2][]{% \lecture{Name}{Date}
+	\section[#2]{#2\ifblank{#1}{}{\footnote{Date: #1.}}}%
+}
+
+% Alias for \subsection that is more semantic.
+\newcommand{\topic}{\subsection}
+
+% Aliases for enumerate with certain label settings preapplied.
+\newenvironment{romanlist}{\begin{enumerate}[label = \textup{(\emph{\roman*})}]}{\end{enumerate}}
+\newenvironment{alphalist}{\begin{enumerate}[label = \textup{(\alph*)}]}{\end{enumerate}}
+
+
+
+\title{Lecture Notes in Calculus I}
+\author{Lectures by Jakob Streipel\thanks{\href{mailto:jakob.streipel@lnu.se}{jakob.streipel@lnu.se}}}
+\date{}
+
+\begin{document}
+% Use Roman numberals for page numbers for frontmatter.
+\pagenumbering{roman}
+
+\maketitle
+
+\begin{abstract}
+	\noindent
+	These lecture notes are based on the first few chapters of Robert A. Adams's \emph{Calculus: A Complete Course}, \cite{Adams2013}, wherein recommended exercises are also found. All the material covered can be found in there, though the exposition might sometimes be altered. Occasionally there will be small sections marked as `exercise.' These are examples or simpler proofs which are left for the student to think about on their own.  \blfootnote{Last updated \today.}
+
+	\vspace{1em}
+
+	\noindent
+	Throughout this document, $\qed$ signifies end proof, and $\blacktriangle$ signifies end of example.%, and $\blacklozenge$ signifies end of solution.
+\end{abstract}
+
+\tableofcontents
+
+% Begin mainmatter, and therefore use Arabic page numbering.
+\cleardoublepage
+\pagenumbering{arabic}
+
+% Start at lecture 0
+\setcounter{section}{-1}
+
+\lecture[January 16, 2017]{Distance and Functions}
+
+\input{lectures/lecture0}
+
+
+\lecture[January 17, 2017]{Limits}
+
+\input{lectures/lecture1}
+
+
+\lecture[January 24, 2017]{Continuity}\label{lec3:continuity}
+
+\input{lectures/lecture2}
+
+
+\lecture[January 26, 2017]{The Derivative}
+
+\input{lectures/lecture3}
+
+\lecture[January 30, 2017]{The Mean-Value Theorem}
+
+\input{lectures/lecture4}
+
+
+\lecture[February 2, 2017]{The Natural Logarithm}
+
+\input{lectures/lecture5}
+
+
+\lecture[February 6, 2017]{The Number $e$ and L'H\^{o}pital's Rules}
+
+\input{lectures/lecture6}
+
+
+\lecture[February 9, 2017]{Sketching Functions}
+
+\input{lectures/lecture7}
+
+
+\lecture[February 13, 2017]{Overdue Proofs and Antiderivatives}
+
+\input{lectures/lecture8}
+
+
+\lecture[February 16, 2017]{The Integral}
+
+\input{lectures/lecture9}
+
+
+\lecture[February 20, 2017]{The Fundamental Theorem of Calculus}
+
+\input{lectures/lecture10}
+
+
+\lecture[February 23, 2017]{Method of Substitution}
+
+\input{lectures/lecture11}
+
+
+\lecture[February 27, 2017]{Integration by Parts}
+
+\input{lectures/lecture12}
+
+
+
+
+
+
+
+
+% List of references.
+\clearpage
+\begin{thebibliography}{99999}
+	\bibitem[Ad13]{Adams2013} R.\,A. Adams.
+	\emph{Calculus: A Complete Course}.
+	Prentice-Hall,
+	1136 pages,
+	8th revised edition,
+	2013.
+\end{thebibliography}
+
+% Make a pretty index.
+\clearpage
+\printindex
+
+\end{document}

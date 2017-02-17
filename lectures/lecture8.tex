@@ -1,0 +1,295 @@
+\topic{Proofs of Max-min and Intermediate Value Theorem}
+
+A long time ago (all the way back in Lecture \ref{lec3:continuity}) we stated the Max-min theorem and the Intermediate value theorem, but we did not prove them. We will now, though note that strictly speaking this is not a part of this course.
+
+We will need to remember the definitions of limit, continuity at a point, and what we meant by a function being continuous on an interval.
+
+As suggested back then, part of the mystery behind the proofs has to do with upper bounds of sets of real numbers.
+
+\begin{definition}
+	A number $u$ is said to be an \keyword{upper bound}\index{upper bound} for a nonempty set $S$ if $x \leq u$ for all $x \in S$.
+
+	The number $u^*$ is called the \keyword{least upper bound}\index{least upper bound|see {supremum}} or \keyword{supremum}\index{supremum} of $S$ if $u^*$ is an upper bound for $S$ and $u^* \leq u$ for every upper bound $u$ of $S$. It is denoted $u^* = \sup(S)$.
+
+	Similarly $\ell$ is a \keyword{lower bound}\index{lower bound} of $S$ if $\ell \leq x$ for all $x \in S$ and $\ell^* = \inf(S)$ is the \keyword{greatest lower bound}\index{greatest lower bound|see {infimum}} or \keyword{infimum}\index{infimum} of $S$ is $\ell \leq \ell^*$ for all lower bounds $\ell$ of $S$.
+\end{definition}
+
+\begin{example}
+	Let $S_1 = [2, 3]$. Any $u \geq 3$ is an upper bound for $S_1$, with $\sup(S_1) = 3$.
+
+	On the other hand, $S_2 = {]{2, \infty}[}$ has no upper bound, but many lower bounds ($\ell \leq 2$), and $\inf(S_2) = 2$.
+\end{example}
+
+\noindent
+An incredibly important property of the real numbers is called \keyword{completeness}\index{completeness}. Roughly speaking this means that there are no gaps on the real number line (unlike e.g. $\Q$). In the language of of $\sup$ and $\inf$:
+\begin{enumerate}
+	\item A nonempty set of real numbers that has an upper bound must have a least upper bound that is a real number.
+	\item A nonempty set of real numbers that has a lower bound must have a greatest lower bound that is a real number.
+\end{enumerate}
+
+\noindent
+It is the last part that is the crucial difference between, for instance, $\Q$ and $\R$. Consider for example the set of all rational numbers whose square is less than or equal to 2, that is $\Set{x \in \Q \given x^2 \leq 2}$. This set certainly has an upper bound (take any $u \geq \sqrt{2}$, but it has no \emph{least} upper bound \emph{within} $\Q$ itself, since $\sqrt{2}$ isn't a rational number!
+
+This property, called the \keyword{supremum property}, of the real numbers is (to us in this course) an \keyword{axiom}. That is to say, it cannot be proven, instead it is something we \emph{decide} to be true about the reals. (If we have a way of actually construction, of building the real numbers, then it becomes a theorem that one proves.)
+
+This allows us to prove several interesting results.
+
+\begin{theorem}
+	If $x_1, x_2, \ldots, x_n, x_{n + 1}, \ldots$ is an increasing sequence that is bounded above;
+	\[
+		x_{n + 1} \geq x_n \qquad \text{and} \qquad x_n \leq K
+	\]
+	for some $K$ and all $n = 1, 2, 3, \ldots$, then
+	\[
+		\lim_{n \to \infty} x_n = L
+	\]
+	exists.
+\end{theorem}
+
+\noindent
+The same theorem is true for decreasing sequences bounded below.
+
+\begin{proof}
+	The set $S = \Set{x_n \given n = 1, 2, 3, \ldots}$ has an upper bound $K$ by assumption, therefore by the Supremum property there exists a least upper bound $L = \sup(S)$.
+
+	For every $\varepsilon > 0$, there exists some $N$ such that $x_N > L - \varepsilon$, because otherwise $L - \varepsilon$ would be an upper bound for $S$ that is smaller than the least upper bound $L$.
+
+	If $n \geq N$, then $L - \varepsilon < x_N \leq x_n \leq L$, whereby $\abs{x_n - L} < \varepsilon$, so
+	\[
+		\lim_{n \to \infty} x_n = L. \qedhere
+	\]
+\end{proof}
+
+\noindent
+We will now prove some theorems we already established for functions, but this time for sequences.
+
+\begin{theorem}\label{lec9:seqbound}
+	If $a \leq x_n \leq b$ for all $n = 1, 2, 3, \ldots$, and $\lim\limits_{n \to \infty} x_L = L$, then $a \leq L \leq b$.
+\end{theorem}
+
+\begin{proof}
+	Suppose $L > b$ and let $\varepsilon = L - b$. Since
+	\[
+		\lim_{n \to \infty} x_n = L
+	\]
+	there exists an $n$ such that $\abs{x_n - L} < \varepsilon$. Therefore $x_n > L - \varepsilon = L - (L - b) = b$, so $x_n > b$, a contradiction. Therefore $L \leq b$.
+
+	Similarly for $L \geq a$.
+\end{proof}
+
+\begin{theorem}\label{lec9:seqlim}
+	If $f$ is continuous on $[a, b]$, if $a \leq x_n \leq b$ for all $n = 1, 2, 3, \ldots$, and if $\lim\limits_{n \to \infty} x_n = L$, then
+	\[
+		\lim_{n \to \infty} f(x_n) = f(L).
+	\]
+\end{theorem}
+
+\begin{proof}
+	Similar to the limits of compositions of continuous functions.
+\end{proof}
+
+\noindent
+These are the tools we require to prove the main result behind the two theorems we are after.
+
+\begin{theorem}
+	If $f$ is continuous on $[a, b]$, then $f$ is bounded there (i.e there exists some $K$ such that $\abs{f(x)} \leq K$ for all $x \in [a, b]$).
+\end{theorem}
+
+\begin{proof}
+	We show boundedness from above.
+
+	For each positive integer $n$, let
+	\[
+		S_n = \Set{x \in [a, b] \given f(x) > n}.
+	\]
+	Note that this is the set of $x$ values that makes this happen.
+
+	We would like to show that $S_n$ is empty for some $n$. It would follow that $f(x) \leq n$ for this $n$, so $n$ would be an upper bound.
+
+	Suppose $S_n$ is nonempty for all $n$. For each $n = 1, 2, 3, \ldots$, since $S_n$ is bounded below ($a$ is a lower bound by construction), by the Supremum axiom there exists a greatest lower bound, call it $x_n$.
+
+	Since $f(x) > n$ at some point in $[a, b]$, and continuous at that point, $f(x) > n$ on some interval contained in $[a, b]$. Thus $x_n < b$ and $f(x_n) \geq n$ (otherwise by continuity $f(x) < n$ for some distance to the right of $x_n$ and $x_n$ could not be $\inf(S_n)$).
+
+	For each $n$, $S_{n + 1} \subseteq S_n$ implies that $x_{n + 1} \geq x_n$, so $x_1, x_2, \ldots, x_n, \ldots$ is an increasing sequence bounded above by $b$, meaning that it converges to, say,
+	\[
+		\lim_{n \to \infty} x_n = L.
+	\]
+
+	\noindent
+	By Theorem \ref{lec9:seqbound} we have $a \leq L \leq b$, and $f$ is continuous at $L$ so
+	\[
+		\lim_{n \to \infty} f(x_n) = f(L)
+	\]
+	exists by Theorem \ref{lec9:seqlim}. But since $f(x_n) \geq n$ for every $n$,
+	\[
+		\lim_{n \to \infty} f(x_n)
+	\]
+	cannot exist, since it grows arbitrarily large, so we have a contradiction. Therefore our assumption of $S_n$ always being nonempty is wrong, ergo there exists some $n$ such that $S_n$ is empty, whereby $f$ is bounded above on $[a, b]$.
+
+	For boundedness below do almost the same thing.
+\end{proof}
+
+\noindent
+We are now able to prove the Max-min theorem and the Intermediate value theorem.
+
+\begin{theorem}[Max-min theorem]
+	If $f$ is continuous on $[a, b]$, then there exists some $u, v \in [a, b]$ such that $f(v) \leq f(x) \leq f(u)$ for all $x \in [a, b]$.
+\end{theorem}
+
+\begin{proof}
+	By the previous theorem, $S = \Set{f(x) \given x \in [a, b]}$ has an upper bound and by the Supremum axiom it also has a least upper bound, call it $M = \sup(S)$. Suppose there is no $u \in [a, b]$ such that $f(u) = M$. Then $1 / (M - f(x))$ is continuous on $[a, b]$ so again by the last theorem there exists some $K$ such that $1 / (M - f(x)) \leq K$ for all $x \in [a, b]$.
+
+	By rearranging, this implies that
+	\[
+		f(x) \leq M - \frac{1}{K},
+	\]
+	which contradicts $M$ being the \emph{least} upper bound for $S$, therefore there must exist some $u \in [a, b]$ such that $f(x) \leq f(u) = M$.
+
+	The existence of $v$ is similar.
+\end{proof}
+
+\begin{theorem}[Intermediate value theorem]
+	If $f$ is continuous on $[a, b]$ and $s$ is a number between $f(a)$ and $f(b)$, then there exists some $c \in [a, b]$ such that $f(c) = s$.
+\end{theorem}
+
+\begin{proof}
+	Assume $f(a) < s < f(b)$ (the other case, where $f(b) < s < f(a)$ is treated in almost the same way) and let $S = \Set{x \in [a, b] \given f(x) \leq s}$.
+
+	The set $S$ is nonempty (at the very least it contains $a$) and bounded above ($b$ is an upper bound), so by the Supremum axiom there exists a least upper bound $\sup(S) = c$.
+
+	Now suppose $f(c) > s$. Then $c \neq a$ and by continuity $f(x) > s$ on some interval ${]{c - \delta, c}]}$, with $\delta > 0$. But this says that $c - \delta < c$ is an upper bound for $S$, so $c$ wasn't the \emph{least} upper bound, which is a contradiction, meaning that instead we must have $f(c) \leq s$.
+
+	We then perform the same argument to achieve $f(c) \geq s$, meaning that $f(c) = s$.
+\end{proof}
+
+\topic{Antiderivatives}
+
+So far we have studied the problem of finding the derivative $f'$ given a function $f$. The reverse problem, finding $f$ given a derivative $f'$, is also interesting and important!
+
+\begin{definition}[Antiderivative]
+	An \keyword{antiderivative}\index{antiderivative} of a function $f$ on an interval $I$ is another function $F$ satisfying
+	\[
+		F'(x) = f(x)
+	\]
+	for all $x$ in $I$.
+\end{definition}
+
+\begin{example}
+	The function $F(x) = x$ is an antiderivative to $f(x) = 1$ on any interval since $F'(x) = 1 = f(x)$ everywhere.
+
+	Similarly, $G(x) = -1/x$ is an antiderivative to $g(x) = 1/x^2$ and $H(x) = e^{2x} + 17$ is an one for $h(x) = 2 e^{2 x}$.
+\end{example}
+
+\noindent
+The last example is meant to exemplify that antiderivatives aren't unique; since all constants have derivative $0$, we can always add one and get the same derivative.
+
+More importantly, \emph{all} antiderivatives of $f$ on an interval $I$ can be obtained by adding constants to \emph{any particular} antiderivative.
+
+The proof of this is easy; if $F$ and $G$ are two antiderivatives to $f$ on $I$, then
+\[
+	\frac{d}{d x} (F(x) - G(x)) = f(x) - f(x) = 0,
+\]
+whereby $F(x) - G(x) = C$, with $C$ constant.
+
+\topic{Indefinite Integrals}
+
+The \emph{general} antiderivative of a function $f$ on an interval $I$ is $F(x) + C$, for all constants $C$, where $F$ is any particular antiderivative of $f$ on $I$.
+
+\begin{definition}[Indefinite integral]
+	The \keyword{indefinite integral}\index{integral!indefinite} of $f$ on an interval $I$ is
+	\[
+		\int f(x) \, d x = F(x) + C,
+	\]
+	for all $C \in \R$, provided $F'(x) = f(x)$ for all $x \in I$.
+\end{definition}
+
+\noindent
+We already know how to compute many indefinite integrals.
+
+\begin{examples}
+	We have, amongst others,
+	\[
+		\int \, d x = \int 1 \, d x = x + C \quad \text{and} \quad \int x^\alpha \, d x = \frac{x^{\alpha + 1}}{\alpha + 1} + C,
+	\]
+	if $\alpha \neq -1$, with
+	\[
+		\int x^{-1} \, d x = \int \frac{1}{x} \, d x = \ln(x) + C,
+	\]
+	if $x > 0$.
+
+	We have the special result
+	\[
+		\int e^x \, d x = e^x + C.
+	\]
+
+	\noindent
+	We also know about some trigonometric results, e.g.
+	\[
+		\int \sin(x) \, d x = - \cos(x) + C \quad \text{and} \quad \int (\sec(x))^2 \, d x = \tan(x) + C.
+	\]
+
+	\noindent
+	We can even compute some pretty complicated indefinite integrals if we just take some care. Consider, for instance,
+	\[
+		\int \frac{\ln(x)}{x} \, d x.
+	\]
+
+	\noindent
+	If we see this as a product of $1/x$ and $\ln(x)$, we might, if we're trying to guess what this is the derivative of, come to think of the product rule, since
+	\[
+		\frac{d}{d x} \ln(x) \ln(x) = \frac{2 \ln(x)}{x},
+	\]
+	so the above indefinite integral must be $(\ln(x))^2 / 2 + C$.
+\end{examples}
+
+\noindent
+Since the graphs of an indefinite integral for the various $C$ are just vertically displaced, just one of them will pass through a given point.
+
+Thus if we know just \emph{one} point of the antiderivative some problem is looking for, we can find the right one.
+
+\begin{example}
+	Find the function $f$ the derivative of which is $f'(x) = 3 x^3 + 2 x - 3$ for all real $x$ and for which $f(1) = 0$.
+
+	We compute the indefinite integral
+	\[
+		f(x) = \int 3 x^3 + 2 x - 3 \, d x = \frac{3}{4} x^4 + x^2 - 3 x + C,
+	\]
+	so
+	\[
+		f(1) = \frac{3}{4} + 1 - 3 + C = \frac{3}{4} - 2 + C = - \frac{5}{4} + C = 0,
+	\]
+	whereby $C = 5/4$, so $f(x) = 3/4 x^4 + x^2 - 3 x + 5/4$.
+\end{example}
+
+\noindent
+This kind of problem is called an \keyword{initial-value problem}\index{initial value}, and rewriting the formulation we get
+\[
+	\frac{d y}{d x} = 3 x^3 + 2 x - 3,
+\]
+and we see that this is a differential equation.
+
+\begin{example}
+	Solve the inital-value problem
+	\[
+		\begin{cases}
+			y' = \frac{3 + 2 x^2}{x^2} \\
+			y(-2) = 1.
+		\end{cases}
+	\]
+
+	\noindent
+	As before we compute the indefinite integral and then insert the known information:
+	\[
+		y = \int \frac{3}{x^2} + 2 \, d x = - \frac{3}{x} + 2 x + C,
+	\]
+	so
+	\[
+		1 = y(-2) = \frac{3}{2} - 4 + C,
+	\]
+	whereby $C = 7/2$.
+
+	This $y = -3 / x + 2 x + 7/2$ is a solution to the initial-value problem on ${]{-\infty, 0}[}$ (because this is the largest interval which contains the initial point $x = -2$ but not $x = 0$, where $y$ (and $y'$) is undefined).
+\end{example}
+
+\noindent
+This, confusingly, is not really where the notion of integration comes from. Instead integration has to do with areas, but just how the indefinite integral has much to do with the derivative, so do these areas!

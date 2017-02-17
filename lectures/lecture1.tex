@@ -1,0 +1,499 @@
+\topic{Informal Introduction}
+
+Consider a function such as
+\[
+	f(x) = \frac{2x + 5}{7 - 3x},
+\]
+defined for all $x \neq 7/3$. What happens if we plug in \emph{big} values of $x$? It is then (perhaps) natural to consider $2x$ to be the bigger term of the numerator, and similarly $-3x$ the bigger term in the denominator. Thus
+\[
+	f(x) \approx \frac{2x}{-3x} = \frac{2}{-3} = - \frac{2}{3}
+\]
+for \emph{big} values of $x$.
+
+On the other hand for $x$ near $0$, the dominating terms are $5$ and $7$ in the numerator and denominator respectively, whereby
+\[
+	f(x) \approx \frac{5}{7}
+\]
+for $x$ near $0$.
+
+To describe these two circumstances we introduce the notation
+\[
+	\lim_{x \to \infty} f(x) = - \frac{2}{3} \qquad \text{and} \qquad \lim_{x \to 0} f(x) = \frac{5}{7},
+\]
+
+
+\noindent
+read as ``the \keyword{limit}\index{limit} as $x$ goes to infinity of $f(x)$,'' and similarly for the second one. We call $\infty$ and $0$ \keyword{limit points}\index{limit point}.
+
+Of course the ``dominating'' argument isn't rigorous\ldots We need proper definition and rules of computation. For instance,
+\[
+	\lim_{x \to \infty} f(x) = \lim_{x \to \infty} \frac{2x + 5}{7 - 3x} = \lim_{x \to \infty} \frac{x (2 + 5/x)}{x (7/x - 3)} = \lim_{x \to \infty} \frac{2 + 5/x}{7/x - 3} = \frac{2 + 0}{0 - 3} = - \frac{2}{3}.
+\]
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			scale = 1,
+			axis x line = middle,
+			axis y line = middle,
+			xmin = -5,
+			xmax = 15,
+			ymin = -5,
+			ymax = 5,
+			xlabel = $x$,
+			ylabel = $y$,
+			restrict y to domain = -10:10,
+			every axis x label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = west,
+			},
+			every axis y label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = south,
+			},
+			]
+			\addplot[
+			black,
+			smooth,
+			domain = -5:2.332
+			]{(2*x+5)/(7-3*x)};
+			\addplot[
+			black,
+			smooth,
+			domain = 2.334:15
+			]{(2*x+5)/(7-3*x)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Plot of $y = f(x)$.}
+	\label{lec2:plotf(x)}
+\end{figure}
+
+\noindent
+Moreover, by studying the plot of the function in Figure \ref{lec2:plotf(x)}, we might observe two more interesting limits, namely
+\[
+	\lim_{x \to 7/3^+} f(x) = +\infty \quad \text{and} \quad \lim_{x \to 7/3^+} f(x) = -\infty,
+\]
+where by the superscript $-$ and $+$ mean that the values of $x$ approach $7/3$ either from below or from above. We call the first limit a \keyword{left limit}\index{limit!left} and the second a \keyword{right limit}\index{limit!right}.
+
+We will spend the remainder of this lecture formalising what we mean by these limits and creating computational rules for them, informed by the intuition of what we do above.
+
+\topic{Punctured or Deleted Neighbourhoods}
+
+If we wish to study what happens to a function close to some point (or off at infinity), it is first of all important that our function is defined around this point. More specifically, we require (at least in this course) that the function is defined \emph{for all} $x$ in \emph{some} \keyword{deleted} or \keyword{punctured neighbourhood}\index{deleted neighbourhood}\index{punctured neighbourhood|see {deleted neighbourhood}} of the limit point.
+
+We will explain what we mean by this by means of examples.
+
+\begin{example}
+	For all real $\gamma > 0$ the set
+	\[
+		\Set{x \in \R \given 0 < \abs{x - 6} < \gamma}
+	\]
+	is a \keyword{two-sided deleted neighbourhood} of $x = 6$. Deleted naturally means that the point $x = 6$ itself is excluded.
+
+	Drawn on the number line it looks something like this.
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[latex-latex] (-1.5, 0) -- (8.5, 0);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 3pt) -- (0pt, -3pt);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 0pt) -- (0pt, -3pt) node[below] {$\x$};
+			\draw[centero-centero] (5.2, 0) node[above] {$6 - \gamma$} -- (6, 0);
+			\draw[-centero] (6, 0) -- (6.8, 0) node[above] {$6 + \gamma$};
+			\draw[very thick] (5.2, 0) -- (6, 0);
+			\draw[very thick] (6, 0) -- (6.8, 0);
+		\end{tikzpicture}
+	\end{figure}
+\end{example}
+
+\begin{example}
+	For right limits we instead consider \keyword{deleted right neighbourhoods}, like
+	\[
+		\Set{ x \in \R \given 0 < x - 5 < \gamma} = \Set{ x \in \R \given 5 < x < 5 + \gamma} = {]{5, 5 + \gamma}[},
+	\]
+	around the point $x = 5$ for all real $\gamma > 0$.
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[latex-latex] (-1.5, 0) -- (8.5, 0);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 3pt) -- (0pt, -3pt);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 0pt) -- (0pt, -3pt) node[below] {$\x$};
+			\draw[centero-centero] (5, 0) -- (6.3, 0) node[above] {$5 + \gamma$};
+			\draw[very thick] (5, 0) -- (6.3, 0);
+		\end{tikzpicture}
+	\end{figure}
+
+	\noindent
+	Similarly for left limits we use \keyword{deleted left neighbourhoods} such as the following for $x = 3$:
+	\[
+		\Set{ x \in \R \given 0 < 3 - x < \gamma} = \Set{ x \in \R \given 3 - \gamma < x < 3} = {]{3 - \gamma, 3}[}.
+	\]
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[latex-latex] (-1.5, 0) -- (8.5, 0);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 3pt) -- (0pt, -3pt);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 0pt) -- (0pt, -3pt) node[below] {$\x$};
+			\draw[centero-centero] (1.2, 0) node[above] {$3 - \gamma$} -- (3, 0);
+			\draw[very thick] (1.2, 0) -- (3, 0);
+		\end{tikzpicture}
+	\end{figure}
+\end{example}
+
+\noindent
+For limits at infinity (or negative infinity) we also need a deleted neighbourhood to work with, but they looks rather different.
+
+\begin{example}
+	A \keyword{deleted neighbourhood of infinity} consists of all $x$ bigger than some fixed $A \in \R$,
+	\[
+		\Set{x \in \R \given x > A} = {]{A, \infty}[}.
+	\]
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\draw[latex-latex] (-1.5, 0) -- (8.5, 0);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 3pt) -- (0pt, -3pt);
+			\foreach \x in {-1, 0, 1, 2, 3, 4, 5, 6, 7, 8}
+			\draw[shift = {(\x, 0)}, color = black] (0pt, 0pt) -- (0pt, -3pt) node[below] {$\x$};
+			\draw[centero-] (3, 0) node[above] {$A$} -- (8.5, 0);
+			\draw[very thick,-latex] (3, 0) -- (8.5, 0);
+		\end{tikzpicture}
+	\end{figure}
+
+	\noindent
+	For a \keyword{deleted neighbourhood of negative infinity}, we instead take all $x$ smaller than some fixed $A \in \R$.
+\end{example}
+
+\topic{Definition of Limit}
+
+We will now take the final steps toward a good definition of a limit.
+
+\fakeitem{1} First of all we need the function we are studying to be defined \emph{around} the point of interest, i.e. the limit point. This is the reason we are interested in deleted neighbourhoods around points! In other words, for some function $f \colon X \to Y$ we need there to exist some $\gamma > 0$ such that the deleted neighbourhood
+\[
+	\Set{x \in \R \given 0 < \abs{x - a} < \gamma} \subseteq X,
+\]
+meaning that the function is defined somewhere around the limit point $a$.
+
+\begin{remark}
+	Note that the function needn't be defined at the limit point itself for us to study limits at this point.
+\end{remark}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[scale = 1]
+		\begin{axis}[
+			axis x line = left,
+			axis y line = left,
+			xmin = -2,
+			xmax = 10,
+			ymin = -2,
+			ymax = 10,
+			ticks = none,
+			xlabel = $x$,
+			ylabel = $y$,
+			restrict y to domain = -2:10,
+			every axis x label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = west,
+			},
+			every axis y label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = south,
+			},
+			]
+			\addplot[
+			black,
+			smooth,
+			domain = -2:10,
+			]{-0.2*(x-4)^3-0.03*(x-4)^2+4.5};
+		\end{axis}
+		\draw[centero-centero] (3.5, 0) node[below] {$a - \delta$} -- (4, 0);
+		\draw[-centero] (4, 0) node[above] {$a$} -- (4.5, 0) node[below] {$a + \gamma$};
+		\draw[very thick] (3.5, 0) -- (4, 0);
+		\draw[very thick] (4, 0) -- (4.5, 0);
+		\draw[dashed] (3.5, 0) -- (3.5, 5.5);
+		\draw[dashed] (4.5, 0) -- (4.5, 5.5);
+		\draw[centero-center*] (0, 2.3) node[left] {$L - \varepsilon$} -- (0, 3);
+		\draw[-centero] (0, 3) node[right] {$L$} -- (0, 3.7) node[left] {$L + \varepsilon$};
+		\draw[very thick] (0, 2.3) -- (0, 3);
+		\draw[very thick] (0, 3) -- (0, 3.7);
+		\draw[dashed] (0, 2.3) -- (5.5, 2.3);
+		\draw[dashed] (0, 3.7) -- (5.5, 3.7);
+	\end{tikzpicture}
+	\caption{Constructing neighbourhoods around limit and limit point.}
+	\label{lec2:epsilondelta}
+\end{figure}
+
+Secondly we want the $y$ in $y = f(x)$ to get \emph{arbitrarily} close to the limit, let's call it $L$.
+
+What we mean by this is that we should be able to pick \emph{any} neighbourhood around $L$,
+\[
+	\abs{y - L} < \varepsilon
+\]
+for any $\varepsilon > 0$, and regardless of what $\varepsilon$ we choose, we should be able to arrange for a deleted neighbourhood around $a$,
+\[
+	\Set{x \in \R \given 0 < \abs{x - a} < \delta},
+\]
+such that for all $x$ in this deleted neighbourhood, $y = f(x)$ is in the above neighbourhood of $L$. We present a sketch of what this looks like in Figure \ref{lec2:epsilondelta}.
+
+Therefore,
+
+\fakeitem{2} For each $\varepsilon > 0$ there exists some $\delta > 0$ such that if $0 < \abs{x - a} < \delta$, then $\abs{f(x) - L} < \varepsilon$.
+
+In other words, if $x$ is within $\delta$ distance away from $a$, then $f(x)$ is within $\varepsilon$ distance away from $L$.
+
+Combining these two we have a proper definition of a limit at a point:
+
+\begin{definition}[Limit at a point]
+	We say that the function $f \colon X \to Y$ has the \keyword{limit} $L$ as $x$ approaches $a$ if and only if
+	\begin{romanlist}
+		\item there exists some $\gamma > 0$ such that $\Set{x \in \R \given 0 < \abs{x - a} < \gamma} \subseteq X$, and
+		\item for each $\varepsilon > 0$ there exists a number $\delta > 0$ such that for each $x \in X$ with $0 < \abs{x - a} < \delta$ we have $\abs{f(x) - L} < \varepsilon$.
+	\end{romanlist}
+\end{definition}
+
+\noindent
+We call this an ``epsilon-delta'' definition.
+
+In order to construct definitions for limits at infinity, left or right limits, or \keyword{improper limits}\index{limit!improper} (meaning that $f(x)$ approaches positive or negative infinity), we simply replace our various neighbourhoods in the above definition by the corresponding types of neighbourhoods. For example:
+
+\begin{definition}[Limit at negative infinity]
+	We say that $f \colon X \to Y$ has the limit $L$ as $x$ approaches $-\infty$ if and only if
+	\begin{romanlist}
+		\item there exists some $A \in \R$ such that $\Set{x \in \R \given x < A} \subseteq X$, and
+		\item for each $\varepsilon > 0$ there exists a number $B \in \R$ such that for each $x \in X$ with $x < B$ we have $\abs{f(x) - L} < \varepsilon$.
+	\end{romanlist}
+\end{definition}
+
+\begin{exercise}
+	Feel free to construct definitions for the remaining types of limits. Alternatively, try modify the wording of the original definition by replacing all neighbourhoods with expressions like ``there exists a deleted neighbourhood around the point'', etc, whereby we may acquire a completely general definition (albeit maybe slightly less practical).
+\end{exercise}
+
+\noindent
+The idea that limits concern themselves with deleted neighbourhoods around the limit point is important. That is to say, we don't care about the function's value in the limit point, or even if it is defined there. We illustrate this by example:
+
+\begin{example}\label{lec2:linewithhole}
+	Consider the function
+	\[
+		f(x) = \frac{x^2 - 1}{x - 1},
+	\]
+	defined for all $x \neq 1$. For all such $x$ we have
+	\[
+		f(x) = \frac{x^2 - 1^2}{x - 1} = \frac{(x + 1)(x - 1)}{x - 1} = x + 1,
+	\]
+	i.e. a straight line passing through $y = 1$, except it's undefined at $x = 1$, meaning that there's a hole there.
+
+	\begin{figure}[H]
+		\centering
+		\begin{tikzpicture}
+			\begin{axis}[
+				scale = 1,
+				axis x line = middle,
+				axis y line = middle,
+				xmin = -0.5,
+				xmax = 3,
+				ymin = -0.5,
+				ymax = 4,
+				xlabel = $x$,
+				ylabel = $y$,
+				every axis x label/.style = {
+					at = {(ticklabel* cs:1.01)},
+					anchor = west,
+				},
+				every axis y label/.style = {
+					at = {(ticklabel* cs:1.01)},
+					anchor = south,
+				},
+				]
+				\addplot[
+				black,
+				smooth,
+				domain = -1:3
+				]{x+1};
+				\addplot[mark = *, mark options = {fill = white}] coordinates {(1, 2)};
+			\end{axis}
+		\end{tikzpicture}
+	\end{figure}
+
+	\noindent
+	Even though $f(x)$ is \emph{undefined} at $x = 1$, it is clear that we can make it as close to $y = 2$ as we like by taking $x$ sufficiently close to $x = 1$, i.e.
+	\[
+		\lim_{x \to 1} f(x) = 2.
+	\]
+
+	\noindent
+	Formally, for any $\varepsilon > 0$ we want
+	\[
+		\abs{f(x) - 2} = \abs*{\frac{x^2 - 1}{x - 1} - 2} = \abs*{\frac{(x - 1)(x + 1) - 2 (x - 1)}{x - 1}} = \abs{x - 1} < \varepsilon
+	\]
+	whenever $\abs{x - 1} < \delta$, so by taking $\delta = \varepsilon$ we have proved formally that the limit is what we expect!
+\end{example}
+
+\begin{example}
+	To further emphasise how the limit at a point doesn't care about the value of the function at that point, consider the following function, closely related to the one in the last example:
+	\[
+		f(x) = \begin{cases}
+		\frac{x^2 - 1}{x - 1}, & \text{if}~ x \neq 1 \\
+		3, & \text{if}~ x = 1.
+		\end{cases}
+	\]
+	This function \emph{is} defined at $x = 1$, but even so, by the exact same computation as above, the limit at that point is still $2$.
+\end{example}
+
+\noindent
+Finally in this section we will prove something quite important, that is sometimes overlooked:
+
+\begin{theorem}
+	Limits are unique.
+\end{theorem}
+
+\begin{proof}
+	We will prove this in the case of a two-sided limit at a point, but the remaining types of limits follow by similar arguments.
+
+	Suppose
+	\[
+		\lim_{x \to a} f(x) = L \qquad \text{and} \qquad \lim_{x \to a} f(x) = M.
+	\]
+	We want to prove that $L = M$.
+
+	By definition we have that for any $\varepsilon > 0$, or, equivalently, for any $\varepsilon / 2 > 0$, there exists some $\delta_1$ such that whenever $\abs{x - a} < \delta_1$, it implies that $\abs{f(x) - L} < \varepsilon / 2$, and similarly there exists some $\delta_2$ such that if $\abs{x - a} < \delta_2$, then $\abs{f(x) - M} < \varepsilon / 2$. If we now let $\delta = \min\Set{\delta_1, \delta_2}$, then when $\abs{x - a} < \delta$, both of the above conditions are satisfied, so by adding and subtracting the same thing and using the triangle inequality we get
+	\begin{align*}
+		\abs{L - M} & = \abs{L - f(x) + f(x) - M} \leq \abs{L - f(x)} + \abs{f(x) - M}                                 \\
+		            & = \abs{f(x) - L} + \abs{f(x) - M} < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+	\end{align*}
+	Since $\varepsilon > 0$ is arbitrarily small, and $\abs{L - M}$ is smaller than every one of them, we must have that $\abs{L - M} = 0$, which means that $L = M$.
+\end{proof}
+
+\topic{Computing Limits}
+
+We have used epsilon-delta explicitly to compute a limit in Example \ref{lec2:linewithhole}, but we will now use the same in the abstract to establish several general rules for how limits may be computed and manipulated.
+
+\begin{theorem}[Computational rules for limits]
+	Let $f$ and $g$ be some functions such that
+	\[
+		\lim_{x \to a} f(x) = L \qquad \text{and} \qquad \lim_{x \to a} g(x) = M.
+	\]
+	Moreover let $k \in \R$ be a constant. Then
+	\begin{romanlist}
+		\item $\displaystyle \lim_{x \to a} (f(x) + g(x)) = L + M$,
+		\item $\displaystyle \lim_{x \to a} (f(x) - g(x)) = L - M$,
+		\item $\displaystyle \lim_{x \to a} (k f(x)) = k L$,
+		\item $\displaystyle \lim_{x \to a} (f(x)g(x)) = LM$,
+		\item $\displaystyle \lim_{x \to a} \frac{f(x)}{g(x)} = \frac{L}{M}$, if $M \neq 0$,
+		\item $\displaystyle \lim_{x \to a} (f(x))^{m/n} = L^{m/n}$ for $m, n \in \Z$, $n > 0$, $L > 0$ if $n$ is even, and $L \neq 0$ if $m < 0$, and finally
+		\item if $f(x) \leq g(x)$ in a deleted neighbourhood around $a$, then $L \leq M$.
+	\end{romanlist}
+\end{theorem}
+
+\begin{proof}
+	We will prove some of them. First of all note that, since both $f$ and $g$ must be defined in some punctured neighbourhood of $a$, since they have limits there, the combined functions must as well. For example, if $f$ is defined for $0 < \abs{a - x} < \gamma_f$, and $g$ is defined for $0 < \abs{a - x} < \gamma_g$, then at the very least $f + g$ must be defined for $0 < \abs{a - x} < \min\Set{\gamma_f, \gamma_g}$. By this argument (and similar for the other limits), we find that we are allowed to use our limit definition on these new functions in the first place.
+
+	The proof technique is invariably the same, in the sense that it boils down to choosing appropriate $\delta$. By definition, for all $\varepsilon_1, \varepsilon_2 > 0$ there exist some $\delta_1, \delta_2 > 0$ such that we have $\abs{f(x) - L} < \varepsilon_1$ whenever $\abs{x - a} < \delta_1$ and $\abs{g(x) - M} < \varepsilon_2$ whenever $\abs{x - a} < \delta_2$.
+
+	\fakeitem{1} In order to verify that $L + M$ is the limit of $f(x) + g(x)$ as $x$ approaches $a$, we simply compute the distance between these two quantities:
+	\begin{align*}
+		\abs{f(x) + g(x) - (L + M)} & = \abs{(f(x) - L) + (g(x) - M)}                                       \\
+		                            & \leq \abs{f(x) - L} + \abs{g(x) - M} < \varepsilon_1 + \varepsilon_2.
+	\end{align*}
+	Note the use of the triangle inequality. Taking $\varepsilon_1 = \varepsilon_2 = \varepsilon / 2$, with $\varepsilon > 0$ being arbitrary, and also taking $\delta = \min\Set{\delta_1, \delta_2}$, we have that whenever $\abs{x - a} < \delta$, we must have $\abs{(f(x) - g(x)) - (L - M)} < \varepsilon$, so by definition
+	\[
+		\lim_{x \to a} (f(x) + g(x)) = L + M.
+	\]
+
+	\fakeitem{4} First, the relation between $\varepsilon_2$ and $\delta_2$ is that for \emph{any} $\varepsilon_2$, there must exist a corresponding $\delta$, whereby it must in particular work if we take $\varepsilon_2 = 1$. Thus there exists a $\delta_3$ such that if $\abs{x - a} < \delta_3$, then $\abs{g(x) - M} < 1$. This means that
+	\[
+		\abs{g(x)} = \abs{g(x) - M + M} \leq \abs{g(x) - M} + \abs{M} < 1 + \abs{M}
+	\]
+	when $\abs{x - a} < \delta_3$.
+
+	We now turn to the distance between $f(x)g(x)$ and $LM$,
+	\begin{align*}
+		\abs{f(x)g(x) - LM} & = \abs{f(x)g(x) - L g(x) + L g(x) - LM}                           \\
+		                    & = \abs{(f(x) - L) g(x) + L(g(x) - M)}                             \\
+		                    & \leq \abs{(f(x) - L) g(x)} + \abs{L (g(x) - M)}                   \\
+		                    & = \abs{g(x)} \cdot \abs{f(x) - L} + \abs{L} \cdot \abs{g(x) - M},
+	\end{align*}
+	so if take let $\abs{x - a} < \min\Set{\delta_1, \delta_2, \delta_3}$ and take
+	\[
+		\varepsilon_1 = \frac{\varepsilon}{2 (1 + \abs{M})} \qquad \text{and} \qquad \varepsilon_2 = \frac{\varepsilon}{2 \abs{L}},
+	\]
+	then the above quantity is less than
+	\[
+		(1 + \abs{M}) \, \frac{\varepsilon}{2 (1 + \abs{M})} + \abs{L} \, \frac{\varepsilon}{2 \abs{L}} = \varepsilon,
+	\]
+	meaning that by definition
+	\[
+		\lim_{x \to a} (f(x)g(x)) = LM. \qedhere
+	\]
+\end{proof}
+
+\noindent
+Finally we present one more useful theoretical result before we use these computational rules in a few examples.
+
+\begin{theorem}[Squeeze theorem]
+	Suppose $f(x) \leq g(x) \leq h(x)$ holds for all $x$ in some deleted interval around a point $a$, and suppose further that
+	\[
+		\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = L.
+	\]
+	Then
+	\[
+		\lim_{x \to a} g(x) = L
+	\]
+	as well.
+\end{theorem}
+
+\begin{proof}
+	We have that for all $\varepsilon_1, \varepsilon_2 > 0$ there exist some $\delta_1, \delta_2 > 0$ such that $\abs{x - a} < \delta_1$ implies $\abs{f(x) - L} < \varepsilon_1$ and $\abs{x - a} < \delta_2$ implies $\abs{f(x) - L} < \varepsilon_2$.
+
+	Let us now try to compute the distance between $g(x)$ and $L$:
+	\[
+		\abs{g(x) - L} = \abs{g(x) - f(x) + f(x) - L} \leq \abs{g(x) - f(x)} + \abs{f(x) - L}.
+	\]
+	Now since $g(x) \leq h(x)$ sufficiently close to $a$, this is bounded by
+	\begin{align*}
+		\abs{g(x) - L} & \leq \abs{g(x) - f(x)} + \abs{f(x) - L}                \\
+		               & \leq \abs{h(x) - f(x)} + \abs{f(x) - L}                \\
+		               & = \abs{h(x) - L - f(x) + L} + \abs{f(x) - L}           \\
+		               & = \abs{(h(x) - L) - (f(x) - L)} + \abs{f(x) - L}       \\
+		               & \leq \abs{h(x) - L} + \abs{f(x) - L} + \abs{f(x) - L}.
+	\end{align*}
+	If we then take $\varepsilon_1 = \varepsilon_2 = \varepsilon / 3$, the last line above is equal to $\varepsilon$ so long as $\abs{x - a} < \min\Set{\delta_1, \delta_2}$, which is what we wanted to prove.
+\end{proof}
+
+\begin{remark}
+	Just like the uniqueness of limits, these last two theorems also hold for the other types of limits, with similar proofs.
+\end{remark}
+
+\begin{example}
+	Suppose that $3 - x^2 \leq f(x) \leq 3 + x^2$ holds for all $x \neq 0$. Find the limit of $f(x)$ as $x$ tends to $0$.
+
+	By our computational rules we have that
+	\[
+		\lim_{x \to 0} (3 - x^2) = \lim_{x \to 0} 3 - \lim_{x \to 0} x^2 = \lim_{x \to 0} 3 - \big ( \lim_{x \to 0} x \big )^2 = 3 - 0^2 = 3,
+	\]
+	and by almost identical computation $\lim\limits_{x \to 0} (3 + x^2) = 3$ as well. Therefore the Squeeze theorem applies, and thus $\lim\limits_{x \to 0} f(x) = 3$ as well.
+\end{example}
+
+\begin{example}
+	Show that if $\lim\limits_{x \to a} \abs{f(x)} = 0$, then $\lim\limits_{x \to a} f(x) = 0$.
+
+	To this end we observe that $-\abs{f(x)} \leq f(x) \leq \abs{f(x)}$, and $\lim\limits_{x \to a} \abs{f(x)} = 0$ implies that
+	\[
+		\lim_{x \to a} - \abs{f(x)} = - \lim_{x \to a} \abs{f(x)} = - 0 = 0,
+	\]
+	so by the Squeeze theorem
+	\[
+		\lim_{x \to a} f(x) = 0. \qedhere
+	\]
+\end{example}

@@ -1,0 +1,313 @@
+\topic{The Number $e$}
+
+We now \emph{define} the number $e = \exp(1)$\index{e@$e$}, in other words $\ln(e) = 1$, making $e$ the \emph{unique} number that makes the area under $1 / t$ precisely $1$.
+
+Now comes a \emph{crucial} point: $\exp(x)$ is defined for \emph{all} $x \in \R$ (since it is the inverse of $\ln$), so we can extend
+\[
+	\exp(r) = \Big ( \exp(1 \cdot r) = \exp(1)^r \Big ) = e^r
+\]
+to be defined not only for $r \in \Q$, but for all $r$! Note that this is not an equality we prove, but a definition we take. We therefore \emph{define}
+\[
+	e^x = \exp(x)
+\]
+for all $x \in \R$.
+
+This is a very special function, for it is the only (nontrivial) function which is its own derivative everywhere.
+
+\begin{theorem}
+	$\displaystyle \frac{d}{d x} e^x = e^x$.
+\end{theorem}
+
+\begin{proof}
+	By defintion $y = e^x$ is equivalent with $x = \ln(y)$. If we differentiate this implicitly we get
+	\[
+		1 = \frac{1}{y} \cdot \frac{d y}{d x},
+	\]
+	which yields
+	\[
+		y = \frac{d y}{d x} = e^x. \qedhere
+	\]
+\end{proof}
+
+\noindent
+The fact that $e^x$ is now defined for all $x$ helps us to define arbitrary exponentials $a^x$, for $a > 0$. For rational $r$ we have
+\[
+	\ln(a^r) = r \ln(a),
+\]
+which is equivalent with
+\[
+	a^r = e^{r \ln(a)}.
+\]
+Notice how the right-hand side is defined for all $r$, since $e^x$ is, so we take this as the definition of $a^r$ for all $r \in \R$, with no contradiction arising if $r \in \Q$.
+
+\begin{definition}
+	Let $a > 0$ and $x \in \R$. Then
+	\[
+		a^x = e^{x \ln(a)}
+	\]
+	by definition.
+\end{definition}
+
+\noindent
+Using the chain rule we can now compute
+\[
+	\frac{d}{d x} \, a^x = \frac{d}{d x} \, e^{x \ln(a)} = e^{x \ln(a)} \cdot \ln(a) = a^x \ln(a).
+\]
+
+\noindent
+Moreover we are finally able to prove the general power rule for derivatives:
+
+\begin{proposition}
+	Provided $x > 0$ and $\alpha \in \R$, we have
+	\[
+		\frac{d}{d x} \, x^\alpha = \alpha x^{\alpha - 1}.
+	\]
+\end{proposition}
+
+\begin{proof}
+	Straight forward computation by writing $x^\alpha = e^{\alpha \ln(x)}$:
+	\[
+		\frac{d}{d x} \, x^\alpha = \frac{d}{d x} \, e^{\alpha \ln(x)} = e^{\alpha \ln(x)} \cdot \frac{\alpha}{x} = x^\alpha \cdot \alpha \cdot x^{-1} = \alpha x^{\alpha - 1}.\qedhere
+	\]
+\end{proof}
+
+\noindent
+We can go further. Our exponential $e^x$ is continuous everywhere (since it has a derivative everywhere), whereby we can finally prove for all $\alpha \in \R$ that
+\[
+	\lim_{x \to c} \big ( f(x) \big )^\alpha = \Big ( \lim_{x \to c} f(x) \Big )^\alpha,
+\]
+provided $\lim\limits_{x \to c} f(x) > 0$. Namely since now by definition $(f(x))^\alpha = e^{\alpha \ln(f(x))}$, so
+\[
+	\lim_{x \to c} \big ( f(x) \big )^\alpha = e^{\lim\limits_{x \to c} (\alpha \ln(f(x)))} = e^{\alpha \ln \big ( \lim\limits_{x \to c} f(x) \big )} = \Big ( \lim_{x \to c} f(x) \Big )^\alpha.
+\]
+
+\begin{example}
+	Compute $f'(x)$ when $f(x) = x^x$.
+
+	Neither $(a^x)' = a^x \ln(a)$ nor $(x^a)' = a x^{a - 1}$ apply (why?).
+
+	On the other hand,
+	\[
+		\frac{d}{d x} \, x^x = \frac{d}{d x} \, e^{x \ln(x)} = e^{x \ln(x)} \cdot \Big ( x \cdot \frac{1}{x} + \ln(x) \Big ) = x^x (1 + \ln(x)). \qedhere
+	\]
+\end{example}
+
+\topic{How Fast is Exponential and Logarithmic Growth?}
+
+Both exponential and logarithmic growth approach infinity, but we ask ourselves how quickly. In fact, $e^x$ grows faster than any positive power, and $\ln(x)$ increases more slowly than any positive power. To show this and to compute some useful limits, we first show that $\ln(x) \leq x - 1$ for all $x > 0$:
+
+Let $g(x) = \ln(x) - (x - 1)$ for $x > 0$. We have $g(1) = 0$, and $g'(x) = 1/x - 1$, which is positive for $0 < x < 1$ and negative for $x > 1$.
+
+Therefore $g(x)$ is increasing on ${]{0, 1}[}$ and decreasing on ${]{1, \infty}[}$, whence $g(x) \leq g(1) = 0$ for all $x > 0$, meaning that $\ln(x) - (x - 1) \leq 0$, which by adding $x - 1$ to both sides yields $\ln(x) \leq x - 1$.
+
+This method of studying the derivative of the difference of two functions is a very effective method to show that one function is greater than or less than another function.
+
+\begin{theorem}
+	If $a > 0$, then
+	\begin{romanlist}
+		\item $\displaystyle \lim_{x \to \infty} \frac{\ln(x)}{x^a} = 0$,
+		\item $\displaystyle \lim_{x \to 0^+} x^a \ln(x) = 0$,
+		\item $\displaystyle \lim_{x \to \infty} \frac{x^a}{e^x} = 0$,
+		\item $\displaystyle \lim_{x \to -\infty} \abs{x}^a e^x = 0$.
+	\end{romanlist}
+\end{theorem}
+
+\begin{proof}
+	\fakeitem{1} Let $x > 1$, $a > 0$, and $s = a / 2$. Since $\ln(x^s) = s \ln(x)$, our above result $\ln(x) \leq x - 1$ gives us $\ln(x^s) = s \ln(x) \leq x^s - 1 < x^s$, which dividing by $s$ produces
+	\[
+		0 < \ln(x) < \frac{x^s}{s}.
+	\]
+	By dividing again by $x^a = x^{2 s}$ we arrive at
+	\[
+		0 < \frac{\ln(x)}{x^a} < \frac{x^s}{s x^{2 s}} = \frac{1}{s x^s}.
+	\]
+	Now
+	\[
+		\lim_{x \to \infty} \frac{1}{s} \, \frac{1}{x^s} = 0
+	\]
+	since $s > 0$, so by the Squeeze theorem
+	\[
+		\lim_{x \to \infty} \frac{\ln(x)}{x^a} = 0
+	\]
+	as well.
+
+	\fakeitem{2} We use \fakeitemref{1} and substitute $x = 1/t$. Then as $x \to 0^+$ we have $t \to \infty$, whereby
+	\[
+		\lim_{x \to 0^+} x^a \ln(x) = \lim_{t \to \infty} \frac{\ln(1 / t)}{t^a} = - \lim_{t \to \infty} \frac{\ln(t)}{t^a} = -0 = 0.
+	\]
+
+	\noindent
+	\fakeitem{3} Again in \fakeitemref{1}, substitute $x = \ln(t)$, so that $t \to \infty$ corresponds to $x \to \infty$,
+	\[
+		\lim_{x \to \infty} \frac{x^a}{e^x} = \lim_{t \to \infty} \frac{(\ln(t))^a}{t} = \lim_{t \to \infty} \Big ( \frac{\ln(t)}{t^{1/a}} \Big ) ^a = 0^a = 0.
+	\]
+
+	\noindent
+	\fakeitem{4} Finally in \fakeitemref{3} we substitute $x = -t$:
+	\[
+		\lim_{x \to -\infty} \abs{x}^a e^x = \lim_{t \to \infty} \abs{- t}^a e^{-t} = \lim_{t \to \infty} \frac{t^a}{e^t} = 0. \qedhere
+	\]
+\end{proof}
+
+\noindent
+Another interesting limit, and one which is sometimes taken to be the definition of $e$, is
+\begin{theorem}
+	For every real $x$,
+	\[
+		e^x = \lim_{n \to \infty} \Big ( 1 + \frac{x}{n} \Big )^n.
+	\]
+\end{theorem}
+
+\begin{proof}
+	For $x = 0$ it is trivially true.
+
+	For $x \neq 0$, take $y = x / n$, with $x$ being fixed. Clearly $y$ tends to $0$ as $n$ tends to infinity, whereby
+	\begin{align*}
+		\lim_{n \to \infty} \ln \Big ( \Big ( 1 + \frac{x}{n} \Big )^n \Big ) & = \lim_{n \to \infty} n \ln\Big ( 1 + \frac{x}{n} \Big ) = \lim_{n \to \infty} \frac{\frac{x}{n} n \ln \big ( 1 + \frac{x}{n} \big )}{x / n} \\
+		                                                                      & = x \lim_{y \to 0} \frac{\ln(1 + y)}{y} = x \lim_{y \to 0} \frac{\ln(1 + y) - \ln(1)}{y},
+	\end{align*}
+	which is of course $x f'(1)$ where $f(x) = \ln(x)$, so the limit is $x \cdot 1/1 = x$. Since $\ln(x)$ is continuous, we can take limits in and out of it, so the above becomes
+	\[
+		\lim_{n \to \infty} \ln \Big ( \Big ( 1 + \frac{x}{n} \Big )^n \Big ) = \ln \Big ( \lim_{n \to \infty} \Big ( 1 + \frac{x}{n} \Big )^n \Big ) = x.
+	\]
+	Taking exponentials we arrive at
+	\[
+		e^x = \lim_{n \to \infty} \Big ( 1 + \frac{x}{n} \Big )^n. \qedhere
+	\]
+\end{proof}
+
+\topic{Intermediate Forms and L'H\^{o}pital's Rules}
+
+Recall how some time ago we computed
+\[
+	\lim_{x \to 0} \frac{\sin(x)}{x} = 1,
+\]
+despite $\sin(x) \to 0$ and $x \to 0$ as $x \to 0$. We call $\sin(x) / x$ an \keyword{intermediate form}\index{intermediate form} of the type ``$0 / 0$'' or $[0 / 0]$, depending on the textbook.
+
+The reason we call this an intermediate form is that a limit approaching $0 / 0$ can be equal to anything, or indeed not exist at all.
+
+\begin{examples}
+	Consider the following limits:
+	\[
+		\lim_{x \to 0} \frac{k x}{x} = k, \quad \lim_{x \to 0} \frac{x}{x^3} = \infty, \quad \text{and} \quad \lim_{x \to 0} \frac{x^3}{x^2} = 0. \qedhere
+	\]
+\end{examples}
+
+\noindent
+There are other types of intermediate forms:
+\[
+	``\infty / \infty ", \quad ``0 \cdot \infty", \quad ``\infty - \infty", \quad ``0^0", \quad ``\infty^0", \quad \text{and} \quad ``1^\infty".
+\]
+We saw a few of these, in particular the first two, in the logarithm and exponential limits.
+
+Encountering ``$0 / 0$'' is perhaps the most common, and they can often be resolved by simplifying or using the Squeeze theorem.
+
+Another method for computing limits of the form ``$0 / 0$'' or ``$\infty / \infty$'' are the two l'H\^{o}pital's rules. Most other forms can be made into these two forms by some algebraic manipulation of change of variable.
+
+\begin{theorem}[L'H\^{o}pital's first rule]
+	Suppose $f$ and $g$ are differentiable on ${]{a, b}[}$, and
+	\[
+		\lim_{x \to a^+} f(x) = \lim_{x \to a^+} g(x) = 0.
+	\]
+	If $g'(x) \neq 0$ for all $x \in {]{a, b}[}$, and the limit
+	\[
+		\lim_{x \to a^+} \frac{f'(x)}{g'(x)} = L
+	\]
+	exists, then $g(x) \neq 0$ for all $x \in {]{a, b}[}$ and
+	\[
+		\lim_{x \to a^+} \frac{f(x)}{g(x)} = L.
+	\]
+\end{theorem}
+
+\begin{remark}
+	The same holds for left limits, two-sided limits, and limits at $\pm \infty$, assuming $f$ and $g$ are differentiable on the relevant punctured neighbourhoods.
+\end{remark}
+
+\begin{proof}
+	This proof is based on defining continuous extensions of $f$ and $g$, namely $F(x) = f(x)$ and $G(x) = g(x)$ for $a < x < b$ and $F(a) = G(a) = 0$. Then $F$ and $G$ are continuous on $[a, x]$ for all $a < x < b$. By the Mean-value theorem,
+	\[
+		g(x) = G(x) - G(a) = g'(c) (x - a)
+	\]
+	for some $c \in {]{a, x}[}$, so since $g'(c) \neq 0$ by assumption, we must have $g(x) \neq 0$ for all $a < x < b$, since the right-hand side is never $0$.
+
+	By the Generalised mean-value theorem, for each $x \in {]{a, b}[}$, there exists a $c \in {]{a, x}[}$ (depending on $x$) such that
+	\[
+		\frac{f(x)}{g(x)} = \frac{F(x)}{G(x)} = \frac{F(x) - F(a)}{G(x) - G(a)} = \frac{f'(c)}{g'(c)}.
+	\]
+	Now since $a < c < x$, $c$ will approach $a$ from above as $x$ does. Therefore
+	\[
+		\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{c \to a^+} \frac{f'(c)}{g'(c)} = L. \qedhere
+	\]
+\end{proof}
+
+\noindent
+The proof for the left-hand limits is almost identical, and the two-sided result is just the combination of the two.
+
+For limits at $\pm\infty$, we take $y = 1/x$ and study the functions $F(y) = f(1/y)$ and $G(y) = g(1/y)$. Then
+\[
+	F'(y) = - \frac{f'(1/y)}{y^2} \qquad \text{and} \qquad G'(y) = - \frac{g'(1 / y)}{y^2},
+\]
+so
+\[
+	\frac{F'(y)}{G'(y)} = \frac{f'(1/y)}{g'(1/y)},
+\]
+whereby
+\[
+	\lim_{x \to \pm\infty} \frac{f(x)}{g(x)} = \lim_{y \to 0^\pm} \frac{F(y)}{G(y)} = \lim_{y \to 0^\pm} \frac{F'(y)}{G'(y)} = \lim_{x \to \pm\infty} \frac{f'(x)}{g'(x)}.
+\]
+
+\noindent
+The second rule of H\^{o}pital concerns the ``$\infty / \infty$'' case:
+
+\begin{theorem}[L'H\^{o}pital's second rule]
+	L'H\^{o}pital's rule also holds if we have $\lim \abs{f(x)} = \lim \abs{g(x)} = \infty$.
+\end{theorem}
+
+\begin{proof}
+	We'll consider limits as $x \to a^-$. The other cases follow in the same was as described above.
+
+	Let $\varepsilon > 0$. We want to show that
+	\[
+		\abs[\Big]{\frac{f(x)}{g(x)} - L} < \varepsilon
+	\]
+	if $a - x < \delta$ for some $\delta > 0$. Since
+	\[
+		\frac{f'(x)}{g'(x)} \to L
+	\]
+	and $\abs{g(x)} \to \infty$ as $x \to a^-$, we can pick an $x_0 < a$ in such a way that $\abs{f'(x) / g'(x) - L} < \varepsilon/2$ and $g(x) \neq 0$ for all $x \in {]{x_0, a}[}$. The Generalised mean-value theorem gives
+	\[
+		\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \frac{f'(c)}{g'(c)}
+	\]
+	for some $x_0 < c < x$, meaning that
+	\begin{equation}\label{lec7:eq:lhopitals}
+		\abs[\Big]{\frac{f(x) - f(x_0)}{g(x) - g(x_0)} - L} < \frac{\varepsilon}{2}
+	\end{equation}
+	for $x_0 < x < a$ since $x_0 < c < a$.
+
+	By some algebraic manipulation we have
+	\[
+		\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \frac{\frac{f(x)}{g(x)} - \frac{f(x_0)}{g(x)}}{1 - \frac{g(x_0)}{g(x)}},
+	\]
+	which if solved for $f(x)/g(x)$ becomes
+	\[
+		\frac{f(x)}{g(x)} = \frac{f(x) - f(x_0)}{g(x) - g(x_0)} - \frac{f(x) - f(x_0)}{g(x) - g(x_0)} \cdot \frac{g(x_0)}{g(x)} + \frac{f(x_0)}{g(x)}.
+	\]
+
+	\noindent
+	As $x$ tends to $a$ from below, $\abs{g(x)} \to \infty$ by assumption, so $f(x_0) / g(x)$ and $g(x_0) / g(x)$ tend to $0$, so the last two terms tend to $0$ since the difference quotient is bounded by Equation \eqref{lec7:eq:lhopitals}.
+
+	Thus for $x$ sufficiently close to $a$ from below,
+	\[
+		\abs[\Big]{\frac{f(x)}{g(x)} - \frac{f(x) - f(x_0)}{g(x) - g(x_0)}} < \frac{\varepsilon}{2}.
+	\]
+
+	\noindent
+	Adding this and Equation \eqref{lec7:eq:lhopitals} together yields
+	\[
+		\abs[\Big]{\frac{f(x) - f(x_0)}{g(x) - g(x_0)} - L} + \abs[\Big]{\frac{f(x)}{g(x)} - \frac{f(x) - f(x_0)}{g(x) - g(x_0)}}  < \varepsilon,
+	\]
+	so by using the Triangle inequality backwards we have
+	\[
+		\abs[\Big]{\frac{f(x)}{g(x)} - L} < \varepsilon. \qedhere
+	\]
+\end{proof}

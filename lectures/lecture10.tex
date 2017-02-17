@@ -1,0 +1,369 @@
+\topic{Mean-Value Theorem for Integrals}
+
+Just like the derivative, definite integrals have a mean-value property.
+
+\begin{theorem}[Mean-value theorem for integrals]\index{mean-value theorem!integrals}
+	If $f$ is continuous on $[a, b]$, then there exists a point $c \in {[a, b]}$ such that
+	\[
+		\int_a^b f(x) \, d x = (b - a) f(c).
+	\]
+\end{theorem}
+
+\begin{proof}
+	Since $f$ is continuous on $[a, b]$, and $[a, b]$ is a closed and finite interval, we know by the Max-min theorem that there exist $\ell, u \in {[a, b]}$ such that
+	\[
+		m = f(\ell) \leq f(x) \leq f(u) = M
+	\]
+	for all $a \leq x \leq b$.
+
+	Now consider the very simple partition $P_1$ of $[a, b]$ with $a = x_0 < x_1 = b$. Then
+	\[
+		m (b - a) = L(f, P_1) \leq \int_a^b f(x) \, d x \leq U(f, P_1) = M(b - a).
+	\]
+
+	\noindent
+	Thus
+	\[
+		f(\ell) = m \leq \frac{1}{b - a} \int_a^b f(x) \, d x \leq M = f(u).
+	\]
+
+	\noindent
+	By the Intermediate value theorem, $f(x)$ attains every value between $f(\ell)$ and $f(u)$, so there exists some $c$ between $\ell$ and $u$ such that
+	\[
+		f(c) = \frac{1}{b - a} \int_a^b f(x) \, d x \quad \Longleftrightarrow \quad \int_a^b f(x) \, d x = (b - a) f(c). \qedhere
+	\]
+\end{proof}
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			scale = 1,
+			axis x line = middle,
+			axis y line = middle,
+			xmin = 0,
+			xmax = 5,
+			ymin = 0,
+			ymax = 10,
+			xlabel = $x$,
+			ylabel = $y$,
+			xtick = {0.5, 1.98933, 2.77147, 3.54277, 4.5},
+			xticklabels = {$a$, $\ell$, $c$, $u$, $b$},
+			ytick = {3.23982, 5.7188, 7.97918},
+			yticklabels = {$m$, $f(c)$, $M$},
+			every axis x label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = west,
+			},
+			every axis y label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = south,
+			},
+			restrict y to domain = 0:20
+			]
+			\addplot[
+			name path = F,
+			black,
+			samples = 200,
+			domain = 0.5:4.5
+			]{0.5*(x+2)*sin((2*(x+2))r)+6};
+			\addplot[
+			gray,
+			dashed
+			] coordinates {(0.5, 0) (0.5, 4.80134)};
+			\addplot[
+			gray,
+			dashed
+			] coordinates {(1.98933, 0) (1.98933, 7.97918)};
+			\addplot[
+			gray,
+			dashed
+			] coordinates {(2.77147, 0) (2.77147, 5.7188)};
+			\addplot[
+			gray,
+			dashed
+			] coordinates {(3.54277, 0) (3.54277, 3.23982)};
+			\addplot[
+			gray,
+			dashed
+			] coordinates {(4.5, 0) (4.5, 7.36554)};
+			\addplot[
+			gray,
+			dashed
+			] coordinates {(0, 5.7188) (5, 5.7188)};
+			\addplot[
+			name path = G,
+			gray!0,
+			dashed,
+			domain = 0.5:4.5
+			]{5.7188};
+			\addplot[
+			pattern color = gray!60,
+			pattern = north west lines
+			] fill between [of = F and G];
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Visualisation of the Mean-value theorem for integrals.}
+	\label{lec11:meanvalints}
+\end{figure}
+
+This value
+\[
+	\bar{f} = \frac{1}{b - a} \int_a^b f(x) \, d x
+\]
+is often called the \keyword{average value}\index{function!average value} or \keyword{mean value} of $f$ on $[a, b]$. This is because the area under $f(c)$ and above $f(x)$ is the same as the area above $f(c)$ and below $f(x)$. We will show this in the near future.
+
+\topic{Piecewise Continuous Functions}
+
+Sometimes we will want to integrate functions that aren't continuous. An important class of such functions are \keyword{piecewise continuous}\index{piecewise continuity} functions.
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			scale = 1,
+			axis x line = middle,
+			axis y line = middle,
+			xmin = 0,
+			xmax = 5,
+			ymin = 0,
+			ymax = 10,
+			xlabel = $x$,
+			ylabel = $y$,
+			xtick = {0.5, 1.5, 3, 4.5},
+			xticklabels = {$a$, $c_1$, $c_2$, $b$},
+			ytick = \empty,
+			every axis x label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = west,
+			},
+			every axis y label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = south,
+			},
+			restrict y to domain = 0:20
+			]
+			\addplot[
+			black,
+			samples = 200,
+			domain = 0.5:1.5
+			]{exp(-x)+4};
+			\addplot[
+			black,
+			samples = 200,
+			domain = 1.5:3
+			]{0.5*(x+2)*sin((2*(x+2))r)+6};
+			\addplot[
+			black,
+			samples = 200,
+			domain = 3:4.5
+			]{ln(x)+2};
+			\addplot[mark=*] coordinates {(0.5, 4.60653)};
+			\addplot[mark=*] coordinates {(1.5, 4.22313)};
+			\addplot[mark=o] coordinates {(1.5, 7.14973)};
+			\addplot[mark=o] coordinates {(3, 4.63995)};
+			\addplot[mark=*] coordinates {(3, 3.5)};
+			\addplot[mark=o] coordinates {(3, 3.09861)};
+			\addplot[mark=*] coordinates {(4.5, 3.50408)};
+			\addplot[
+			dashed,
+			gray
+			] coordinates {(0.5, 0) (0.5, 4.60653)};
+			\addplot[
+			dashed,
+			gray
+			] coordinates {(1.5, 0) (1.5, 7.14973)};
+			\addplot[
+			dashed,
+			gray
+			] coordinates {(3, 0) (3, 4.63995)};
+			\addplot[
+			dashed,
+			gray
+			] coordinates {(4.5, 0) (4.5, 3.50408)};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{An example of a piecewise continuous function.}
+	\label{lec11:piecewisecontinuous}
+\end{figure}
+
+See for instance Figure \ref{lec11:piecewisecontinuous}. Clearly this function isn't continuous, but equally clearly there is an area underneath it.
+
+\begin{definition}[Piecewise continuous function]
+	Let $c_0 < c_1 < c_2 < \ldots < c_n$ be a \emph{finite} set of points. A function $f$ defined on $[c_0, c_n]$, except possibly at some of the $c_i$, for $0 \leq i \leq n$, is called \keyword{piecewise continuous} on the interval if for each $1 \leq i \leq n$ there exists a function $F_i$ continuous on the closed interval $[c_{i - 1}, c_i]$ such that $f(x) = F_i(x)$ on ${]{c_{i - 1}, c_i}[}$.
+
+	In this case we \emph{define} the definite integral of $f$ from $c_0$ to $c_n$ to be
+	\[
+		\int_{c_0}^{c_n} f(x) \, d x = \sum_{i = 1}^n \int_{c_{i - 1}}^{c_i} F_i(x) \, d x.
+	\]
+\end{definition}
+
+\topic{The Fundamental Theorem of Calculus}
+
+There is an important relation between definite integrals and indefinite integrals. Recall how we defined $\ln(x)$ as a particular area under $1/t$, and as a consequence we found that $\frac{d}{d x} \ln(x) = 1/x$.
+
+This is no coincidence, and is a special case of the following theorem:
+
+\begin{theorem}[Fundamental Theorem of Calculus]\index{fundamental theorem of calculus}
+	Suppose that $f$ is continuous on the interval $I$ containing the point $a$.
+
+	\subsubsection*{Part I}
+
+	Let $F$ be the function defined by
+	\[
+		F(x) = \int_a^x f(t) \, d t.
+	\]
+	Then $F$ is differentiable on $I$ and $F'(x) = f(x)$ there.
+
+	Therefore $F$ is an antiderivative of $f$ on $I$, i.e.
+	\[
+		\frac{d}{d x} \int_a^x f(t) \, d t = f(x).
+	\]
+
+	\subsubsection*{Part II}
+
+	If $G$ is \emph{any} antiderivative of $f$ on $I$, so that $G'(x) = f(x)$ on $I$, then for any $b$ in $I$ we have
+	\[
+		\int_a^b f(x) \, d x = G(b) - G(a).
+	\]
+\end{theorem}
+
+\begin{proof}
+	The proof of Part I boils down to the definition of the derivative:
+	\begin{align*}
+		F'(x) & = \lim_{h \to 0} \frac{F(x + h) - F(x)}{h} = \lim_{h \to 0} \frac{1}{h} \Big ( \int_a^{x + h} f(t) \, d t - \int_a^x f(t) \, d t \Big ) \\
+		      & = \lim_{h \to 0} \frac{1}{h} \int_x^{x + h} f(t) \, d t,
+	\end{align*}
+	which by the Mean-value theorem for integrals is equal to
+	\[
+		\lim_{h \to 0} \frac{1}{h} \cdot h \cdot f(c) = \lim_{h \to 0} f(c)
+	\]
+	for some $c \in {[{x, x+h}]}$, with $c$ depending on $h$. Now as $h \to 0$, clearly $c$ being squeezed between $x$ and $x + h$ forces $c$ to approach $x$, so this is in turn equal to
+	\[
+		\lim_{c \to x} f(c) = f(x),
+	\]
+	since $f$ is continuous.
+
+	For Part II, if $G'(x) = f(x)$, then $F(x) = G(x) + C$ (since they're both antiderivatives they must differ by a constant). Therefore
+	\[
+		\int_a^x f(t) \, d t = F(x) = G(x) + C.
+	\]
+	By taking $x = a$ we get
+	\[
+		\int_a^a f(t) \, d t = 0 = F(a) = G(a) + C,
+	\]
+	so $C = - G(a)$.
+
+	Now instead take $x = b$, and we get
+	\[
+		\int_a^b f(t) \, d t = F(b) = G(b) + C = G(b) - G(a). \qedhere
+	\]
+\end{proof}
+
+\noindent
+Both of these are very useful. The first part tells us how to differentiate a definite integral with respect of its upper limit, and the second part tells us how to evaluate a definite integral if you can find \emph{any} antiderivative of the integrand.
+
+Since we will be doing this second part quite a lot, we'll introduce a new piece of notation that makes life a bit easier: we'll write
+\[
+	F(x) \Big \rvert_a^b = F(b) - F(a),
+\]
+so that, for instance,
+\[
+	\int_a^b f(x) \, d x = \Big ( \int f(x) \, d x \Big ) \biggr \rvert_a^b.
+\]
+
+\begin{example}
+	Evaluate
+	\[
+		\int_0^a x^2 \, d x = \frac{1}{3} x^3 \Big \rvert_0^a = \frac{1}{3} a^3 - \frac{1}{3} 0^3 = \frac{a^3}{3}. \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Compute
+	\begin{align*}
+		\int_{-1}^2 x^2 - 3 x + 2 \, d x & = \Big ( \frac{1}{3} x^3 - \frac{3}{2} x^2 + 2 x \Big ) \biggr \rvert_{-1}^2                                                           \\
+		                                 & = \frac{1}{3} \cdot 8 - \frac{3}{2} \cdot 4 + 4 - \Big ( \frac{1}{3} \cdot -1 - \frac{3}{2} \cdot 1 - 2 \Big ) = \frac{9}{2}. \qedhere
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Find the area bounded by the $x$-axis and the curve $y = 3x - x^2$.
+
+	First we need to find where $y = 3x - x^2$ intersects the $x$-axis: $0 = 3 x - x^2 = x (3 - x)$, so $x = 0$ and $x = 3$. Therefore the area is
+	\[
+		A = \int_0^3 3 x - x^2 \, d x = \Big ( \frac{3}{2} x^2 - \frac{1}{3} x^3 \Big ) \biggr \rvert_0^3 = \frac{27}{2} - \frac{27}{3} - (0 - 0) = \frac{27}{6} = \frac{9}{2}. \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Find the average value of $f(x) = e^{-x} + \cos(x)$ on the interval $[{-\pi/2}, 0]$.
+
+	We recall from the Mean-value theorem for integrals that what we want to compute it
+	\[
+		\bar{f} = \frac{1}{b - a} \int_a^b f(x) \, d x,
+	\]
+	so
+	\begin{align*}
+		\bar{f} & = \frac{1}{0 - (- \pi/2)} \int_{-\pi/2}^0 e^{-x} + \cos(x) \, d x = \frac{2}{\pi} (-e^{-x} + \sin(x)) \Big \rvert_{-\pi/2}^0 \\
+		        & = \frac{2}{\pi} (-1 + 0 + e^{\pi/2} - (-1)) = \frac{2}{\pi} e^{\pi/2}. \qedhere
+	\end{align*}
+\end{example}
+
+\noindent
+We discuss the following example as a cautionary note.
+
+\begin{counterexample}[Improper integral]
+	We know that $\frac{d}{d x} \ln\abs{x} = 1/x$ if $x \neq 0$. Even so it is \keyword{incorrect} to say that
+	\[
+		\int_{-1}^1 \frac{d x}{x} = \ln\abs{x} \Big \rvert_{-1}^1 = 0 - 0 = 0,
+	\]
+	even though $1/x$ is odd. This is because $1/x$ is undefined at $x = 0$, so $1/x$ is not integrable on $[{-1}, 0]$ or $[0, 1]$.
+
+	All this to say that it might sometimes be important to keep track of where one's integrand is defined.
+
+	There are ways to deal with some of these so-called \keyword{improper integrals}\index{integral!improper}, although not this one in particular.
+\end{counterexample}
+
+\noindent
+Finally we'll work through some examples that use the Fundamental theorem in interesting ways.
+
+\begin{example}
+	Differentiate
+	\[
+		F(x) = \int_x^3 e^{-t^2} \, d t.
+	\]
+
+	\noindent
+	We note that the Fundamental theorem requires the unknown $x$ to be the upper limit of integration, so we first switch the order by negating the integrand:
+	\[
+		F(x) = - \int_3^x e^{-t^2} \, d t,
+	\]
+	so by the Fundamental theorem
+	\[
+		F'(x) = - e^{-x^2}. \qedhere
+	\]
+\end{example}
+
+\noindent
+In the following example we'll combine the Fundamental theorem with the chain rule, that is to say
+\[
+	\frac{d}{d x} \int_a^{g(x)} f(t) \, d t = f(g(x)) \cdot g'(x).
+\]
+
+\begin{example}
+	Differentiate
+	\[
+		G(x) = \int_{x^2}^{x^3} e^{-t^2} \, d t.
+	\]
+
+	\noindent
+	First we note that
+	\[
+		G(x) = \int_0^{x^3} e^{-t^2} \, d t + \int_{x^2}^0 e^{-t^2} \, d t = \int_0^{x^3} e^{-t^2} \, d t - \int_0^{x^2} e^{-t^2} \, d t,
+	\]
+	so
+	\[
+		G'(x) = e^{-(x^3)^2} \cdot (3 x^2) - e^{-(x^2)^2} \cdot (2 x) = 3x^2 e^{-x^6} - 2xe^{-x^4}. \qedhere
+	\]
+\end{example}

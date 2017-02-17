@@ -1,0 +1,368 @@
+\topic{Method of Substitution}
+
+So far we have calculated all integrals pretty much by inspection, since we know quite a few derivatives, e.g.
+\begin{alignat*}{2}
+	  & \int x^r \, d x = \frac{x^{r + 1}}{r + 1} + C, ~r \neq -1, ~                          &   & \int \frac{1}{x} \, d x = \ln\abs{x} + C, ~x \neq 0,                                   \\
+	  & \int (\sec(x))^2 \, d x = \tan(x) + C, ~                                              &   & \int \frac{1}{\sqrt{a^2 - x^2}} \, d x = \arcsin\Big ( \frac{x}{a} \Big ) + C, ~a > 0, \\
+	  & \int \frac{1}{a^2 + x^2} \, d x = \frac{1}{a} \arctan\Big ( \frac{x}{a} \Big ) + C, ~ &   & \int e^{a x} \, d x = \frac{1}{a} e^{a x} + C,                                         \\
+	  & \int b^{a x} \, d x = \frac{1}{a \ln(b)} b^{a x} + C, ~                               &   & \text{et cetera\ldots}
+\end{alignat*}
+
+\noindent
+However this is not always enough, sometimes we need other techniques. One of the most important ones is the \keyword{method of substitution}\index{method of substitution}, which is really just applying the integral to the chain rule. We know that
+\[
+	\frac{d}{d x} f(g(x)) = f'(g(x)) \cdot g'(x),
+\]
+whereby
+\[
+	\int f'(g(x) \cdot g'(x) \, d x = f(g(x)) + C.
+\]
+
+\noindent
+In the language of differentials, it looks like this:
+
+Let $u = g(x)$. Then $\frac{d u}{d x} = g'(x)$, which, if we treat $d u$ and $d x$ as differentials, becomes $d u = g'(x) \, d x$, which means that
+\[
+	\int f'(g(x)) \cdot \underbrace{g'(x) \, d x}_{=\, d u} = \int f'(u) \, d u = f(u) + C = f(g(x)) + C.
+\]
+(We have not spoken about differentials, and we probably aren't going to, but we may consider the above ideas as a way to remember what to do.)
+
+\begin{example}
+	Compute the integral of $x / (x^2 + 1)$.
+
+	We let $u = x^2 + 1$, whereby $d u = 2 x \, d x$, so $x \, d x = 1/2 \, d u$. Therefore
+	\begin{align*}
+		\int \frac{x}{x^2 + 1} \, d x & = \frac{1}{2} \int \frac{d u}{u} = \frac{1}{2} \ln\abs{u} + C \\
+		                              & = \frac{1}{2} \ln(x^2 + 1) + C = \ln(\sqrt{x^2 + 1}) + C.
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Find the indefinite integral of $\sin(3 \ln(x)) / x$.
+
+	We let $u = 3 \ln(x)$, meaning that $d u = 3 / x \, d x$. Therefore
+	\begin{align*}
+		\int \frac{\sin(3 \ln(x))}{x} \, d x & = \frac{1}{3} \int \sin(u) \, d u = - \frac{1}{3} \cos(u) + C \\
+		                                     & = - \frac{1}{3} \cos(3 \ln(x)) + C. \qedhere
+	\end{align*}
+\end{example}
+
+\begin{example}
+	Compute the integral of $e^x \sqrt{1 + e^x}$.
+
+	First let $u = 1 + e^x$, whereby $d u = e^x \, d x$, so that
+	\[
+		\int e^x \sqrt{1 + e^x} \, d x = \int \sqrt{u} \, d y = \frac{2}{3} u^{3 / 2} + C = \frac{2}{3} ( 1 + e^x )^{3 / 2} + C. \qedhere
+	\]
+\end{example}
+
+\noindent
+In all of these examples the substitutions required are fairly obvious. Regrettably, life isn't always that good:
+
+\begin{example}
+	Integrate $1 / (x^2 + 4 x + 5)$.
+
+	A very clever thing to do, which we'll formalise and make systematic in the future, is to complete the square of the denominator. In other words
+	\[
+		x^2 + 4 x + 5 = (x + 2)^2 + 1,
+	\]
+	so
+	\[
+		\int \frac{1}{x^2 + 4 x + 5} \, d x = \int \frac{d x}{(x + 2)^2 + 1}.
+	\]
+
+	\noindent
+	If we now let $u = x + 2$ we get $d u = d x$, which means that
+	\[
+		\int \frac{d x}{(x + 2)^2 + 1} = \int \frac{d u}{u^2 + 1} = \arctan{u} + C = \arctan{x + 2} + C. \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Find the indefinite integral of $1 / \sqrt{e^{2 x} - 1}$.
+
+	We first break $e^x$ out of the square root, whereby
+	\[
+		\int \frac{d x}{\sqrt{e^{2 x} - 1}} = \int \frac{d x}{e^x \sqrt{1 - e^{- 2x}}} = \int \frac{e^{-x}}{\sqrt{1 - (e^{- x})^2}} \, d x.
+	\]
+
+	\noindent
+	By now taking $u = e^{-x}$ we have $d u = - e^{-x} \, d x$, which gives us
+	\[
+		\int \frac{e^{-x}}{\sqrt{1 - (e^{- x})^2}} \, d x = - \int \frac{d u}{\sqrt{1 - u^2}} = - \arcsin(u) + C = - \arcsin(e^{-x}) + C. \qedhere
+	\]
+\end{example}
+
+\noindent
+With this said substitution doesn't always work. We will not be able to substitute our way through
+\[
+	\int x^2 (1 + x^8)^{1/3} \, d x,
+\]
+for instance (though we will learn a method that works for this one).
+
+We can of course use substitution in definite integrals as well, but we need to be careful with the limits of integration.
+
+\begin{theorem}
+	Suppose $g$ is differentiable on $[a, b]$ and that $g(a) = A$ and $g(b) = B$, and suppose that $f$ is continuous on the range of $g$. Then
+	\[
+		\int_a^b f(g(x)) \cdot g'(x) \, d x = \int_A^B f(u) \, d u.
+	\]
+\end{theorem}
+
+\begin{proof}
+	Let $F$ be an antiderivative of $f$, then
+	\[
+		\frac{d}{d x} F(g(x)) = F'(g(x)) \cdot g'(x) = f(g(x)) \cdot g'(x),
+	\]
+	which means that
+	\begin{align*}
+		\int_a^b f(g(x)) \cdot g'(x) \, d x & = F(g(x)) \Big \rvert_a^b = F(g(b)) - F(g(a))                         \\
+		                                    & = F(B) - F(A) = F(u) \Big \rvert_A^B = \int_A^B f(u) \, d u. \qedhere
+	\end{align*}
+\end{proof}
+
+\noindent
+The point being that we cannot keep the $x$-values when we are dealing with $u$-values. Unless we switch back before evaluating!
+
+\begin{example}
+	Evaluate
+	\[
+		I = \int_0^8 \frac{\cos(\sqrt{x + 1})}{\sqrt{x + 1}} \, d x.
+	\]
+
+	\noindent
+	Let $u = \sqrt{x + 1}$, yielding $d u = d x / (2 \sqrt{x + 1})$. If $x = 0$, then $u = 1$, and if $x = 8$, then $u = 3$, so
+	\[
+		I = 2 \int_1^3 \cos(u) \, d u = 2 \sin(u) \Big \rvert_1^3 = 2 \sin(3) - 2 \sin(1),
+	\]
+	or alternatively
+	\[
+		I = 2 \int_{x = 0}^{x = 8} \cos(u) \, d u = 2 \sin(u) \Big \rvert_{x = 0}^{x = 8} = 2 \sin(\sqrt{x + 1}) \Big \rvert_0^8 = 2 \sin(3) - 2 \sin(1). \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Evaluate
+	\[
+		I = \int_0^\pi (2 + \sin(x / 2))^2 \cos(x / 2) \, d x.
+	\]
+
+	\noindent
+	We let $u = 2 + \sin(x / 2)$, meaning that $d u = \cos(x / 2) / 2 \, d x$, and if $x = 0$, $u = 0$, and if $x = \pi$, then $u = 3$. Thus
+	\[
+		I = \int_2^3 = u^2 \, d u = \frac{2}{3} u^3 \Big \rvert_2^3 = \frac{2}{3} (27 - 8) = \frac{38}{3}. \qedhere
+	\]
+\end{example}
+
+\begin{remark}
+	Note that $f$ being continuous on the range of $g$ is important. Consider
+	\[
+		\int_{-1}^1 x \csc(x^2) \, d x,
+	\]
+	with $u = x^2$ and $d u = 2 x \, d x$ it would seem as though this becomes
+	\[
+		\frac{1}{2} \int_1^1 \csc(u) \, d u = 0,
+	\]
+	but this is \keyword{incorrect}! Indeed $\csc$ is discontinuous at $x = 0$, and we are attempting to compute an infinite area. This is another example of an improper integral.
+\end{remark}
+
+\noindent
+In general, if the integrand is a quotient where the numerator is (close to) the derivative of the denominator, substitution will lead us beautifully toward a logarithm.
+
+\begin{example}
+	To integrate $\tan(x)$, let $u = \cos(x)$ and $d u = - \sin(x) \, d x$, whereby
+	\begin{align*}
+		\int \tan(x) \, d x & = \int \frac{\sin(x)}{\cos(x)} \, d x = - \int \frac{d u}{u} = - \ln\abs{u} + C                  \\
+		                    & = - \ln\abs{\cos(x)} + C = \ln\abs[\Big]{\frac{1}{\cos(x)}} + C = \ln\abs{\sec(x)} + C. \qedhere
+	\end{align*}
+\end{example}
+
+\noindent
+We close with another example where the substitution isn't all that obvious.
+
+\begin{example}
+	Integrate $\sqrt{1 - x^2}$ between $x = 0$ and $x = 1$. We let $u = \arcsin(x)$, whereby $x = \sin(u)$, and implicit differentiation $d x = \cos(u) \, d u$. Thus
+	\begin{align*}
+		\int_0^1 \sqrt{1 - x^2} \, d x & = \int_0^{\pi/2} \underbrace{\sqrt{1 - (\sin(u))^2}}_{=\, \cos(u)} \cos(u) \, d u = \int_0^{\pi/2} (\cos(u))^2 \, d u                         \\
+		                               & = \int_0^{\pi/2} \frac{1}{2} + \frac{1}{2} \cos(2 u) \, d u = \frac{u}{2} \Big \rvert_0^{\pi/2} + \frac{1}{4} \sin(2 u) \Big \rvert_0^{\pi/2} \\
+		                               & = \frac{\pi}{4} + \frac{1}{4} (\sin(\pi) - \sin(0)) = \frac{\pi}{4}.
+	\end{align*}
+
+	\noindent
+	Note that of course we are calculating the area of the unit disc contained in the first quadrant, which by simple geometry is indeed $\pi / 4$.
+\end{example}
+
+\topic{Areas Between Curves}
+
+Recall first of all that $\int_a^b f(x) \, d x$ measures the area between $y = f(x)$, $y = 0$, $x = a$, and $x = b$, except it treats parts under the $x$-axis as negative areas.
+
+If, for some reason, we don't want this, it is easily avoided: simply take the absolute value of the integrand!
+
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			scale = 1,
+			axis x line = middle,
+			axis y line = middle,
+			xmin = 0,
+			xmax = 5,
+			ymin = -3,
+			ymax = 3,
+			xlabel = $x$,
+			ylabel = $y$,
+			xtick = {0.5, 4.283},
+			xticklabels = {$a$, $b$},
+			ytick = {3.23982, 5.7188, 7.97918},
+			yticklabels = {$m$, $f(c)$, $M$},
+			every axis x label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = west,
+			},
+			every axis y label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = south,
+			},
+			restrict y to domain = -10:10
+			]
+			\addplot[
+			gray,
+			dashed,
+			samples = 200,
+			domain = 0.5:4.283
+			]{abs(0.5*(x+2)*sin((2*(x+2))r))};
+			\addplot[
+			name path = F,
+			black,
+			samples = 200,
+			domain = 0.5:4.283
+			]{0.5*(x+2)*sin((2*(x+2))r)};
+			\addplot[
+			name path = G,
+			black,
+			opacity = 0,
+			domain = 0.5:4.283
+			]{0};
+			\addplot[
+			pattern color = gray!60,
+			pattern = north west lines
+			] fill between [of = F and G];
+			\addplot[mark=none] coordinates {(0.7, -0.5)} node {$A_1$};
+			\addplot[mark=none] coordinates {(1.95, 0.9)} node {$A_2$};
+			\addplot[mark=none] coordinates {(3.5, -0.9)} node {$A_3$};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{Making negative areas positive, with $A_1$, $A_2$, and $A_3$ representing the positive areas, with the dashed line being the absolute value of the function.}
+	\label{lec12:positiveareas}
+\end{figure}
+
+Consider Figure \ref{lec12:positiveareas}, where
+\[
+	\int_a^b f(x) \, d x = - A_1 + A_2 - A_3,
+\]
+but
+\[
+	\int_a^b \abs{f(x)} \, d x = A_1 + A_2 + A_3.
+\]
+
+\noindent
+In other words we find the parts of the function that are below the axis and compute these areas separately, then add them to the areas under the curve that are positive.
+
+\begin{example}
+	Calculate the positive area bounded by $y = \cos(x)$, $y = 0$, $x = 0$, and $x = 3 \pi / 2$. We have
+	\begin{align*}
+		A & = \int_0^{3 \pi / 2} \abs{\cos(x)} \, d x = \int_0^{\pi/2} \cos(x) \, d x + \int_{\pi/2}^{3 \pi / 2} - \cos(x) \, d x \\
+		  & = \sin(x) \Big \rvert_0^{\pi/2} - \sin(x) \Big \rvert_{\pi/2}^{3\pi/2} = (1 - 0) - (-1 - 1) = 3. \qedhere
+	\end{align*}
+\end{example}
+
+\noindent
+Suppose we want to compute the area bounded by $y = f(x)$, $y = g(x)$, $x = a$, and $x = b$. Assume $a < b$ and $f(x) \leq g(x)$ for all $x \in {[a, b]}$.
+
+Then the area we are looking for is
+\[
+	A = \int_a^b g(x) - f(x) \, d x.
+\]
+
+\begin{example}
+	Find the area bounded by $y = x^2 - 2x$ and $y = 4 - x^2$.
+
+	We first find the points of intersection between the two curves:
+	\[
+		x^2 - 2x = 4 - x^2 \quad \Longleftrightarrow \quad 2 x^2 - 2 x - 4 = 0 \quad \Longleftrightarrow \quad 2(x - 2)(x + 1) = 0,
+	\]
+	so $x = 2$ and $x = -1$. Since $4 - x^2 \geq x^2 - 2 x$ for $-1 \leq x \leq 2$, we have
+	\begin{align*}
+		A & = \int_{-1}^2 (4 - x^2) - (x^2 - 2 x) \, d x = \int_{-1}^2 4 - 2x^2 + 2x \, d x                                                                  \\
+		  & = \Big ( 4 x - \frac{2}{3} x^3 + x^2 \Big ) \biggr \rvert_{-1}^2 = 4 \cdot 2 - \frac{2}{3} \cdot 8 + 5 - \Big ( -4 + \frac{2}{3} + 1 \Big ) = 9.
+	\end{align*}
+
+	\noindent
+	Note that if we got the conclusion $4 - x^2 \geq x^2 - 2 x$ wrong, we'd have gotten $-9$ as the area instead.
+\end{example}
+
+\noindent
+If we don't have $g(x) \geq f(x)$, but we're still interested in the positive area, we naturally do the same thing as before:
+\[
+	A = \int_a^b \abs{f(x) - g(x)} \, d x,
+\]
+where we'd again have to split the integral up into the positive parts and the negative parts.
+
+\begin{figure}[t!]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			scale = 1,
+			axis x line = middle,
+			axis y line = middle,
+			xmin = 0,
+			xmax = 7,
+			ymin = -1.5,
+			ymax = 1.5,
+			xlabel = $x$,
+			ylabel = $y$,
+			xtick = {0.7854, 3.9270, 6.2831},
+			xticklabels = {$\frac{\pi}{4}$, $\frac{5\pi}{4}$, $2\pi$},
+			ytick = {-1, 1},
+			yticklabels = {$-1$, $1$},
+			every axis x label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = west,
+			},
+			every axis y label/.style = {
+				at = {(ticklabel* cs:1.01)},
+				anchor = south,
+			},
+			restrict y to domain = -10:10
+			]
+			\addplot[
+			name path = F,
+			black,
+			samples = 200,
+			domain = 0:6.2831
+			]{sin((x)r)};
+			\addplot[
+			name path = G,
+			black,
+			samples = 200,
+			domain = 0:6.2831
+			]{cos((x)r)};
+			\addplot[
+			pattern color = gray!60,
+			pattern = north west lines
+			] fill between [of = F and G];
+		\end{axis}
+	\end{tikzpicture}
+	\caption{The area between $\sin(x)$ and $\cos(x)$ for $x$ between $0$ and $2 \pi$. }
+	\label{lec12:areaexample}
+\end{figure}
+
+\begin{example}
+	Find the area lying between $y = \sin(x)$ and $y = \cos(x)$ from $x = 0$ to $x = 2 \pi$, as seen in Figure \ref{lec12:positiveareas}.
+	\begin{align*}
+		A & = \int\limits_0^{\pi/4} \cos(x) - \sin(x) \, d x + \int\limits_{\pi/4}^{5 \pi/4} \sin(x) - \cos(x) \, d x + \int\limits_{5 \pi/4}^{2\pi} \cos(x) - \sin(x) \, d x \\
+		  & = (\sin(x) - \cos(x)) \Big \rvert_0^{\pi/4} - (\cos(x) + \sin(x)) \Big \rvert_{\pi/4}^{5 \pi/4} + (\sin(x) - \cos(x)) \Big \rvert_{5\pi/4}^{2\pi}                 \\
+		  & = (\sqrt{2} - 1) + (\sqrt{2} + \sqrt{2}) + (1 + \sqrt{2}) = 4 \sqrt{2}. \qedhere
+	\end{align*}
+\end{example}
