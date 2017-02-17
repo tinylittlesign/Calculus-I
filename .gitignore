@@ -18,6 +18,7 @@
 # *.ps
 # *.eps
 # *.pdf
+*-figure*.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -100,7 +101,7 @@ acs-*.bib
 *.idx
 *.ilg
 *.ind
-*.ist
+#*.ist
 
 # minitoc
 *.maf
