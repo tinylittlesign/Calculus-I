@@ -1,3 +1,309 @@
 %!TEX root = ../lectures.tex
 
 \topic{Integration by Parts}
+
+Similar to how the method of substitution  is the chain rule baked into an integral, integration by parts is the product rule for derivatives combined with integrals.
+
+Suppose $U$ and $V$ are two differentiable functions.
+Then
+\[
+	\frac{d}{d x} (U(x) V(x)) = U(x) V'(x) + U'(x) V(x).
+\]
+
+\noindent
+If we now integrate both sides, we get
+\[
+	U(x) V(x) = \int U(x) V'(x) \, d x + \int U'(x) V(x) \, d x,
+\]
+and if we rearrange we get
+\[
+	\int U(x) V'(x) \, d x = U(x) V(x) - \int U'(x) V(x) \, d x.
+\]
+
+\noindent
+This is the chain rule, and it tells us that if we can view a function as the product of some function and the derivative of some other function, we might be able to integrate it more easily.
+
+\begin{example}
+	Compute $\int x e^x \, d x$.
+
+	Consider $U(x) = x$ and $V'(x) = e^x$, whereby $U'(x) = 1$ and $V(x) = e^x$.
+	We then get
+	\[
+		\int x e^x \, d x = x e^x - \int 1 \cdot e^x \, d x = x e^x - e^x + C = e^x (x - 1) + C.
+	\]
+
+	\noindent
+	Note how we pick \emph{some} antiderivative of $V'$; instead of adding a constant term at that step we add one in the end, when we evaluate the indefinite integral in the right-hand side.
+\end{example}
+
+\noindent
+This is a very powerful method of integration, allowing us to integrate some quite nasty functions.
+One useful trick is to consider an integrand $f(x)$ as $1 \cdot f(x)$, which might simplify our problem greatly if $f$ is a function we know how to differentiate but not integrate.
+
+\begin{example}
+	Find $\int \ln(x) \, d x$.
+
+	Let $U(x) = \ln(x)$ and $V'(x) = 1$, which means that $U'(x) = 1/x$ and $V(x) = x$.
+	Thus
+	\[
+		\int \ln(x) \, d x = x \ln(x) - \int x \cdot \frac{1}{x} \, d x = x \ln(x) - x + C = x (\ln(x) -1) + C. \qedhere
+	\]
+\end{example}
+
+\noindent
+It is sometimes necessary to use integration by parts multiple times.
+
+\begin{example}
+	Find the indefinite integral of $x^2 \sin(x)$.
+
+	Let $U(x) = x^2$ and $V'(x) = \sin(x)$, whereby $U'(x) = 2 x$ and $V(x) = - \cos(x)$.
+	Using this we have
+	\[
+		\int x^2 \sin(x) \, d x = - x^2 \cos(x)  + 2 \int x \cos(x) \, d x.
+	\]
+
+	\noindent
+	Now we use integration by parts once more in order to handle $x \cos(x)$.
+	We pick $U(x) = x$ and $V'(x) = \cos(x)$, which gives us $U'(x) = 1$ and $V(x) = \sin(x)$.
+	This means that
+	\[
+		\int x \cos(x) \, d x = x \sin(x) - \int 1 \cdot \sin(x) \, d x = x \sin(x) + \cos(x) + C,
+	\]
+	and putting everything together we have
+	\begin{align*}
+		\int x^2 \sin(x) \, d x &= - x^2 \cos(x)  + 2 \int x \cos(x) \, d x \\
+		                        &= - x^2 \cos(x) + 2 x \sin(x) + 2 \cos(x) + D. \qedhere
+	\end{align*}
+\end{example}
+
+\noindent
+So far, in the examples involving a polynomial factor, we've chosen this as the part we differentiate.
+This is not always the best idea.
+
+\begin{example}
+	Integrate $x \arctan(x)$.
+
+	Since we probably don't have the integral of $\arctan(x)$ in our heads\footnote{Though we could have; try using integration by parts on it the same way we did with $\ln(x)$.} we try differentiating $\arctan$ instead, since we know how to do that.
+
+	Thus $U(x) = \arctan(x)$ and $V'(x) = x$ whereby $U'(x) = 1 / (1 + x^2)$ and $V(x) = x^2 / 2$.
+	Therefore
+	\begin{align*}
+		\int x \arctan(x) \, d x &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} \int \frac{1}{1 + x^2} \cdot x^2 \, d x \\
+		                         &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} \int 1 - \frac{1}{1 + x^2} \\
+		                         &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} x + \frac{1}{2} \arctan(x) + C \\
+														 &= \frac{1}{2} ((x^2 + 1) \arctan(x) - x) + C. \qedhere
+	\end{align*}
+\end{example}
+
+\noindent
+Another useful trick is to perform integration by parts several times until our integrand reappears in the right-hand side.
+
+\begin{example}
+	Compute
+	\[
+		I = \int (\sec(x))^3 \, d x.
+	\]
+
+	\noindent
+	Being slightly tricky we recall that the derivative of $\tan(x)$ is $(\sec(x))^2$, so we split the integrand into $\sec(x) (\sec(x))^2$, whereby $U(x) = \sec(x)$ and $V'(x) = (\sec(x))^2$.
+	Then $U'(x) = \sec(x) \tan(x)$ (feel free to verify) and $V(x) = \tan(x)$.
+	Thus
+	\begin{align*}
+		I &= \sec(x) \tan(x) - \int \sec(x) (\tan(x))^2 \, d x \\
+		  &= \sec(x) \tan(x) - \int \sec(x) ((\sec(x))^2 - 1) \, d x \\
+			&= \sec(x) \tan(x) - \underbrace{\int (\sec(x))^3 \, d x}_{=\, I} + \int \sec(x) \, d x,
+	\end{align*}
+	so
+	\[
+		2 I = \sec(x) \tan(x) + \int \sec(x) \, d x.
+	\]
+
+	\noindent
+	It remains to compute the integral of $\sec(x)$.
+	To do so we come up with the brilliant idea of multiplying and dividing by $u(x) = \sec(x) + \tan(x)$, because $u'(x) = \tan(x) \sec(x) + (\sec(x))^2 = \sec(x) (\sec(x) + \tan(x))$, whereby
+	\begin{align*}
+		\int \sec(x) \, d x &= \int \frac{\sec(x) (\sec(x) + \tan(x))}{\sec(x) + \tan(x)} \, d x = \int \frac{1}{u} \, d u \\
+		                    &= \ln\abs{u} + C = \ln\abs{\sec(x) + \tan(x)} + C.
+	\end{align*}
+
+	\noindent
+	Therefore
+	\[
+		I = \frac{1}{2} (\sec(x) \tan(x) + \ln\abs{\sec(x) + \tan(x)}) + D. \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Let $a, b \neq 0$ be constants and find
+	\[
+		I = \int e^{a x} \cos(b x) \, d x.
+	\]
+
+	\noindent
+	We use $U(x) = e^{a x}$ and $V'(x) = \cos(bx)$, whence $U'(x) = a e^{a x}$ and $V(x) = \sin(b x) / b$.
+	Then
+	\begin{align*}
+		I &= \frac{1}{b} e^{a x} \sin(b x) - \frac{a}{b} \int e^{a x} \sin(b x) \, d x \\
+		  &= \frac{1}{b} e^{a x} \sin(b x) - \frac{a}{b} \Big ( - \frac{1}{b} e^{a x} \cos(b x) + \frac{a}{b} \int e^{a x} \cos(b x) \, d x \Big ) \\
+			&= \frac{1}{b} e^{a x} \sin(b x) + \frac{a}{b^2} e^{a x} \cos(b x) - \frac{a^2}{b^2} I.
+	\end{align*}
+
+	\noindent
+	Rearranging we get
+	\[
+		\Big ( 1 + \frac{a^2}{b^2} \Big ) I = \frac{1}{b} e^{a x} \Big ( \sin(b x) + \frac{a}{b} \cos(b x) \Big ) + C,
+	\]
+	meaning that
+	\[
+		I = \int e^{a x} \cos(b x) \, d x = \frac{b e^{a x} \sin(b x) + a e^{a x} \cos(b x)}{a^2 + b^2} + D.
+	\]
+
+	\noindent
+	Note that this works because we pick the same $U(x)$ both times.
+	If we didn't, we'd have gotten
+	\[
+		I = \frac{1}{b} e^{a x} \sin(b x) - \frac{1}{b} e^{a x} \sin(b x) + I,
+	\]
+	which is just a complicated way of writing $0 = 0$.
+\end{example}
+
+\topic{Integrating Rational Functions}
+
+We will now spend some time studying integrals of the form
+\[
+	\int \frac{P(x)}{Q(x)} \, d x,
+\]
+where $P$ and $Q$ are polynomials.
+
+When doing this, we will almost always assume that $\deg(P(x)) < \deg(Q(x))$, since if it is not the case, we just perform polynomial division.
+
+\begin{example}
+	Compute $I = \int \frac{x^3 + 3 x^2}{x^2 + 1} \, d x$.
+
+	\smallskip
+
+	First we perform the polynomial division.
+	\begin{figure}[ht!]
+		\centering
+		\polylongdiv{x^3 + 3 x^2}{x^2 + 1}
+	\end{figure}
+
+	\noindent
+	Therefore
+	\[
+		\frac{x^2 + 3 x^2}{x^2 + 1} = (x + 3) + \frac{- x - 3}{x^2 + 1},
+	\]
+	whereby
+	\begin{align*}
+		I &= \int x + 3 \, d x - \int \frac{x}{x^2 + 1} \, d x - 3 \int \frac{d x}{x^2 + 1} \\
+		  &= \frac{1}{2} x^2 + 3 x - \frac{1}{2} \ln(x^2 + 1) - 3 \arctan(x) + C. \qedhere
+	\end{align*}
+\end{example}
+
+\noindent
+Therefore in what follows the degree of the numerator will be less than the degree of the denominator, since otherwise we just perform polynomial division and end up in that situation anyway.
+
+There are then a few cases to consider.
+
+Suppose $\deg(Q(x)) = 1$.
+Then $Q(x) = a x + b$, with $a \neq 0$, and $\deg(P(x)) = 0$, so $P(x) = c$.
+We substitute $u(x) = a x + b$, whereby $d u = a \, d x$, and
+\[
+	\int \frac{c}{a x + b} \, d x = \frac{c}{a} \int \frac{1}{u} \, d u = \frac{c}{a} \ln\abs{u} + C = \frac{c}{a} \ln\abs{a x + b} + C.
+\]
+
+\noindent
+Now suppose $Q(x)$ is quadratic, i.e. $Q(x) = A x^2 + B x + C$, with $A \neq 0$.
+Then by completing the square and making some simple substitution we can always get it on the form $x^2 + a^2$ or $x^2 - a^2$, multiplied by some constant  we don't bring into the integral anyway.
+Thus since $P(x) = \alpha x + \beta$, there are four types of integrals to consider:
+\begin{alignat*}{5}
+	\int \frac{x}{x^2 + a^2} \, d x &= \frac{1}{2} \ln(x^2 + a^2) + C, \qquad                  && \int \frac{x}{x^2 - a^2} \, d x &&= \frac{1}{2} \ln\abs{x^2 - a^2} + C, \\
+	\int \frac{1}{x^2 + a^2} \, d x &= \frac{1}{a} \arctan\Big (\frac{x}{a} \Big ) + C, \qquad && \int \frac{1}{x^2 - a^2} \, d x &&= \frac{1}{2 a} \ln\abs[\Big]{\frac{x - a}{x + a}} + C.
+\end{alignat*}
+
+\noindent
+The first three of these are known or obvious, however the forth one is trickier.
+We do the following:
+\[
+	\frac{1}{x^2 - a^2} = \frac{1}{(x - a)(x + a)} = \frac{A}{x - a} + \frac{B}{x + a} = \frac{A x + A a + B x - B a}{x^2 - a^2},
+\]
+meaning that $A x + A a + B x - B a = (A + B) x + (A - B) a = 1$, so
+\[
+	\begin{cases}
+		A + B = 0 \\
+		A a - B a = 1
+	\end{cases} \Longleftrightarrow~
+	\begin{cases}
+		A = 1 / (2 a) \\
+		B = - 1 / (2 a),
+	\end{cases}
+\]
+and therefore
+\begin{align*}
+	\int \frac{d x}{x^2 - a^2} &= \frac{1}{2 a} \int \frac{d x}{x - a} - \frac{1}{2 a} \int \frac{d x}{x + a} \\
+	                           &= \frac{1}{2 a} \ln\abs{x - a} - \frac{1}{2 a} \ln\abs{x + a} + C = \frac{1}{2 a} \ln\abs[\Big]{\frac{x - a}{x + a}} + C.
+\end{align*}
+
+\noindent
+What we just did is called \keyword{partial fraction decomposition}\index{partial fraction decomposition}.
+
+In general, if $Q(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_n)$, where all $\alpha_i$ are different, then there always exist, for $P(x)$ of smaller degree, $A_1, A_2, \ldots, A_n$ such that
+\[
+	\frac{P(x)}{Q(x)} = \frac{A_1}{x - \alpha_1} + \frac{A_2}{x - \alpha_2} + \ldots + \frac{A_n}{x - \alpha_n}.
+\]
+
+\noindent
+(We won't prove that this always works here; that belongs in an algebra course.)
+
+We can find the $A_i$ either by the sytem of equations as before, or by noting that if we multiply $P(x) / Q(x)$ by $x - \alpha_j$, we get
+\[
+	A_1 \frac{x - \alpha_j}{x - \alpha_1} + \ldots + A_{j - 1} \frac{x - \alpha_j}{x - \alpha_{j - 1}} + A_j + A_{j + 1} \frac{x - \alpha_j}{x - \alpha_{j + 1}} + \ldots + A_n \frac{x - \alpha_j}{x - \alpha_n}.
+\]
+
+\noindent
+Thus when $x = a_j$, all but $A_j$ disappear, meaning that
+\[
+	A_j = \lim_{x \to \alpha_j} (x - \alpha_j) \frac{P(x)}{Q(x)}.
+\]
+
+\noindent
+This works, with one caveat: if there's a repeated factor, we need to be careful:
+
+\begin{example}
+	Find
+	\[
+		I = \int \frac{1}{x (x - 1)^2} \, d x.
+	\]
+
+	\noindent
+	The correct ansatz in this case is
+	\[
+		\frac{1}{x (x - 1)^2} = \frac{A}{x} + \frac{B}{x - 1} + \frac{C}{(x - 1)^2},
+	\]
+	so we have $A(x^2 - 2 x + 1) + B(x^2 - x) + C x = 1$, from which we glean
+	\[
+		\begin{cases}
+			A + B = 0 \\
+			-2 A - B + C = 0 \\
+			A = 1
+		\end{cases} \Longleftrightarrow~
+		\begin{cases}
+			A = 1 \\
+			B = -1 \\
+			C = 1,
+		\end{cases}
+	\]
+	meaning that
+	\begin{align*}
+		I &= \int \frac{1}{x} \, d x - \int \frac{1}{x - 1} \, d x + \int \frac{1}{(x - 1)^2} \, d x \\
+		  &= \ln\abs{x} - \ln\abs{x - 1} - \frac{1}{x - 1} + C = \ln\abs[\Big]{\frac{x}{x - 1}} - \frac{1}{x - 1} + C. \qedhere
+	\end{align*}
+\end{example}
+
+
+\noindent
+If $Q(x)$ cannot be factored into linear terms, the ansatz changes a little.
+We'd use e.g.
+\[
+	\frac{x^2 + 2}{x (2 x^2 + 1)^2} = \frac{A}{x} + \frac{B x + C}{2 x^2 + 1} + \frac{D x + E}{(2 x^2 + 1)^2}.
+\]
