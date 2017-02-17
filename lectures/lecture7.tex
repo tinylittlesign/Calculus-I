@@ -1,6 +1,7 @@
 \topic{Extreme Values}
 
-As we saw when discussing the Mean-value theorem, the sign of the derivative tells us whether the function is increasing or decreasing. We will now explore how to use this information to find maximum and minimum values, collectively known as \keyword{extreme values}\index{extreme value}.
+As we saw when discussing the Mean-value theorem, the sign of the derivative tells us whether the function is increasing or decreasing.
+We will now explore how to use this information to find maximum and minimum values, collectively known as \keyword{extreme values}\index{extreme value}.
 
 Recall how a function has an \keyword{absolute}\index{absolute maximum|see {global maximum}} or \keyword{global maximum value}\index{global maximum} $f(x_0)$ at $x = x_0$ if $f(x) \leq f(x_0)$ for all $x$ in the domain of $f$.
 
@@ -87,14 +88,16 @@ The first item about critical points follows from Lemma \ref{lec5:criticalpoint}
 A point being a local extreme value implies \fakeitemref{1}, \fakeitemref{2}, or \fakeitemref{3}, but the other way around need not be true; critical points, singular points and endpoints need not be extreme points.
 
 \begin{counterexample}
-	Consider the function $f(x) = x^3$. We have $f'(x) = 3 x^2$, whence $f'(0) = 0$, so by definition $x = 0$ is a critical point, yet $f(0) = 0$ is no local extreme value.
+	Consider the function $f(x) = x^3$.
+	We have $f'(x) = 3 x^2$, whence $f'(0) = 0$, so by definition $x = 0$ is a critical point, yet $f(0) = 0$ is no local extreme value.
 \end{counterexample}
 
 \noindent
 We can decide whether the three types of points are local minimum or maximum values by studying the derivative close to the points.
 
 \begin{theorem}[First derivative test]
-	Let $f \colon X \to Y$ be a function differentiable on the relevant intervals below. The theorem has two parts:
+	Let $f \colon X \to Y$ be a function differentiable on the relevant intervals below.
+	The theorem has two parts:
 
 	\subsubsection*{Testing critical and singular points}
 
@@ -132,7 +135,8 @@ Note that if $f'(x)$ has the same sign on both sides of a critical or singular p
 	\[
 		f(x) = \frac{1}{3} x^3 - x
 	\]
-	defined on $[{-3}, 3]$. Potential extreme values are at the endpoints $x = -3$ and $x = 3$, and critical points (it has no singular points).
+	defined on $[{-3}, 3]$.
+	Potential extreme values are at the endpoints $x = -3$ and $x = 3$, and critical points (it has no singular points).
 
 	We have
 	\[
@@ -200,10 +204,12 @@ Note that if $f'(x)$ has the same sign on both sides of a critical or singular p
 
 We can also use the second derivative to find out useful things about a function.
 
-In particular, it tells us if the slope (i.e. derivative) is an increasing or decreasing function. We have fancy names for these behaviours.
+In particular, it tells us if the slope (i.e. derivative) is an increasing or decreasing function.
+We have fancy names for these behaviours.
 
 \begin{definition}[Concavity]
-	We say that $f$ is \keyword{concave up}\index{concavity} on an open interval $I$ if it is differentiable there and the derivative $f'$ is an increasing function on $I$. We say that $f$ is \keyword{concave down} on $I$ if $f'$ exists and is decreasing on $I$.
+	We say that $f$ is \keyword{concave up}\index{concavity} on an open interval $I$ if it is differentiable there and the derivative $f'$ is an increasing function on $I$.
+	We say that $f$ is \keyword{concave down} on $I$ if $f'$ exists and is decreasing on $I$.
 \end{definition}
 
 \begin{example}
@@ -321,7 +327,8 @@ We demonstrate two more interesting examples that exemplify the requirement abou
 \begin{examples}
 	In Figure \ref{lec8:inflectioncounter} we see a function which changes concavity around $x = a$, however it is by definition \emph{not} an inflection point since there is no tangent line at this point.
 
-	Moreover in Figure \ref{lec8:inflectionvertical} we demonstrate an inflection point at a point where the function at hand, $f(x) = x^{1/3}$, is not differentiable, but it has a tangent line. In this sense the condition on the existence of a tangent line is stronger than the existence of the derivative.
+	Moreover in Figure \ref{lec8:inflectionvertical} we demonstrate an inflection point at a point where the function at hand, $f(x) = x^{1/3}$, is not differentiable, but it has a tangent line.
+	In this sense the condition on the existence of a tangent line is stronger than the existence of the derivative.
 \end{examples}
 
 \noindent
@@ -339,7 +346,8 @@ Since concavity depends on the derivative being increasing or decreasing, we can
 \begin{proof}
 	As suggested above, \fakeitemref{1} and \fakeitemref{2} are clear by Theorem \ref{lec5:monotonicityproof}, wherein the sign of the derivative implies that a function is increasing or decreasing.
 
-	For \fakeitemref{3}, if $f$ has an inflection point at $x_0$ and $f''(x_0)$ exists, then $f$ must be differentiable on an open interval containing $x_0$. Since $f'$ is increasing on one side of $x_0$ and decreasing on the other, it must have a local extreme value at $x_0$, and therefore $f''(x_0) = 0$.
+	For \fakeitemref{3}, if $f$ has an inflection point at $x_0$ and $f''(x_0)$ exists, then $f$ must be differentiable on an open interval containing $x_0$.
+	Since $f'$ is increasing on one side of $x_0$ and decreasing on the other, it must have a local extreme value at $x_0$, and therefore $f''(x_0) = 0$.
 \end{proof}
 
 \noindent
@@ -355,11 +363,13 @@ Combining this with what we know about critical points we get a very useful resu
 \end{theorem}
 
 \begin{proof}
-	Suppose $f'(x_0) = 0$ and $f''(x_0) < 0$. Since
+	Suppose $f'(x_0) = 0$ and $f''(x_0) < 0$.
+	Since
 	\[
 		\lim_{h \to 0} \frac{f'(x_0 + h)}{h} = \lim_{h \to 0} \frac{f'(x_0 + h) - f'(x_0)}{h} = f''(x_0) < 0,
 	\]
-	it follows that $f'(x_0 + h) > 0$ for all sufficiently small negative $h$. Thus by the first derivative test, $f$ must have a local maximum value at $x_0$.
+	it follows that $f'(x_0 + h) > 0$ for all sufficiently small negative $h$.
+	Thus by the first derivative test, $f$ must have a local maximum value at $x_0$.
 
 	The case of the local minimum is similar.
 \end{proof}
@@ -369,7 +379,8 @@ Combining this with what we know about critical points we get a very useful resu
 \end{remark}
 
 \begin{example}
-	Consider $f(x) = x^4$. Here $f'(0) = f''(0) = 0$, and $f(0) = 0$ is a local minimum value, whereas for $g(x) = x^3$ we also have $g'(0) = g''(0) = 0$, yet $x = 0$ is an inflection point.
+	Consider $f(x) = x^4$.
+	Here $f'(0) = f''(0) = 0$, and $f(0) = 0$ is a local minimum value, whereas for $g(x) = x^3$ we also have $g'(0) = g''(0) = 0$, yet $x = 0$ is an inflection point.
 \end{example}
 
 \topic{Sketching Functions}
@@ -385,7 +396,9 @@ Combining all of this, and maybe some other things, we can quite accurately sket
 	\noindent
 	We take stock of what we know.
 
-	The domain is all $x \neq \pm 2$. There are vertical asymptotes at $x = \pm 2$. Because
+	The domain is all $x \neq \pm 2$.
+	There are vertical asymptotes at $x = \pm 2$.
+	Because
 	\[
 		\lim_{x \to \pm \infty} \frac{x^2 - 1}{x^2 - 4} = \lim_{x \to \pm \infty} \frac{x^2}{x^2} \cdot \frac{1 - 1/x^2}{1 - 4/x^2} = 1,
 	\]
@@ -405,7 +418,8 @@ Combining all of this, and maybe some other things, we can quite accurately sket
 	\]
 
 	\noindent
-	Using this we sketch the function in Figure \ref{lec8:sketch1}. Note how we know $x = 0$ is a local maximum point since $f'(0) = 0$ and $f''(0) < 0$.
+	Using this we sketch the function in Figure \ref{lec8:sketch1}.
+	Note how we know $x = 0$ is a local maximum point since $f'(0) = 0$ and $f''(0) < 0$.
 \end{example}
 
 \begin{figure}[t!]
@@ -484,13 +498,15 @@ Let's now tackle a rather more difficult function to sketch.
 	\end{align*}
 
 	\noindent
-	Thus from $y$ itself we know that the domain is all of $\R$. We have a horizontal asymptote at $y = 0$ since
+	Thus from $y$ itself we know that the domain is all of $\R$.
+	We have a horizontal asymptote at $y = 0$ since
 	\[
 		\lim_{x \to \pm \infty} x e^{- x^2 / 2} = \lim_{t \to \infty} \sqrt{2t} e^{-t} = 0,
 	\]
 	wherein we did the change of variable $t = x^2 / 2$.
 
-	Moreover $y$ is odd, since $y(-x) = -y(x)$, so it is symmetric about the origin. It also goes through the origin since $y(0) = 0$.
+	Moreover $y$ is odd, since $y(-x) = -y(x)$, so it is symmetric about the origin.
+	It also goes through the origin since $y(0) = 0$.
 
 	From $y'$ we know that there are critical points at $x = \pm 1$.
 

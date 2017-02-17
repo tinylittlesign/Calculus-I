@@ -1,6 +1,7 @@
 \topic{Proofs of Max-min and Intermediate Value Theorem}
 
-A long time ago (all the way back in Lecture \ref{lec3:continuity}) we stated the Max-min theorem and the Intermediate value theorem, but we did not prove them. We will now, though note that strictly speaking this is not a part of this course.
+A long time ago (all the way back in Lecture \ref{lec3:continuity}) we stated the Max-min theorem and the Intermediate value theorem, but we did not prove them.
+We will now, though note that strictly speaking this is not a part of this course.
 
 We will need to remember the definitions of limit, continuity at a point, and what we meant by a function being continuous on an interval.
 
@@ -9,7 +10,8 @@ As suggested back then, part of the mystery behind the proofs has to do with upp
 \begin{definition}
 	A number $u$ is said to be an \keyword{upper bound}\index{upper bound} for a nonempty set $S$ if $x \leq u$ for all $x \in S$.
 
-	The number $u^*$ is called the \keyword{least upper bound}\index{least upper bound|see {supremum}} or \keyword{supremum}\index{supremum} of $S$ if $u^*$ is an upper bound for $S$ and $u^* \leq u$ for every upper bound $u$ of $S$. It is denoted $u^* = \sup(S)$.
+	The number $u^*$ is called the \keyword{least upper bound}\index{least upper bound|see {supremum}} or \keyword{supremum}\index{supremum} of $S$ if $u^*$ is an upper bound for $S$ and $u^* \leq u$ for every upper bound $u$ of $S$.
+	It is denoted $u^* = \sup(S)$.
 
 	Similarly $\ell$ is a \keyword{lower bound}\index{lower bound} of $S$ if $\ell \leq x$ for all $x \in S$ and $\ell^* = \inf(S)$ is the \keyword{greatest lower bound}\index{greatest lower bound|see {infimum}} or \keyword{infimum}\index{infimum} of $S$ is $\ell \leq \ell^*$ for all lower bounds $\ell$ of $S$.
 \end{definition}
@@ -21,16 +23,22 @@ As suggested back then, part of the mystery behind the proofs has to do with upp
 \end{example}
 
 \noindent
-An incredibly important property of the real numbers is called \keyword{completeness}\index{completeness}. Roughly speaking this means that there are no gaps on the real number line (unlike e.g. $\Q$). In the language of of $\sup$ and $\inf$:
+An incredibly important property of the real numbers is called \keyword{completeness}\index{completeness}.
+Roughly speaking this means that there are no gaps on the real number line (unlike e.g. $\Q$).
+In the language of of $\sup$ and $\inf$:
 \begin{enumerate}
 	\item A nonempty set of real numbers that has an upper bound must have a least upper bound that is a real number.
 	\item A nonempty set of real numbers that has a lower bound must have a greatest lower bound that is a real number.
 \end{enumerate}
 
 \noindent
-It is the last part that is the crucial difference between, for instance, $\Q$ and $\R$. Consider for example the set of all rational numbers whose square is less than or equal to 2, that is $\Set{x \in \Q \given x^2 \leq 2}$. This set certainly has an upper bound (take any $u \geq \sqrt{2}$, but it has no \emph{least} upper bound \emph{within} $\Q$ itself, since $\sqrt{2}$ isn't a rational number!
+It is the last part that is the crucial difference between, for instance, $\Q$ and $\R$.
+Consider for example the set of all rational numbers whose square is less than or equal to 2, that is $\Set{x \in \Q \given x^2 \leq 2}$.
+This set certainly has an upper bound (take any $u \geq \sqrt{2}$, but it has no \emph{least} upper bound \emph{within} $\Q$ itself, since $\sqrt{2}$ isn't a rational number!
 
-This property, called the \keyword{supremum property}, of the real numbers is (to us in this course) an \keyword{axiom}. That is to say, it cannot be proven, instead it is something we \emph{decide} to be true about the reals. (If we have a way of actually construction, of building the real numbers, then it becomes a theorem that one proves.)
+This property, called the \keyword{supremum property}, of the real numbers is (to us in this course) an \keyword{axiom}.
+That is to say, it cannot be proven, instead it is something we \emph{decide} to be true about the reals.
+(If we have a way of actually construction, of building the real numbers, then it becomes a theorem that one proves.)
 
 This allows us to prove several interesting results.
 
@@ -68,11 +76,14 @@ We will now prove some theorems we already established for functions, but this t
 \end{theorem}
 
 \begin{proof}
-	Suppose $L > b$ and let $\varepsilon = L - b$. Since
+	Suppose $L > b$ and let $\varepsilon = L - b$.
+	Since
 	\[
 		\lim_{n \to \infty} x_n = L
 	\]
-	there exists an $n$ such that $\abs{x_n - L} < \varepsilon$. Therefore $x_n > L - \varepsilon = L - (L - b) = b$, so $x_n > b$, a contradiction. Therefore $L \leq b$.
+	there exists an $n$ such that $\abs{x_n - L} < \varepsilon$.
+	Therefore $x_n > L - \varepsilon = L - (L - b) = b$, so $x_n > b$, a contradiction.
+	Therefore $L \leq b$.
 
 	Similarly for $L \geq a$.
 \end{proof}
@@ -104,11 +115,14 @@ These are the tools we require to prove the main result behind the two theorems 
 	\]
 	Note that this is the set of $x$ values that makes this happen.
 
-	We would like to show that $S_n$ is empty for some $n$. It would follow that $f(x) \leq n$ for this $n$, so $n$ would be an upper bound.
+	We would like to show that $S_n$ is empty for some $n$.
+	It would follow that $f(x) \leq n$ for this $n$, so $n$ would be an upper bound.
 
-	Suppose $S_n$ is nonempty for all $n$. For each $n = 1, 2, 3, \ldots$, since $S_n$ is bounded below ($a$ is a lower bound by construction), by the Supremum axiom there exists a greatest lower bound, call it $x_n$.
+	Suppose $S_n$ is nonempty for all $n$.
+	For each $n = 1, 2, 3, \ldots$, since $S_n$ is bounded below ($a$ is a lower bound by construction), by the Supremum axiom there exists a greatest lower bound, call it $x_n$.
 
-	Since $f(x) > n$ at some point in $[a, b]$, and continuous at that point, $f(x) > n$ on some interval contained in $[a, b]$. Thus $x_n < b$ and $f(x_n) \geq n$ (otherwise by continuity $f(x) < n$ for some distance to the right of $x_n$ and $x_n$ could not be $\inf(S_n)$).
+	Since $f(x) > n$ at some point in $[a, b]$, and continuous at that point, $f(x) > n$ on some interval contained in $[a, b]$.
+	Thus $x_n < b$ and $f(x_n) \geq n$ (otherwise by continuity $f(x) < n$ for some distance to the right of $x_n$ and $x_n$ could not be $\inf(S_n)$).
 
 	For each $n$, $S_{n + 1} \subseteq S_n$ implies that $x_{n + 1} \geq x_n$, so $x_1, x_2, \ldots, x_n, \ldots$ is an increasing sequence bounded above by $b$, meaning that it converges to, say,
 	\[
@@ -120,11 +134,13 @@ These are the tools we require to prove the main result behind the two theorems 
 	\[
 		\lim_{n \to \infty} f(x_n) = f(L)
 	\]
-	exists by Theorem \ref{lec9:seqlim}. But since $f(x_n) \geq n$ for every $n$,
+	exists by Theorem \ref{lec9:seqlim}.
+	But since $f(x_n) \geq n$ for every $n$,
 	\[
 		\lim_{n \to \infty} f(x_n)
 	\]
-	cannot exist, since it grows arbitrarily large, so we have a contradiction. Therefore our assumption of $S_n$ always being nonempty is wrong, ergo there exists some $n$ such that $S_n$ is empty, whereby $f$ is bounded above on $[a, b]$.
+	cannot exist, since it grows arbitrarily large, so we have a contradiction.
+	Therefore our assumption of $S_n$ always being nonempty is wrong, ergo there exists some $n$ such that $S_n$ is empty, whereby $f$ is bounded above on $[a, b]$.
 
 	For boundedness below do almost the same thing.
 \end{proof}
@@ -137,7 +153,9 @@ We are now able to prove the Max-min theorem and the Intermediate value theorem.
 \end{theorem}
 
 \begin{proof}
-	By the previous theorem, $S = \Set{f(x) \given x \in [a, b]}$ has an upper bound and by the Supremum axiom it also has a least upper bound, call it $M = \sup(S)$. Suppose there is no $u \in [a, b]$ such that $f(u) = M$. Then $1 / (M - f(x))$ is continuous on $[a, b]$ so again by the last theorem there exists some $K$ such that $1 / (M - f(x)) \leq K$ for all $x \in [a, b]$.
+	By the previous theorem, $S = \Set{f(x) \given x \in [a, b]}$ has an upper bound and by the Supremum axiom it also has a least upper bound, call it $M = \sup(S)$.
+	Suppose there is no $u \in [a, b]$ such that $f(u) = M$.
+	Then $1 / (M - f(x))$ is continuous on $[a, b]$ so again by the last theorem there exists some $K$ such that $1 / (M - f(x)) \leq K$ for all $x \in [a, b]$.
 
 	By rearranging, this implies that
 	\[
@@ -157,14 +175,17 @@ We are now able to prove the Max-min theorem and the Intermediate value theorem.
 
 	The set $S$ is nonempty (at the very least it contains $a$) and bounded above ($b$ is an upper bound), so by the Supremum axiom there exists a least upper bound $\sup(S) = c$.
 
-	Now suppose $f(c) > s$. Then $c \neq a$ and by continuity $f(x) > s$ on some interval ${]{c - \delta, c}]}$, with $\delta > 0$. But this says that $c - \delta < c$ is an upper bound for $S$, so $c$ wasn't the \emph{least} upper bound, which is a contradiction, meaning that instead we must have $f(c) \leq s$.
+	Now suppose $f(c) > s$.
+	Then $c \neq a$ and by continuity $f(x) > s$ on some interval ${]{c - \delta, c}]}$, with $\delta > 0$.
+	But this says that $c - \delta < c$ is an upper bound for $S$, so $c$ wasn't the \emph{least} upper bound, which is a contradiction, meaning that instead we must have $f(c) \leq s$.
 
 	We then perform the same argument to achieve $f(c) \geq s$, meaning that $f(c) = s$.
 \end{proof}
 
 \topic{Antiderivatives}
 
-So far we have studied the problem of finding the derivative $f'$ given a function $f$. The reverse problem, finding $f$ given a derivative $f'$, is also interesting and important!
+So far we have studied the problem of finding the derivative $f'$ given a function $f$.
+The reverse problem, finding $f$ given a derivative $f'$, is also interesting and important!
 
 \begin{definition}[Antiderivative]
 	An \keyword{antiderivative}\index{antiderivative} of a function $f$ on an interval $I$ is another function $F$ satisfying
@@ -229,7 +250,8 @@ We already know how to compute many indefinite integrals.
 	\]
 
 	\noindent
-	We can even compute some pretty complicated indefinite integrals if we just take some care. Consider, for instance,
+	We can even compute some pretty complicated indefinite integrals if we just take some care.
+	Consider, for instance,
 	\[
 		\int \frac{\ln(x)}{x} \, d x.
 	\]
@@ -292,4 +314,5 @@ and we see that this is a differential equation.
 \end{example}
 
 \noindent
-This, confusingly, is not really where the notion of integration comes from. Instead integration has to do with areas, but just how the indefinite integral has much to do with the derivative, so do these areas!
+This, confusingly, is not really where the notion of integration comes from.
+Instead integration has to do with areas, but just how the indefinite integral has much to do with the derivative, so do these areas!

@@ -2,18 +2,23 @@
 
 So far we have only computed derivatives of things on the form $y = f(x)$, but not everything is this nice.
 
-Consider for example $F(x, y) = x^2 + y^2 - 1 = 0$, the equation of the unit circle. This certainly has some kind of slope everywhere (though vertical at $(1, 0)$ and $(-1, 0)$). How do we find these slopes?
+Consider for example $F(x, y) = x^2 + y^2 - 1 = 0$, the equation of the unit circle.
+This certainly has some kind of slope everywhere (though vertical at $(1, 0)$ and $(-1, 0)$).
+How do we find these slopes?
 
 In this particular case we can of course solve for $y$, getting $y = \pm\sqrt{1 - x^2}$, depending on which half plane we are in, and this we can differentiate using the chain rule:
 \[
 	y' = \pm \frac{1}{2} (1 - x^2)^{-1/2} \cdot -2 x = \mp \frac{x}{\sqrt{1 - x^2}}.
 \]
-We say that there are \keyword{implicit functions}\index{function!implicit}\footnote{This is actually a remarkably important idea, leading up to the Implicit function theorem in Multivariable calculus, but you'll learn more about this in a future course.} of $x$, in the sense that we can somehow extract functions in one variable $x$ describing the relation in two variables $x$ and $y$. We can't always find these explicitly as above, however! But we can still differentiate, as it turns out.
+We say that there are \keyword{implicit functions}\index{function!implicit}\footnote{This is actually a remarkably important idea, leading up to the Implicit function theorem in Multivariable calculus, but you'll learn more about this in a future course.} of $x$, in the sense that we can somehow extract functions in one variable $x$ describing the relation in two variables $x$ and $y$.
+We can't always find these explicitly as above, however!
+But we can still differentiate, as it turns out.
 
 \begin{example}
 	Differentiate implicitly $x^2 + y^2 - 1 = 0$.
 
-	The idea is to differentiate both sides of the equation with respect to our variable $x$, meanwhile treating $y = y(x)$ as a function of $x$. This means that whenever we run into a $y$, we must use the chain rule:
+	The idea is to differentiate both sides of the equation with respect to our variable $x$, meanwhile treating $y = y(x)$ as a function of $x$.
+	This means that whenever we run into a $y$, we must use the chain rule:
 	\begin{align*}
 		\frac{d}{d x} (x^2 + y^2 - 1) = \frac{d}{d x} (0) \qquad        & \Longleftrightarrow \qquad \frac{d}{d x} (x^2) + \frac{d}{d x} (y^2) - \frac{d}{d x} (1) = 0 \\
 		\Longleftrightarrow \qquad 2 x + 2 y \frac{d y}{d x} = 0 \qquad & \Longleftrightarrow \qquad \frac{d y}{d x} = - \frac{2 x}{2 y} = - \frac{x}{y},
@@ -222,13 +227,15 @@ and for $\arctan$ we get
 \]
 
 \begin{exercise}
-	Prove the above two claims about $\arccos$ and $\arctan$. Note that for the $\arctan$ function we will require the derivative of $\tan(x)$, which is quite useful and turns out to be $(\sec(x))^2 = 1 + (\tan(x))^2$.
+	Prove the above two claims about $\arccos$ and $\arctan$.
+	Note that for the $\arctan$ function we will require the derivative of $\tan(x)$, which is quite useful and turns out to be $(\sec(x))^2 = 1 + (\tan(x))^2$.
 \end{exercise}
 
 
 \topic{The Natural Logarithm}
 
-We will now \emph{define} a function $\ln(x)$, called the \keyword{natural logarithm}\index{natural logarithm} of $x$. This definition might look quite strange, but we will show that it has the properties we expect of logarithms.
+We will now \emph{define} a function $\ln(x)$, called the \keyword{natural logarithm}\index{natural logarithm} of $x$.
+This definition might look quite strange, but we will show that it has the properties we expect of logarithms.
 
 \begin{definition}[Natural logarithm]
 	Take $x > 0$ and let $A(x)$ be defined as the area of the plane bounded by the curve $y = 1/t$, the $t$ axis, and the vertical lines $t = 1$ and $t = x$ (see Figure \ref{lec6:lndef}).
@@ -294,7 +301,8 @@ We will now \emph{define} a function $\ln(x)$, called the \keyword{natural logar
 \end{figure}
 
 \noindent
-From the definition it follows that $\ln(1) = 0$, $\ln(x) > 0$ if $x > 1$, and $\ln(x) < 0$ if $0 < x < 1$. Finally since the area must increase as we move $x_0$ rightward on the figure, the function is increasing, and so injective (one-to-one).
+From the definition it follows that $\ln(1) = 0$, $\ln(x) > 0$ if $x > 1$, and $\ln(x) < 0$ if $0 < x < 1$.
+Finally since the area must increase as we move $x_0$ rightward on the figure, the function is increasing, and so injective (one-to-one).
 
 This function has a plethora interesting properties, maybe chief amongst which is
 
@@ -458,20 +466,24 @@ Other interesting properties of the $\ln$ function are those we associate with l
 	\begin{romanlist}
 		\item $\ln(x y) = \ln(x) + \ln(y)$;
 		\item $\ln(x / y) = \ln(x) - \ln(y)$, with the special case $\ln(1 / x) = - \ln(x)$;
-		\item $\ln(x^r) = r \ln(x)$, for now assuming $r \in \Q$.\footnote{This is because we have not yet showed that arbitrary exponentials are continuous. If they are, we could define $\ln(x^\alpha)$ for $\alpha \in \R$ to be $\lim\limits_{r \in \Q,\, r \to \alpha} \ln(x^r)$, but we can't take the limit inside the exponential until we know it is continuous.}
+		\item $\ln(x^r) = r \ln(x)$, for now assuming $r \in \Q$.\footnote{This is because we have not yet showed that arbitrary exponentials are continuous.
+		If they are, we could define $\ln(x^\alpha)$ for $\alpha \in \R$ to be $\lim\limits_{r \in \Q,\, r \to \alpha} \ln(x^r)$, but we can't take the limit inside the exponential until we know it is continuous.}
 	\end{romanlist}
 \end{theorem}
 
 \begin{proof}
-	\fakeitem{1} Let $y > 0$ be constant. Then by the chain rule
+	\fakeitem{1} Let $y > 0$ be constant.
+	Then by the chain rule
 	\[
 		\frac{d}{d x} (\ln(x y) - \ln(x)) = \frac{y}{x y} - \frac{1}{x} = 0
 	\]
-	for all $x > 0$. Since the derivative is $0$ for all $x > 0$,
+	for all $x > 0$.
+	Since the derivative is $0$ for all $x > 0$,
 	\begin{equation}\label{lec6:eq:lnmult}
 		\ln(x y) - \ln(x) = C
 	\end{equation}
-	must be constant by Theorem \ref{lec5:constantfunction} last lecture. Take $x = 1$, then $\ln(y) - 0 = C$, so $C = \ln(y)$, whence Equation \eqref{lec6:eq:lnmult} gives
+	must be constant by Theorem \ref{lec5:constantfunction} last lecture.
+	Take $x = 1$, then $\ln(y) - 0 = C$, so $C = \ln(y)$, whence Equation \eqref{lec6:eq:lnmult} gives
 	\[
 		\ln(x y) = \ln(x) + \ln(y).
 	\]
@@ -484,7 +496,8 @@ Other interesting properties of the $\ln$ function are those we associate with l
 	\[
 		\frac{d}{d x} \Big ( \ln \big ( \frac{1}{x} \big ) + \ln(x) \Big ) = - \frac{1}{x} + \frac{1}{x} = 0,
 	\]
-	so $\ln(1 / x) + \ln(x) = C$ is constant, and in particular $C = 0$ (to see this, take $x = 1$). Therefore
+	so $\ln(1 / x) + \ln(x) = C$ is constant, and in particular $C = 0$ (to see this, take $x = 1$).
+	Therefore
 	\[
 		\ln \Big ( \frac{1}{x} \Big ) = - \ln(x).
 	\]
@@ -498,7 +511,8 @@ Other interesting properties of the $\ln$ function are those we associate with l
 	\[
 		\frac{d}{d x} \big ( \ln(x^r) - r \ln(x) \big ) = 0,
 	\]
-	so $\ln(x^r) - r \ln(x) = C$ for every $x$. Plugging in $x = 1$ gives $C = 0$, whence
+	so $\ln(x^r) - r \ln(x) = C$ for every $x$.
+	Plugging in $x = 1$ gives $C = 0$, whence
 	\[
 		\ln(x^r) = r \ln(x). \qedhere
 	\]
@@ -506,11 +520,15 @@ Other interesting properties of the $\ln$ function are those we associate with l
 
 \topic{The Exponential Function}
 
-Since $\ln \colon \R_{> 0} \to \R$ is injective and clearly\footnote{Hopefully. Think about it!} surjective, it is bijective and therefore has an inverse function. We call this inverse function the \keyword{exponential function}\index{exponential function}, $\exp \colon \R \to \R_{> 0}$,
+Since $\ln \colon \R_{> 0} \to \R$ is injective and clearly\footnote{Hopefully. Think about it!} surjective, it is bijective and therefore has an inverse function.
+We call this inverse function the \keyword{exponential function}\index{exponential function}, $\exp \colon \R \to \R_{> 0}$,
 \[
 	y = \exp(x) \qquad \Longleftrightarrow \qquad x = \ln(y),
 \]
-for $y > 0$. We already know a bit about this function. Since $\ln(1) = 0$, we also have $\exp(0) = 1$. Since it's an inverse, we have
+for $y > 0$.
+We already know a bit about this function.
+Since $\ln(1) = 0$, we also have $\exp(0) = 1$.
+Since it's an inverse, we have
 \[
 	\ln(\exp(x)) = x
 \]

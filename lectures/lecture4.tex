@@ -13,7 +13,8 @@ Using this we can prove
 \end{proposition}
 
 \begin{proof}
-	We need the identity $\sin(\alpha + \beta) = \sin(\alpha) \cos(\beta) + \cos(\alpha) \sin(\beta)$. Then
+	We need the identity $\sin(\alpha + \beta) = \sin(\alpha) \cos(\beta) + \cos(\alpha) \sin(\beta)$.
+	Then
 	\begin{align*}
 		\frac{d}{d x} \sin(x) & = \lim_{h \to 0} \frac{\sin(x + h) - \sin(x)}{h}                                                                                                                                             \\
 		                      & = \lim_{h \to 0} \frac{\sin(x) \cos(h) + \cos(x) \sin(h) - \sin(x)}{h}                                                                                                                       \\
@@ -23,7 +24,8 @@ Using this we can prove
 	\end{align*}
 
 	\noindent
-	The only mystery in the above computation is the $\cos(h)$ limit in the penultimate line. We shed light on it by using $\cos(h) = 1 - 2 (\sin(h / 2))^2$, like so
+	The only mystery in the above computation is the $\cos(h)$ limit in the penultimate line.
+	We shed light on it by using $\cos(h) = 1 - 2 (\sin(h / 2))^2$, like so
 	\[
 		\lim_{h \to 0} \frac{\cos(h) - 1}{h} = - \lim_{h \to 0} \frac{2 (\sin(h / 2))^2}{h},
 	\]
@@ -75,7 +77,8 @@ The majority of this lecture will be about the Mean-value theorem and some conse
 
 Since, by definition, the derivative of a function $y = f(x)$ is again a function, it can happen that the derivative itself is differentiable (at some point(s)).
 
-We call this derivative of a derivative the \keyword{second derivative}\index{derivative!higher order}\index{derivative!second} of the original function. Like the first derivative, there are many notations used for this:
+We call this derivative of a derivative the \keyword{second derivative}\index{derivative!higher order}\index{derivative!second} of the original function.
+Like the first derivative, there are many notations used for this:
 \[
 	y'' = f'' = \frac{d^2 y}{d x^2} = \frac{d}{d x} \frac{d}{d x} f = \frac{d^2}{d x^2} f = D_x^2 y = D_x^2 f.
 \]
@@ -98,11 +101,14 @@ defined inductively as the derivative of the $(n - 1)$st order derivative.
 For convenience the function itself is usually taken to be its own zeroth derivative, $f = f^{(0)}$.
 
 \begin{example}
-	The classical example is the reason calculus was invented: take $x = x(t)$ to be the position (of something) at the time $t$. Then its velocity is $v = \frac{d x}{d t} = x'$, and its acceleration is $a = \frac{d v}{d t} = \frac{d^2 x}{d t^2} = x''$. This exemplifies why we often want to think of the derivative as the rate of change of something.
+	The classical example is the reason calculus was invented: take $x = x(t)$ to be the position (of something) at the time $t$.
+	Then its velocity is $v = \frac{d x}{d t} = x'$, and its acceleration is $a = \frac{d v}{d t} = \frac{d^2 x}{d t^2} = x''$.
+	This exemplifies why we often want to think of the derivative as the rate of change of something.
 \end{example}
 
 \noindent
-These higher order derivatives are often very important in physics, since it turns out that much in the real world can be modeled using so-called differential equations, which we will deal more with toward the end of the course. For now, we'll discuss it briefly in an example.
+These higher order derivatives are often very important in physics, since it turns out that much in the real world can be modeled using so-called differential equations, which we will deal more with toward the end of the course.
+For now, we'll discuss it briefly in an example.
 
 \begin{example}
 	Show that $y(t) = A \cos(k t) + B \sin(k t)$, for $A$, $B$, and $k$ constants, is a solution to the \keyword{second-order differential equation}\index{differential equation}\index{differential equation!second order}
@@ -123,7 +129,8 @@ These higher order derivatives are often very important in physics, since it tur
 \topic{The Mean-Value Theorem}
 
 \begin{example}
-	Suppose we leave on a trip at 3 o'clock, traveling 100 kilometres away, and arriving 2 hours later, at 5 o'clock. Then of course our average speed was
+	Suppose we leave on a trip at 3 o'clock, traveling 100 kilometres away, and arriving 2 hours later, at 5 o'clock.
+	Then of course our average speed was
 	\[
 		\frac{\SI{100}{\kilo\metre}}{\SI{2}{\hour}} = \SI[per-mode = symbol]{50}{\kilo\metre\per\hour}.
 	\]
@@ -133,10 +140,13 @@ These higher order derivatives are often very important in physics, since it tur
 \end{example}
 
 \noindent
-In the language of calculus, this is called the Mean-value theorem, and the crucial detail that makes it true is, of course, that our speed whilst traveling can't `jump'. I.e., we can't go from $\SI[per-mode = symbol]{25}{\kilo\metre\per\hour}$ to $\SI[per-mode = symbol]{75}{\kilo\metre\per\hour}$ without ever passing $\SI[per-mode = symbol]{50}{\kilo\metre\per\hour}$. Once again in the language of calculus, this is what we call continuity, and indeed since we have acceleration of some kind everywhere, even if constant, our speed (or velocity) must also have a derivative.
+In the language of calculus, this is called the Mean-value theorem, and the crucial detail that makes it true is, of course, that our speed whilst traveling can't `jump'.
+I.e., we can't go from $\SI[per-mode = symbol]{25}{\kilo\metre\per\hour}$ to $\SI[per-mode = symbol]{75}{\kilo\metre\per\hour}$ without ever passing $\SI[per-mode = symbol]{50}{\kilo\metre\per\hour}$.
+Once again in the language of calculus, this is what we call continuity, and indeed since we have acceleration of some kind everywhere, even if constant, our speed (or velocity) must also have a derivative.
 
 \begin{theorem}[Mean-value theorem]\index{mean-value theorem}
-	Let $f$ be a function continuous on the closed and finite interval $[a, b]$ that is differentiable on $]{a, b}[$. Then there exists a point $c \in {]{a, b}[}$ such that
+	Let $f$ be a function continuous on the closed and finite interval $[a, b]$ that is differentiable on $]{a, b}[$.
+	Then there exists a point $c \in {]{a, b}[}$ such that
 	\[
 		\frac{f(b) - f(a)}{b - a} = f'(c).
 	\]
@@ -199,7 +209,8 @@ In the language of calculus, this is called the Mean-value theorem, and the cruc
 \noindent
 That is to say, there must exist some point(s) in the interior of the interval with the same slope as the line segment connecting the two endpoints.
 
-An example of this theorem is demonstrated in Figure \ref{lec5:meanval}, which also demonstrates that the $c$ in the theorem needn't be unique. We will prove this in a bit, but for now we will establish some more theory and also motivate why both the continuity and the differentiability is required in Figure \ref{lec5:meanvalcounter}.
+An example of this theorem is demonstrated in Figure \ref{lec5:meanval}, which also demonstrates that the $c$ in the theorem needn't be unique.
+We will prove this in a bit, but for now we will establish some more theory and also motivate why both the continuity and the differentiability is required in Figure \ref{lec5:meanvalcounter}.
 
 \begin{figure}
 	\centering
@@ -358,7 +369,8 @@ We now prove an intermediary result we need in order to prove the Mean-value the
 Such points where the derivative is $0$ are called \keyword{critical points}\index{critical point}.
 
 \begin{proof}
-	If $f$ has a maximum at $c \in {]{a, b}[}$, then $f(x) - f(c) \leq 0$ for all $x \in {]{a, b}[}$. We consider two cases:
+	If $f$ has a maximum at $c \in {]{a, b}[}$, then $f(x) - f(c) \leq 0$ for all $x \in {]{a, b}[}$.
+	We consider two cases:
 
 	\fakeitem{1} If $c < x < b$, then
 	\[
@@ -393,19 +405,24 @@ Such points where the derivative is $0$ are called \keyword{critical points}\ind
 We now show a special case of the Mean-value theorem, with which we later prove the full version.
 
 \begin{theorem}[Rolle's theorem]\index{Rolle's theorem}
-	Suppose that $f$ is a continuous function on the closed and finite interval $[a, b]$ and that it is differentiable on ${]{a, b}[}$. If $f(a) = f(b)$, then there exists a point $c \in {]{a, b}[}$ such that $f'(c) = 0$.
+	Suppose that $f$ is a continuous function on the closed and finite interval $[a, b]$ and that it is differentiable on ${]{a, b}[}$.
+	If $f(a) = f(b)$, then there exists a point $c \in {]{a, b}[}$ such that $f'(c) = 0$.
 \end{theorem}
 
 \begin{proof}
-	There are two cases to consider. If $f(x) = f(a)$ for all $x \in [a, b]$, then $f$ is constant and $f'(c) = 0$ for all $c \in {]{a, b}[}$.
+	There are two cases to consider.
+	If $f(x) = f(a)$ for all $x \in [a, b]$, then $f$ is constant and $f'(c) = 0$ for all $c \in {]{a, b}[}$.
 
 	Suppose that there exists some $x \in {]{a, b}[}$ such that $f(x) \neq f(a)$, so that either $f(x) > f(a)$ or $f(x) < f(a)$.
 
-	Consider the $f(x) > f(a)$ case. Since $f$ is continuous on $[a, b]$, by the Max-min theorem $f$ must have a maximum at some point $c \in [a, b]$. Thus
+	Consider the $f(x) > f(a)$ case.
+	Since $f$ is continuous on $[a, b]$, by the Max-min theorem $f$ must have a maximum at some point $c \in [a, b]$.
+	Thus
 	\[
 		f(c) \geq f(x) > f(a) = f(b),
 	\]
-	so $c$ cannot be equal to $a$ or $b$, whereby $c \in {]{a, b}[}$, where by assumption $f$ is differentiable. Thus $f'(c)$ exists, and so by the previous lemma $f'(c) = 0$.
+	so $c$ cannot be equal to $a$ or $b$, whereby $c \in {]{a, b}[}$, where by assumption $f$ is differentiable.
+	Thus $f'(c)$ exists, and so by the previous lemma $f'(c) = 0$.
 
 	For the $f(x) < f(a)$ case, we instead use the Max-min theorem to ensure the existence of a minimum, and proceed accordingly.
 \end{proof}
@@ -414,7 +431,8 @@ We now show a special case of the Mean-value theorem, with which we later prove 
 With this we are finally ready to prove the Mean-value theorem.
 
 \begin{proof}[Proof of Mean-value theorem]
-	Recall that $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$. We define a new function $g$ by
+	Recall that $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$.
+	We define a new function $g$ by
 	\[
 		g(x) = f(x) - \Big ( f(a) + \frac{f(b) - f(a)}{b - a} \, (x - a) \Big ).
 	\]
@@ -472,7 +490,8 @@ With this we are finally ready to prove the Mean-value theorem.
 		\label{lec5:meanvalproof}
 	\end{figure}
 
-	Since $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$, $g$ is as well. Moreover $g(a) = g(b) = 0$ (feel free to verify), whence by Rolle's theorem there exists a $c \in {]{a, b}[}$ such that $g'(c) = 0$.
+	Since $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$, $g$ is as well.
+	Moreover $g(a) = g(b) = 0$ (feel free to verify), whence by Rolle's theorem there exists a $c \in {]{a, b}[}$ such that $g'(c) = 0$.
 
 	By differentiating $g$ we get
 	\[
@@ -492,7 +511,8 @@ With this we are finally ready to prove the Mean-value theorem.
 \end{corollary}
 
 \begin{proof}
-	Note that $g(b) \neq g(a)$ since otherwise there would exist an $x \in {]{a, b}[}$ such that $g'(x) = 0$ by the Rolle's theorem. Thus the division in the left-hand side is well-defined.
+	Note that $g(b) \neq g(a)$ since otherwise there would exist an $x \in {]{a, b}[}$ such that $g'(x) = 0$ by the Rolle's theorem.
+	Thus the division in the left-hand side is well-defined.
 
 	We apply the Mean-value theorem to
 	\[
@@ -500,7 +520,8 @@ With this we are finally ready to prove the Mean-value theorem.
 	\]
 
 	\noindent
-	Since $h(a) = h(b) = 0$ (again, feel free to verify) and $h$ has the appropriate continuity and differentiability, there exists a $c \in {]{a, b}[}$ such that $h'(c) = 0$. Therefore
+	Since $h(a) = h(b) = 0$ (again, feel free to verify) and $h$ has the appropriate continuity and differentiability, there exists a $c \in {]{a, b}[}$ such that $h'(c) = 0$.
+	Therefore
 	\[
 		h'(c) = (f(b) - f(a)) g'(c) - (g(b) - g(a)) f'(c) = 0
 	\]
@@ -531,7 +552,8 @@ We end today's lecture with two nice consequences of the Mean-value theorem.
 In the event that we have differentiability, we can easily detect the above features of a function.
 
 \begin{theorem}\label{lec5:monotonicityproof}
-	Let $J$ be an open interval and let $I$ be an interval consisting of $J$ and possibly one or both of $J$'s endpoints. Suppose $f$ is continuous on $I$ and differentiable on $J$.
+	Let $J$ be an open interval and let $I$ be an interval consisting of $J$ and possibly one or both of $J$'s endpoints.
+	Suppose $f$ is continuous on $I$ and differentiable on $J$.
 	\begin{romanlist}
 		\item If $f'(x) > 0$ for all $x \in J$, then $f$ is increasing on $I$.
 		\item If $f'(x) < 0$ for all $x \in J$, then $f$ is decreasing on $I$.
@@ -541,24 +563,30 @@ In the event that we have differentiability, we can easily detect the above feat
 \end{theorem}
 
 \begin{proof}
-	Let $x_1, x_2 \in I$ with $x_2 > x_1$. By the Mean-value theorem there exists a $c \in (x_1, x_2) \subset J$ such that
+	Let $x_1, x_2 \in I$ with $x_2 > x_1$.
+	By the Mean-value theorem there exists a $c \in (x_1, x_2) \subset J$ such that
 	\[
 		\frac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)
 	\]
-	implying that $f(x_2) - f(x_1) = (x_2 - x_1) f'(c)$. Since $x_2 - x_1 > 0$, $f(x_2) - f(x_1)$ has the same sign as $f'(c)$ and may be $0$ if $f'(c) = 0$. From this all the four cases follow according to the definition.
+	implying that $f(x_2) - f(x_1) = (x_2 - x_1) f'(c)$.
+	Since $x_2 - x_1 > 0$, $f(x_2) - f(x_1)$ has the same sign as $f'(c)$ and may be $0$ if $f'(c) = 0$.
+	From this all the four cases follow according to the definition.
 \end{proof}
 
 \noindent
-If a function is constant on an interval, then its derivative is $0$ on this interval('s interior), which was one of the exercises left at the end of the last lecture. The converse is also true.
+If a function is constant on an interval, then its derivative is $0$ on this interval('s interior), which was one of the exercises left at the end of the last lecture.
+The converse is also true.
 
 \begin{theorem}\label{lec5:constantfunction}
 	If $f$ is continuous on an interval $I$ and $f'(x) = 0$ at every interior point of $I$, then $f(x) = k$ is constant.
 \end{theorem}
 
 \begin{proof}
-	Pick any point $x_0 \in I$ and let $k = f(x_0)$. If $x$ is any other point of $I$, then by the Mean-value theorem there exists a $c$ between $x_0$ and $x$ such that
+	Pick any point $x_0 \in I$ and let $k = f(x_0)$.
+	If $x$ is any other point of $I$, then by the Mean-value theorem there exists a $c$ between $x_0$ and $x$ such that
 	\[
 		\frac{f(x) - f(x_0)}{x - x_0} = f'(c).
 	\]
-	Then $c$ must belong to $I$ and cannot be an endpoint. Moreover $f'(c) = 0$ for all $c$ in the interior of $I$, so $f(x) - f(x_0) = f(x) - k = 0$ for all $x \in I$, which is equivalent with $f(x) = k$ for all $x \in I$.
+	Then $c$ must belong to $I$ and cannot be an endpoint.
+	Moreover $f'(c) = 0$ for all $c$ in the interior of $I$, so $f(x) - f(x_0) = f(x) - k = 0$ for all $x \in I$, which is equivalent with $f(x) = k$ for all $x \in I$.
 \end{proof}

@@ -123,13 +123,17 @@ We will soon have to deal a lot with sums, usually of very many (maybe infinitel
 	\caption{The area under a curve, both exact and as estimated by a sum.}
 \end{figure}
 
-Suppose we have some function $f$, and we want to find the area between $x = a$, $x = b$, the $x$-axis, and $y = f(x)$. Now, if this region is a polygon, it's easy, but it isn't necessarily. See, for instance, Figure \ref{lec10:realarea}.
+Suppose we have some function $f$, and we want to find the area between $x = a$, $x = b$, the $x$-axis, and $y = f(x)$. 
+Now, if this region is a polygon, it's easy, but it isn't necessarily.
+See, for instance, Figure \ref{lec10:realarea}.
 
-It \emph{can} however be estimated using polygons. We do this by \keyword{partitioning}\index{partition} (dividing) the interval $[a, b]$ into $n$ parts (not necessarily equal in length),
+It \emph{can} however be estimated using polygons.
+We do this by \keyword{partitioning}\index{partition} (dividing) the interval $[a, b]$ into $n$ parts (not necessarily equal in length),
 \[
 	a = x_0 < x_1 < x_2 < \ldots < x_{n - 1} < x_n = b.
 \]
-Thus the smaller sections are $[x_{i - 1}, x_i]$ for all $i = 1, 2, 3, \ldots, n$. We denote by $\Delta x_i = x_i - x_{i - 1}$ the length of these subintervals.
+Thus the smaller sections are $[x_{i - 1}, x_i]$ for all $i = 1, 2, 3, \ldots, n$.
+We denote by $\Delta x_i = x_i - x_{i - 1}$ the length of these subintervals.
 
 The point of this is that we can now approximate the area $A$ we are interested in by taking the sum of the areas of the rectangles we form as in Figure \ref{lec10:approximatearea}, namely
 \[
@@ -145,7 +149,8 @@ Of course $S_n$ is not \emph{quite} equal to $A$, since it sometimes overestimat
 \begin{example}
 	Find the area of the region bounded by $y = x^2$, $y = 0$, $x = 0$, and $x = b$, where $b > 0$.
 
-	We divide the interval $[0, b]$ into $n$ equal parts, as illustrated in Figure \ref{lec10:x^2area}, each with width $\Delta x_i = b/n$. The height of the rectangle at $x = x_i$ is then $(i b / n)^2$, whereby\footnote{Feel free to verify on your own, perhaps by induction, that the last step is correct.}
+	We divide the interval $[0, b]$ into $n$ equal parts, as illustrated in Figure \ref{lec10:x^2area}, each with width $\Delta x_i = b/n$.
+	The height of the rectangle at $x = x_i$ is then $(i b / n)^2$, whereby\footnote{Feel free to verify on your own, perhaps by induction, that the last step is correct.}
 	\[
 		S_n = \sum_{i = 1}^n f(x_i) \Delta x_i = \sum_{i = 1}^n \Big ( \frac{i b}{n} \Big )^2 \frac{b}{n} = \frac{b^3}{n^3} \sum_{i = 1}^n i^2 = \frac{b^3}{n^3} \frac{n (n + 1)(2n + 1)}{6}.
 	\]
@@ -220,10 +225,12 @@ Of course $S_n$ is not \emph{quite} equal to $A$, since it sometimes overestimat
 \end{figure}
 
 \noindent
-We mentioned earlier that $\Delta x_i$ needn't all be equal. Indeed, trying to use the same partition in the next problem we'd run into trouble.
+We mentioned earlier that $\Delta x_i$ needn't all be equal.
+Indeed, trying to use the same partition in the next problem we'd run into trouble.
 
 \begin{exercise}
-	Let $0 < a < b$, and let $k \neq -1$ be real. Show that the area bounded by $y = x^k$, $y = 0$, $x = a$, and $x = b$ is
+	Let $0 < a < b$, and let $k \neq -1$ be real.
+	Show that the area bounded by $y = x^k$, $y = 0$, $x = a$, and $x = b$ is
 	\[
 		A = \frac{b^{k + 1} - a^{k + 1}}{k + 1}.
 	\]
@@ -260,7 +267,8 @@ such that
 \]
 
 \noindent
-Now since $f$ is continuous on $[a, b]$, it must also be continuous on the subintervals $[x_{i - 1}, x_i]$ of $P$. Since it is continuous on a closed interval, there must exist $\ell_i, u_i \in [x_{i - 1}, x_i]$ such that
+Now since $f$ is continuous on $[a, b]$, it must also be continuous on the subintervals $[x_{i - 1}, x_i]$ of $P$.
+Since it is continuous on a closed interval, there must exist $\ell_i, u_i \in [x_{i - 1}, x_i]$ such that
 \[
 	f(\ell_i) \leq f(x) \leq f(u_i)
 \]
@@ -284,10 +292,13 @@ Since $L(f, P)$ is summed with the minimum for $f$ in $[x_{i - 1}, x_i]$ and $U(
 \[
 	L(f, P) \leq U(f, P)
 \]
-for all partitions $P$. (The only case where this might not be clear is when negative values are involved\ldots Think about it! Draw different partitions!)
+for all partitions $P$.
+(The only case where this might not be clear is when negative values are involved\ldots Think about it!
+Draw different partitions!)
 
 \begin{definition}[Definite integral]
-	Let $f$ be a function, not necessarily continuous. Suppose there is exactly one number $I$ such that for \emph{every} partition $P$ of $[a, b]$ we have
+	Let $f$ be a function, not necessarily continuous.
+	Suppose there is exactly one number $I$ such that for \emph{every} partition $P$ of $[a, b]$ we have
 	\[
 		L(f, P) \leq I \leq U(f, P),
 	\]
@@ -316,12 +327,14 @@ We will learn next time how to efficiently calculate these sorts of quantities, 
 \end{theorem}
 
 \noindent
-So far, when studying $\int\limits_a^b f(x) \, d x$, we have required $a < b$. It turns out to be useful to drop this and allow $a = b$ and $b < a$ as well. The extension is pretty straight forward; we still have $a = x_0, x_1, \ldots, x_n = b$, but for $a = b$ they're all the same, so $\Delta x_i = 0$ (making the integral $0$), and for $b < a$ we have $\Delta x_i < 0$, so the area switches sign!
+So far, when studying $\int\limits_a^b f(x) \, d x$, we have required $a < b$.
+It turns out to be useful to drop this and allow $a = b$ and $b < a$ as well. The extension is pretty straight forward; we still have $a = x_0, x_1, \ldots, x_n = b$, but for $a = b$ they're all the same, so $\Delta x_i = 0$ (making the integral $0$), and for $b < a$ we have $\Delta x_i < 0$, so the area switches sign!
 
 We have the following properties:
 
 \begin{theorem}
-	Let $f$ and $g$ be integrable on an interval containing $a$, $-a$, $b$, and $c$. Then
+	Let $f$ and $g$ be integrable on an interval containing $a$, $-a$, $b$, and $c$.
+	Then
 	\begin{romanlist}
 		\item $\displaystyle \int_a^a f(x) \, d x = 0$;
 		\item $\displaystyle \int_a^b f(x) \, d x = - \int_b^a f(x) \, d x$;
@@ -548,9 +561,11 @@ We have the following properties:
 	\noindent
 	If is isn't true that $a \leq c \leq b$, consider rearranging the same picture, and now some of the integrals will be negative because of the order of the limits of integration.
 
-	\fakeitemref{5} is probably obvious. If not, consider the Riemann sums; since $f$ is bounded by $g$, so must the heights in the sums.
+	\fakeitemref{5} is probably obvious.
+	If not, consider the Riemann sums; since $f$ is bounded by $g$, so must the heights in the sums.
 
-	\fakeitemref{6} is just \fakeitemref{5}, since $-\abs{f(x)} \leq f(x) \leq \abs{f(x)}$. The only remaining mystery is to prove that $\abs{f}$ must be integrable on $[a, b]$ when $f$ is (which is in fact true).
+	\fakeitemref{6} is just \fakeitemref{5}, since $-\abs{f(x)} \leq f(x) \leq \abs{f(x)}$.
+	The only remaining mystery is to prove that $\abs{f}$ must be integrable on $[a, b]$ when $f$ is (which is in fact true).
 
 	For \fakeitemref{7} and \fakeitemref{8}, draw the appropriately symmetric pictures!
 \end{proof}
@@ -569,7 +584,8 @@ Using these properties and remembering that fundamentally they represent areas w
 	\[
 		\int_{-2}^2 2 + 5 x \, d x = \int_{-2}^2 2 \, d x + \int_{-2}^2 5 x \, d x.
 	\]
-	The first integral in the right-hand side is just the area of a rectangle of height $2$ and width $4$, so it is $8$. The second integral is the integral of an odd function over a symmetric interval, whereby it is $0$, so
+	The first integral in the right-hand side is just the area of a rectangle of height $2$ and width $4$, so it is $8$.
+	The second integral is the integral of an odd function over a symmetric interval, whereby it is $0$, so
 	\[
 		\int_{-2}^2 2 + 5 x \, d x = 8 + 0 = 8.
 	\]
@@ -581,7 +597,8 @@ Using these properties and remembering that fundamentally they represent areas w
 	\]
 
 	\noindent
-	For the third and final one we recognise that the integrand $\sqrt{9 - x^2}$ is the expression for the upper half of a circle centred on the origin with radius 3. Therefore
+	For the third and final one we recognise that the integrand $\sqrt{9 - x^2}$ is the expression for the upper half of a circle centred on the origin with radius 3.
+	Therefore
 	\[
 		\int_{-3}^3 \sqrt{9 - x^2} \, d x = \frac{1}{2} \cdot \pi \cdot 3^2 = \frac{9 \pi}{2}. \qedhere
 	\]

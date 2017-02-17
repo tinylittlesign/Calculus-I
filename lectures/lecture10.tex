@@ -16,7 +16,8 @@ Just like the derivative, definite integrals have a mean-value property.
 	\]
 	for all $a \leq x \leq b$.
 
-	Now consider the very simple partition $P_1$ of $[a, b]$ with $a = x_0 < x_1 = b$. Then
+	Now consider the very simple partition $P_1$ of $[a, b]$ with $a = x_0 < x_1 = b$.
+	Then
 	\[
 		m (b - a) = L(f, P_1) \leq \int_a^b f(x) \, d x \leq U(f, P_1) = M(b - a).
 	\]
@@ -111,11 +112,14 @@ This value
 \[
 	\bar{f} = \frac{1}{b - a} \int_a^b f(x) \, d x
 \]
-is often called the \keyword{average value}\index{function!average value} or \keyword{mean value} of $f$ on $[a, b]$. This is because the area under $f(c)$ and above $f(x)$ is the same as the area above $f(c)$ and below $f(x)$. We will show this in the near future.
+is often called the \keyword{average value}\index{function!average value} or \keyword{mean value} of $f$ on $[a, b]$.
+This is because the area under $f(c)$ and above $f(x)$ is the same as the area above $f(c)$ and below $f(x)$.
+We will show this in the near future.
 
 \topic{Piecewise Continuous Functions}
 
-Sometimes we will want to integrate functions that aren't continuous. An important class of such functions are \keyword{piecewise continuous}\index{piecewise continuity} functions.
+Sometimes we will want to integrate functions that aren't continuous.
+An important class of such functions are \keyword{piecewise continuous}\index{piecewise continuity} functions.
 
 \begin{figure}
 	\centering
@@ -187,10 +191,12 @@ Sometimes we will want to integrate functions that aren't continuous. An importa
 	\label{lec11:piecewisecontinuous}
 \end{figure}
 
-See for instance Figure \ref{lec11:piecewisecontinuous}. Clearly this function isn't continuous, but equally clearly there is an area underneath it.
+See for instance Figure \ref{lec11:piecewisecontinuous}.
+Clearly this function isn't continuous, but equally clearly there is an area underneath it.
 
 \begin{definition}[Piecewise continuous function]
-	Let $c_0 < c_1 < c_2 < \ldots < c_n$ be a \emph{finite} set of points. A function $f$ defined on $[c_0, c_n]$, except possibly at some of the $c_i$, for $0 \leq i \leq n$, is called \keyword{piecewise continuous} on the interval if for each $1 \leq i \leq n$ there exists a function $F_i$ continuous on the closed interval $[c_{i - 1}, c_i]$ such that $f(x) = F_i(x)$ on ${]{c_{i - 1}, c_i}[}$.
+	Let $c_0 < c_1 < c_2 < \ldots < c_n$ be a \emph{finite} set of points.
+	A function $f$ defined on $[c_0, c_n]$, except possibly at some of the $c_i$, for $0 \leq i \leq n$, is called \keyword{piecewise continuous} on the interval if for each $1 \leq i \leq n$ there exists a function $F_i$ continuous on the closed interval $[c_{i - 1}, c_i]$ such that $f(x) = F_i(x)$ on ${]{c_{i - 1}, c_i}[}$.
 
 	In this case we \emph{define} the definite integral of $f$ from $c_0$ to $c_n$ to be
 	\[
@@ -200,7 +206,8 @@ See for instance Figure \ref{lec11:piecewisecontinuous}. Clearly this function i
 
 \topic{The Fundamental Theorem of Calculus}
 
-There is an important relation between definite integrals and indefinite integrals. Recall how we defined $\ln(x)$ as a particular area under $1/t$, and as a consequence we found that $\frac{d}{d x} \ln(x) = 1/x$.
+There is an important relation between definite integrals and indefinite integrals.
+Recall how we defined $\ln(x)$ as a particular area under $1/t$, and as a consequence we found that $\frac{d}{d x} \ln(x) = 1/x$.
 
 This is no coincidence, and is a special case of the following theorem:
 
@@ -238,13 +245,15 @@ This is no coincidence, and is a special case of the following theorem:
 	\[
 		\lim_{h \to 0} \frac{1}{h} \cdot h \cdot f(c) = \lim_{h \to 0} f(c)
 	\]
-	for some $c \in {[{x, x+h}]}$, with $c$ depending on $h$. Now as $h \to 0$, clearly $c$ being squeezed between $x$ and $x + h$ forces $c$ to approach $x$, so this is in turn equal to
+	for some $c \in {[{x, x+h}]}$, with $c$ depending on $h$.
+	Now as $h \to 0$, clearly $c$ being squeezed between $x$ and $x + h$ forces $c$ to approach $x$, so this is in turn equal to
 	\[
 		\lim_{c \to x} f(c) = f(x),
 	\]
 	since $f$ is continuous.
 
-	For Part II, if $G'(x) = f(x)$, then $F(x) = G(x) + C$ (since they're both antiderivatives they must differ by a constant). Therefore
+	For Part II, if $G'(x) = f(x)$, then $F(x) = G(x) + C$ (since they're both antiderivatives they must differ by a constant).
+	Therefore
 	\[
 		\int_a^x f(t) \, d t = F(x) = G(x) + C.
 	\]
@@ -261,7 +270,8 @@ This is no coincidence, and is a special case of the following theorem:
 \end{proof}
 
 \noindent
-Both of these are very useful. The first part tells us how to differentiate a definite integral with respect of its upper limit, and the second part tells us how to evaluate a definite integral if you can find \emph{any} antiderivative of the integrand.
+Both of these are very useful.
+The first part tells us how to differentiate a definite integral with respect of its upper limit, and the second part tells us how to evaluate a definite integral if you can find \emph{any} antiderivative of the integrand.
 
 Since we will be doing this second part quite a lot, we'll introduce a new piece of notation that makes life a bit easier: we'll write
 \[
@@ -290,7 +300,8 @@ so that, for instance,
 \begin{example}
 	Find the area bounded by the $x$-axis and the curve $y = 3x - x^2$.
 
-	First we need to find where $y = 3x - x^2$ intersects the $x$-axis: $0 = 3 x - x^2 = x (3 - x)$, so $x = 0$ and $x = 3$. Therefore the area is
+	First we need to find where $y = 3x - x^2$ intersects the $x$-axis: $0 = 3 x - x^2 = x (3 - x)$, so $x = 0$ and $x = 3$.
+	Therefore the area is
 	\[
 		A = \int_0^3 3 x - x^2 \, d x = \Big ( \frac{3}{2} x^2 - \frac{1}{3} x^3 \Big ) \biggr \rvert_0^3 = \frac{27}{2} - \frac{27}{3} - (0 - 0) = \frac{27}{6} = \frac{9}{2}. \qedhere
 	\]
@@ -314,11 +325,13 @@ so that, for instance,
 We discuss the following example as a cautionary note.
 
 \begin{counterexample}[Improper integral]
-	We know that $\frac{d}{d x} \ln\abs{x} = 1/x$ if $x \neq 0$. Even so it is \keyword{incorrect} to say that
+	We know that $\frac{d}{d x} \ln\abs{x} = 1/x$ if $x \neq 0$.
+	Even so it is \keyword{incorrect} to say that
 	\[
 		\int_{-1}^1 \frac{d x}{x} = \ln\abs{x} \Big \rvert_{-1}^1 = 0 - 0 = 0,
 	\]
-	even though $1/x$ is odd. This is because $1/x$ is undefined at $x = 0$, so $1/x$ is not integrable on $[{-1}, 0]$ or $[0, 1]$.
+	even though $1/x$ is odd.
+	This is because $1/x$ is undefined at $x = 0$, so $1/x$ is not integrable on $[{-1}, 0]$ or $[0, 1]$.
 
 	All this to say that it might sometimes be important to keep track of where one's integrand is defined.
 

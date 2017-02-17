@@ -80,9 +80,12 @@ Differentiation, ultimately, is the problem of finding the slope\footnote{Or the
 \end{figure}
 
 \noindent
-If the function at hand is a (nonvertical) straight line, this is simple. We read of a coefficient, or we compute rise over run, et cetera.
+If the function at hand is a (nonvertical) straight line, this is simple.
+We read of a coefficient, or we compute rise over run, et cetera.
 
-If, on the other hand, the function isn't a straight line, it can be slightly more complicated. To do it, we simply fall back on what is essentially basic geometry in order to attempt to approximate the tangent line of the function at the point of interest. We demonstrate by drawing on Figure \ref{lec4:notstraight} above, attempting to find the slope at $x = a$.
+If, on the other hand, the function isn't a straight line, it can be slightly more complicated.
+To do it, we simply fall back on what is essentially basic geometry in order to attempt to approximate the tangent line of the function at the point of interest.
+We demonstrate by drawing on Figure \ref{lec4:notstraight} above, attempting to find the slope at $x = a$.
 
 \begin{figure}
 	\centering
@@ -142,9 +145,11 @@ As illustrated below, that creates a right triangle with base $a + h - a = h$ an
 \[
 	\text{slope} = \frac{\text{rise}}{\text{run}} = \frac{f(a + h) - f(a)}{h}
 \]
-of the line we just constructed. The expression in the right-hand side is called a \keyword{difference quotient}\index{difference quotient}, or sometimes a \keyword{Newton quotient}\index{Newton quotient|see {difference quotient}}.
+of the line we just constructed.
+The expression in the right-hand side is called a \keyword{difference quotient}\index{difference quotient}, or sometimes a \keyword{Newton quotient}\index{Newton quotient|see {difference quotient}}.
 
-The trick is to now let $h$ go to $0$, but never quite reach it. That way we will approach the slope at $x = a$, which is all right, because we know limits!
+The trick is to now let $h$ go to $0$, but never quite reach it.
+That way we will approach the slope at $x = a$, which is all right, because we know limits!
 
 \topic{Definition and Computaitonal Rules}
 
@@ -161,9 +166,11 @@ Having done this we are ready to formalise the definition of the derivative.
 \end{definition}
 
 \begin{remark}\label{lec4:singularpoint}
-	The domain of $f'$ may be smaller than the domain of $f$, since $f$ need not be differentiable everywhere. Points where $f$ is not differentiable (and that aren't endpoints of closed intervals in the domain) are called \keyword{singular points}\index{singular point}.
+	The domain of $f'$ may be smaller than the domain of $f$, since $f$ need not be differentiable everywhere.
+	Points where $f$ is not differentiable (and that aren't endpoints of closed intervals in the domain) are called \keyword{singular points}\index{singular point}.
 
-	Moreover, note that the limit in the definition prevents a function from being differentiable at an isolated point. That is to say, for a function to be differentiable at a point, it must also be defined at some neighbourhood around that point.
+	Moreover, note that the limit in the definition prevents a function from being differentiable at an isolated point.
+	That is to say, for a function to be differentiable at a point, it must also be defined at some neighbourhood around that point.
 \end{remark}
 
 \begin{remark}
@@ -177,25 +184,31 @@ Having done this we are ready to formalise the definition of the derivative.
 \end{remark}
 
 \begin{example}
-	By definition, $f'(x)$ is the slope of $y = f(x)$ at the point $x = x_0$, where it exists. Therefore the tangent line to $y = f(x)$ at $(x_0, f(x_0))$ is
+	By definition, $f'(x)$ is the slope of $y = f(x)$ at the point $x = x_0$, where it exists.
+	Therefore the tangent line to $y = f(x)$ at $(x_0, f(x_0))$ is
 	\[
 		y = f(x_0) + f'(x_0) (x - x_0). \qedhere
 	\]
 \end{example}
 
 \noindent
-It should be noted that the derivative comes with many different notations. If our function is $y = f(x)$, the following all mean the same thing:
+It should be noted that the derivative comes with many different notations.
+If our function is $y = f(x)$, the following all mean the same thing:
 \[
 	D_x y = y' = \frac{d y}{d x} = \frac{d}{d x} f = f' = D_x f = D f.
 \]
-In some of these, the variable $x$ is implied, whereas in others it is explicit. For us, doing calculus in only one variable, there will probably never be any ambiguity in not specifying the variable, but once one starts doing calculus in more variables, it becomes a very good idea to specify.
+In some of these, the variable $x$ is implied, whereas in others it is explicit.
+For us, doing calculus in only one variable, there will probably never be any ambiguity in not specifying the variable, but once one starts doing calculus in more variables, it becomes a very good idea to specify.
 
 Finally, before we go on to prove various interesting properties of the derivative, we make a note about what happens at endpoints of closed intervals in the domains of functions, thereby also clarifying what we meant by the parentheses in Remark \ref{lec4:singularpoint} above.
 
 \begin{remark}[Left and right derivatives]
-	Suppose our function $f$ that we wish to differentiate is defined on a closed interval $[a, b]$. We have a problem if we try to compute $f'(a)$ or $f'(b)$.
+	Suppose our function $f$ that we wish to differentiate is defined on a closed interval $[a, b]$.
+	We have a problem if we try to compute $f'(a)$ or $f'(b)$.
 
-	Consider, for instance, $x = a$. What happens if $h < 0$ in the difference quotient? Well, in $f(a + h)$ we have $x = a + h < a$, and for such a value of $x$ the function $f$ isn't defined.
+	Consider, for instance, $x = a$.
+	What happens if $h < 0$ in the difference quotient?
+	Well, in $f(a + h)$ we have $x = a + h < a$, and for such a value of $x$ the function $f$ isn't defined.
 
 	The solution is to use one-sided limits where appropriate, to define \keyword{left} and \keyword{right derivatives}\index{derivative!left}\index{derivative!right}:
 	\[
@@ -227,14 +240,16 @@ There is an important connection between differentiability and continuity.
 The converse is not true, i.e. there exists continuous functions that aren't differentiable.
 
 \begin{counterexample}
-	Consider the absolute value function $f(x) = \abs{x}$. This function is continuous at the point $x = 0$ ($\delta = \varepsilon$ works fine in the definition of continuity, for instance), but it is not differentiable there, since the the limit defining the derivative doesn't exist there; from the left the limit is $-1$, whereas from the right the limit is $1$.
+	Consider the absolute value function $f(x) = \abs{x}$.
+	This function is continuous at the point $x = 0$ ($\delta = \varepsilon$ works fine in the definition of continuity, for instance), but it is not differentiable there, since the the limit defining the derivative doesn't exist there; from the left the limit is $-1$, whereas from the right the limit is $1$.
 \end{counterexample}
 
 \noindent
 We now formulate and prove various computational rules of derivatives that we will continue using throughout the course.
 
 \begin{theorem}[Addition, subtraction, and multiplication by constant]
-	Let $f$ and $g$ be differentiable functions at $x$, and let $k$ be some constant. Then $f + g$, $f - g$, and $k f$ are all differentiable at $x$, and
+	Let $f$ and $g$ be differentiable functions at $x$, and let $k$ be some constant.
+	Then $f + g$, $f - g$, and $k f$ are all differentiable at $x$, and
 	\begin{romanlist}
 		\item $(f + g)'(x) = f'(x) + g'(x)$;
 		\item $(f - g)'(x) = f'(x) - g'(x)$; and
@@ -243,7 +258,8 @@ We now formulate and prove various computational rules of derivatives that we wi
 \end{theorem}
 
 \begin{proof}
-	We simply rearrange the difference quotients and use our rules for limits. For \fakeitemref{1} and \fakeitemref{2}, this becomes
+	We simply rearrange the difference quotients and use our rules for limits.
+	For \fakeitemref{1} and \fakeitemref{2}, this becomes
 	\begin{align*}
 		(f \pm g)'(x) & = \lim_{h \to 0} \frac{(f \pm g)(x + h) - (f \pm g)(x)}{h}                                                   \\
 		              & = \lim_{h \to 0} \frac{f(x + h) \pm g(x + h) - (f(x) \pm g(x))}{h}                                           \\
@@ -261,7 +277,8 @@ We now formulate and prove various computational rules of derivatives that we wi
 What happens when multiplying two functions together is perhaps less intuitive:
 
 \begin{theorem}[Product rule]
-	Let $f$ and $g$ be functions differentiable at $x$. Then $f g$ is also differentiable at $x$, and
+	Let $f$ and $g$ be functions differentiable at $x$.
+	Then $f g$ is also differentiable at $x$, and
 	\[
 		(f g)'(x) = f'(x) g(x) + f(x) g'(x).
 	\]
@@ -342,7 +359,8 @@ In keeping with how we dealt with continuity, after addition, subtraction, multi
 	\[
 		\lim_{k \to 0} E(k) = \lim_{k \to 0} \frac{f(y + k) - f(y)}{k} - \lim_{k \to 0} f'(y) = f'(y) - f'(y) = 0 = E(0),
 	\]
-	meaning that $E(k)$ is continuous at $k = 0$. Moreover
+	meaning that $E(k)$ is continuous at $k = 0$.
+	Moreover
 	\[
 		E(k) + f'(y) = \frac{f(y + k) - f(y)}{k},
 	\]
@@ -387,7 +405,8 @@ Moreover, we claim that $\lim\limits_{x \to 0} \sin(x) = 0$ and $\lim\limits_{x 
 \begin{exercise}
 	Try to prove it.
 
-	\emph{Hint: for the first one, use $\sin(\alpha + \beta) - \sin(\alpha - \beta) = 2 \cos(\alpha)\sin(\beta)$ to manipulate $\abs{\sin(x) - \sin(a)}$ into a single $\sin$. For both this and the $\sin$ limit, it will help to prove that $0 \leq \abs{\sin(x)} \leq \abs{x}$.}
+	\emph{Hint: for the first one, use $\sin(\alpha + \beta) - \sin(\alpha - \beta) = 2 \cos(\alpha)\sin(\beta)$ to manipulate $\abs{\sin(x) - \sin(a)}$ into a single $\sin$.
+	For both this and the $\sin$ limit, it will help to prove that $0 \leq \abs{\sin(x)} \leq \abs{x}$.}
 \end{exercise}
 
 \noindent
@@ -398,7 +417,8 @@ In closing, we will prove an important limit, which we will use next time to com
 \end{lemma}
 
 \begin{proof}
-	This proof relies very much on the geometrical construction of $\sin$ and $\tan$ found in Figure \ref{lec4:sinx/x}. Let $0 < x < \pi / 2$.
+	This proof relies very much on the geometrical construction of $\sin$ and $\tan$ found in Figure \ref{lec4:sinx/x}.
+	Let $0 < x < \pi / 2$.
 
 	\begin{figure}[t]
 		\centering
@@ -453,7 +473,8 @@ In closing, we will prove an important limit, which we will use next time to com
 	\]
 
 	\noindent
-	Note how $1$, $\sin(x) / x$, and $\cos(x)$ are all even functions, so this chain of inequalities is true also for $-\pi / 2 < x < 0$ by symmetry. This is good, because it allows us to consider the two-sided limit we are interested in, despite the geometric picture only discussing positive $x$.
+	Note how $1$, $\sin(x) / x$, and $\cos(x)$ are all even functions, so this chain of inequalities is true also for $-\pi / 2 < x < 0$ by symmetry.
+	This is good, because it allows us to consider the two-sided limit we are interested in, despite the geometric picture only discussing positive $x$.
 
 	Finally we remark that since $\lim\limits_{x \to 0} \cos(x) = 1$, the Squeeze theorem tells us that
 	\[
