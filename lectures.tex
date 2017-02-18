@@ -1,240 +1,36 @@
 \documentclass[english, a4paper]{article}
 
+
 \usepackage{amsmath, amssymb, amsthm} % AMS-TEX because of course.
 \usepackage{mathtools}        % Load for, amongst other things, paired delimiters.
-\usepackage{mathrsfs}         % Load for \mathscr font.
 \usepackage{etoolbox}         % Load to be able to perform conditional tests in macros.
+\usepackage{thmtools}         % Load to enable end-of-example marks.
+\usepackage{siunitx}          % We sometimes want nicely formatted large numbers and SI units.
+\usepackage{polynom}          % Package to help with polynomial long division.
+% Import mathematics settings.
+\input{preamble_maths}
+
+
+\usepackage{pgfplots}         % Used for producing pretty graphs of functions.
+\usepackage{wrapfig}          % Used for producing figures in within the text.
+\usepackage{float}            % Force Here placement of floats.
+\usepackage{subcaption}       % Used for subfigures.
+% Import figure specifics.
+\input{preamble_tikz}
+
+
 \usepackage{enumitem}         % Load for more customisable enumerate environments. Specifically better labels.
 \usepackage[hyperfootnotes=false]{hyperref}         % Make the table of contents easier to navigate with hyperlinks.
-                                                    %Footnote hyperlinks supressed because otherwise numberless footnotes produce empty anchor errors.
-\usepackage{thmtools}         % Load to enable end-of-example marks.
-\usepackage{bm}               % We want bold, italicised maths for vectors.
+                                                    % Footnote hyperlinks supressed because otherwise numberless footnotes produce empty anchor errors.
 \usepackage{makeidx}          % We want a pretty index to keep track of all the ideas.
 \usepackage{tocbibind}        % Include index and bibliography in table of contents.
 \usepackage{abstract}         % Load in order to more easily manipulate the appearance of abstracts.
 \usepackage{fancyhdr}         % Use to customise the headings to include useful navigation information.
 \usepackage{titlesec}         % Use to add 'Lecture' in front of section headings.
 \usepackage[titles]{tocloft}  % Use to add same in front of sections in the table of contents.
-\usepackage{pgfplots}         % Used for producing pretty graphs of functions.
-\usepackage{wrapfig}          % Used for producing figures in within the text.
-\usepackage{float}            % Force Here placement of floats.
-\usepackage{subcaption}       % Used for subfigures.
-\usepackage{siunitx}          % We sometimes want nicely formatted large numbers and SI units.
 \usepackage{adjustbox}        % Help us center very wide tables.
-\usepackage{polynom}          % Package to help with polynomial long division.
-
-% Make pgfplots stop complaining about possible issues.
-\pgfplotsset{compat = 1.13}
-
-% Since we'll want to draw areas under curves.
-\usepgfplotslibrary{fillbetween}
-\usetikzlibrary{patterns}
-
-% Externalise TikZ, because some plots are quite heavy.
-\usepgfplotslibrary{external}
-\tikzexternalize
-
-% Define arrow heads in TikZ that are centred on the endpoints.
-\usetikzlibrary{arrows}
-\makeatletter
-\pgfarrowsdeclare{center*}{center*}
-{
-  \pgfarrowsleftextend{+-.5\pgflinewidth}
-  \pgfutil@tempdima=0.4pt%
-  \advance\pgfutil@tempdima by.2\pgflinewidth%
-  \pgfarrowsrightextend{4.5\pgfutil@tempdima}
-}
-{
-  \pgfutil@tempdima=0.4pt%
-  \advance\pgfutil@tempdima by.2\pgflinewidth%
-  \pgfsetdash{}{+0pt}
-  \pgfpathcircle{\pgfqpoint{4.5\pgfutil@tempdima}{0bp}}{4.5\pgfutil@tempdima}
-  \pgfusepathqfillstroke
-}
-
-\pgfarrowsdeclare{centero}{centero}
-{
-  \pgfarrowsleftextend{+-.5\pgflinewidth}
-  \pgfutil@tempdima=0.4pt%
-  \advance\pgfutil@tempdima by.2\pgflinewidth%
-  \pgfarrowsrightextend{4.5\pgfutil@tempdima}
-}
-{
-  \pgfutil@tempdima=0.4pt%
-  \advance\pgfutil@tempdima by.2\pgflinewidth%
-  \pgfsetdash{}{+0pt}
-  \pgfpathcircle{\pgfqpoint{4.5\pgfutil@tempdima}{0bp}}{4.5\pgfutil@tempdima}
-  \pgfusepathqstroke
-}
-\makeatother
-
-% Let us draw and name pretty angles.
-\usetikzlibrary{quotes, angles}
-
-% Define a command for drawing circle arcs in TikZ.
-\tikzset{
-  pics/circle arc/.style args={#1:#2:#3}{
-    code={
-      \draw[pic actions] (#1:#3) arc(#1:#2:#3);
-    }
-  }
-}
-
-% Make headings
-\pagestyle{headings}
-
-% Remove the section number from the section name in headers.
-\renewcommand{\sectionmark}[1]{\uppercase{\markboth{#1}{#1}}}
-
-
-% Label sections as 'lecture 1', etc.
-\titleformat{\section}{\normalfont\Large\bfseries}{Lecture \thesection}{1em}{}
-
-% Same in table of contents.
-\renewcommand{\cftsecpresnum}{Lecture\space}
-\newlength\lecturelength
-\settowidth\lecturelength{\cftsecpresnum}
-\addtolength\cftsecnumwidth{\lecturelength}
-
-\setlength\intextsep{0pt}
-
-% Start indexing
-\makeindex
-
-% Change name of table of contents
-\renewcommand{\contentsname}{Table of Contents}
-
-% Remove the Abstract title from the abstract.
-\renewcommand{\abstractname}{}    % Clear the title
-\renewcommand{\absnamepos}{empty} % Originally centre
-
-% Define a footnote macro that doesn't leave a mark.
-\makeatletter
-\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
-\makeatother
-
-% Define some common variously styled letters we occasionally need.
-\newcommand{\C}{\ensuremath{\mathbb{C}}}
-\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
-\newcommand{\R}{\ensuremath{\mathbb{R}}}
-\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
-\newcommand{\N}{\ensuremath{\mathbb{N}}}
-
-% Allow overwriting of \Re and \Im.
-\let\Re\relax
-\let\Im\relax
-% Redefine \Re and \Im as Re and Im instead of mathfrak letters.
-\DeclareMathOperator{\Re}{Re}
-\DeclareMathOperator{\Im}{Im}
-
-% Declare an image symbol
-\DeclareMathOperator{\im}{im}
-
-% Define a placeholder for functions without arguments.
-\newcommand*{\placeholder}{\makebox[1ex]{\textbf{$\cdot$}}}
-
-
-% Define a plethora of theorem/definition/lemma/etc. environments.
-% Number them all using the same counter.
-\newtheorem{theorem}{Theorem}[subsection]
-\newtheorem*{theorem*}{Theorem}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{definitions}[theorem]{Definitions}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{axiom}[theorem]{Axiom}
-\newtheorem{exercise}[theorem]{Exercise}
-\newtheorem{exercises}[theorem]{Exercises}
-\newtheorem{problem}[theorem]{Problem}
-\theoremstyle{remark}
-\newtheorem{remark}[theorem]{Remark}
-
-
-% Define special example(s) and solution(s) environments in order to have end-of-environment marks.
-\declaretheorem[
-	style = definition,
-	qed = $\blacktriangle$,
-	sibling = theorem
-]{example}
-\declaretheorem[
-	style = definition,
-	qed = $\blacktriangle$,
-	sibling = theorem
-]{examples}
-
-\declaretheorem[
-	style = definition,
-	qed = $\blacktriangle$,
-	sibling = theorem
-]{counterexample}
-
-\declaretheorem[
-	style = remark,
-	qed = $\blacklozenge$,
-	numbered = no
-]{solution}
-\declaretheorem[
-	style = remark,
-	qed = $\blacklozenge$,
-	numbered = no
-]{solutions}
-
-
-% Number all equations and figures within subsections.
-\numberwithin{equation}{subsection}
-\numberwithin{figure}{subsection}
-
-% Define some fake (i) label macros.
-\newcommand{\fakeitemref}[1]{% \fakeitem{<n>}
-	{\upshape(\emph{\romannumeral 0#1})}}
-\newcommand{\fakeitem}[1]{% \fakeitem{<n>}
-	\fakeitemref{#1}~}
-
-% Make text both bold and emphasised, for keywords in definitions and similar.
-\newcommand{\keyword}[1]{% \keyword{text}
-	{\textbf{\emph{#1}}}}
-
-
-% Redefine \overline to the nicely semantic \conjugate.
-\newcommand*{\conjugate}[1]{\overline{#1}}
-
-
-
-% For all of the below, use \command* to make the delimiters adjust size automatically.
-
-% Defines an absolute value notation. Give it no argument and it'll default to \abs{\placeholder}.
-\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{% \abs{a}
-	\ifblank{#1}{\placeholder}{#1}%
-}
-
-% Provide semantic notation for describing sets with conditions.
-\providecommand\given{} % Just make sure this exists, so that things don't explode.
-\DeclarePairedDelimiterX{\Set}[1]{\{}{\}}{% \Set{ x \given x > 0}
-	\,\renewcommand\given{\nonscript\:\delimsize\vert\nonscript\:\mathopen{}}#1\,
-}
-
-% Roman numerals
-\makeatletter
-\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
-\makeatother
-
-
-% Alias for \section with optional footnote for date.
-\newcommand{\lecture}[2][]{% \lecture[Date]{Title}
-	\section[#2]{#2\ifblank{#1}{}{\blfootnote{Date: #1.}}}%
-}
-
-% Alias for \subsection that is more semantic.
-\newcommand{\topic}{\subsection}
-
-% Aliases for enumerate with certain label settings preapplied.
-\newenvironment{romanlist}{\begin{enumerate}[label = \textup{(\emph{\roman*})}]}{\end{enumerate}}
-\newenvironment{alphalist}{\begin{enumerate}[label = \textup{(\alph*)}]}{\end{enumerate}}
-
+% Set lecture presets.
+\input{preamble_lecture.tex}
 
 
 \title{Lecture Notes in Calculus I}
@@ -242,7 +38,7 @@
 \date{}
 
 \begin{document}
-% Use Roman numberals for page numbers for frontmatter.
+% Use Roman numerals for page numbers for frontmatter.
 \pagenumbering{roman}
 
 \maketitle

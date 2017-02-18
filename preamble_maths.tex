@@ -1,0 +1,92 @@
+%!TEX root = ../lectures.tex
+
+% Define some common variously styled letters we occasionally need.
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+
+% Allow overwriting of \Re and \Im.
+\let\Re\relax
+\let\Im\relax
+% Redefine \Re and \Im as Re and Im instead of mathfrak letters.
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
+
+% Declare an image symbol
+\DeclareMathOperator{\im}{im}
+
+% Define a placeholder for functions without arguments.
+\newcommand*{\placeholder}{\makebox[1ex]{\textbf{$\cdot$}}}
+
+
+% Define a plethora of theorem/definition/lemma/etc. environments.
+% Number them all using the same counter.
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definitions}[theorem]{Definitions}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercises}[theorem]{Exercises}
+\newtheorem{problem}[theorem]{Problem}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+
+% Define special example(s) and solution(s) environments in order to have end-of-environment marks.
+\declaretheorem[
+	style = definition,
+	qed = $\blacktriangle$,
+	sibling = theorem
+]{example}
+\declaretheorem[
+	style = definition,
+	qed = $\blacktriangle$,
+	sibling = theorem
+]{examples}
+
+\declaretheorem[
+	style = definition,
+	qed = $\blacktriangle$,
+	sibling = theorem
+]{counterexample}
+
+\declaretheorem[
+	style = remark,
+	qed = $\blacklozenge$,
+	numbered = no
+]{solution}
+\declaretheorem[
+	style = remark,
+	qed = $\blacklozenge$,
+	numbered = no
+]{solutions}
+
+
+
+
+% Redefine \overline to the nicely semantic \conjugate.
+\newcommand*{\conjugate}[1]{\overline{#1}}
+
+
+
+% For all of the below, use \command* to make the delimiters adjust size automatically.
+
+% Defines an absolute value notation. Give it no argument and it'll default to \abs{\placeholder}.
+\DeclarePairedDelimiterX{\abs}[1]{\lvert}{\rvert}{% \abs{a}
+	\ifblank{#1}{\placeholder}{#1}%
+}
+
+% Provide semantic notation for describing sets with conditions.
+\providecommand\given{} % Just make sure this exists, so that things don't explode.
+\DeclarePairedDelimiterX{\Set}[1]{\{}{\}}{% \Set{ x \given x > 0}
+	\,\renewcommand\given{\nonscript\:\delimsize\vert\nonscript\:\mathopen{}}#1\,
+}

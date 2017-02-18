@@ -1,0 +1,66 @@
+%!TEX root = ../lectures.tex
+
+% Start indexing
+\makeindex
+
+% Make headings
+\pagestyle{headings}
+
+% Remove the section number from the section name in headers.
+\renewcommand{\sectionmark}[1]{\uppercase{\markboth{#1}{#1}}}
+
+
+% Label sections as 'lecture 1', etc.
+\titleformat{\section}{\normalfont\Large\bfseries}{Lecture \thesection}{1em}{}
+
+% Same in table of contents.
+\renewcommand{\cftsecpresnum}{Lecture\space}
+\newlength\lecturelength
+\settowidth\lecturelength{\cftsecpresnum}
+\addtolength\cftsecnumwidth{\lecturelength}
+
+\setlength\intextsep{0pt}
+
+% Change name of table of contents
+\renewcommand{\contentsname}{Table of Contents}
+
+% Remove the Abstract title from the abstract.
+\renewcommand{\abstractname}{}    % Clear the title
+\renewcommand{\absnamepos}{empty} % Originally centre
+
+% Number all equations and figures within subsections.
+\numberwithin{equation}{subsection}
+\numberwithin{figure}{subsection}
+
+% Define some fake (i) label macros.
+\newcommand{\fakeitemref}[1]{% \fakeitem{<n>}
+	{\upshape(\emph{\romannumeral 0#1})}}
+\newcommand{\fakeitem}[1]{% \fakeitem{<n>}
+	\fakeitemref{#1}~}
+
+% Make text both bold and emphasised, for keywords in definitions and similar.
+\newcommand{\keyword}[1]{% \keyword{text}
+	{\textbf{\emph{#1}}}}
+
+% Roman numerals
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+
+
+% Alias for \section with optional footnote for date.
+\newcommand{\lecture}[2][]{% \lecture[Date]{Title}
+	\section[#2]{#2\ifblank{#1}{}{\blfootnote{Date: #1.}}}%
+}
+
+% Alias for \subsection that is more semantic.
+\newcommand{\topic}{\subsection}
+
+% Aliases for enumerate with certain label settings preapplied.
+\newenvironment{romanlist}{\begin{enumerate}[label = \textup{(\emph{\roman*})}]}{\end{enumerate}}
+\newenvironment{alphalist}{\begin{enumerate}[label = \textup{(\alph*)}]}{\end{enumerate}}
+
+% Define a footnote macro that doesn't leave a mark.
+\makeatletter
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
