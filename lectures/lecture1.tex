@@ -70,11 +70,11 @@ For instance,
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Plot of $y = f(x)$.}
-	\label{lec2:plotf(x)}
+	\label{lec1:plotf(x)}
 \end{figure}
 
 \noindent
-Moreover, by studying the plot of the function in Figure \ref{lec2:plotf(x)}, we might observe two more interesting limits, namely
+Moreover, by studying the plot of the function in Figure \ref{lec1:plotf(x)}, we might observe two more interesting limits, namely
 \[
 	\lim_{x \to 7/3^+} f(x) = +\infty \quad \text{and} \quad \lim_{x \to 7/3^+} f(x) = -\infty,
 \]
@@ -241,7 +241,7 @@ meaning that the function is defined somewhere around the limit point $a$.
 		\draw[dashed] (0, 3.7) -- (5.5, 3.7);
 	\end{tikzpicture}
 	\caption{Constructing neighbourhoods around limit and limit point.}
-	\label{lec2:epsilondelta}
+	\label{lec1:epsilondelta}
 \end{figure}
 
 Secondly we want the $y$ in $y = f(x)$ to get \emph{arbitrarily} close to the limit, let's call it $L$.
@@ -255,7 +255,7 @@ for any $\varepsilon > 0$, and regardless of what $\varepsilon$ we choose, we sh
 	\Set{x \in \R \given 0 < \abs{x - a} < \delta},
 \]
 such that for all $x$ in this deleted neighbourhood, $y = f(x)$ is in the above neighbourhood of $L$.
-We present a sketch of what this looks like in Figure \ref{lec2:epsilondelta}.
+We present a sketch of what this looks like in Figure \ref{lec1:epsilondelta}.
 
 Therefore,
 
@@ -297,7 +297,7 @@ The idea that limits concern themselves with deleted neighbourhoods around the l
 That is to say, we don't care about the function's value in the limit point, or even if it is defined there.
 We illustrate this by example:
 
-\begin{example}\label{lec2:linewithhole}
+\begin{example}\label{lec1:linewithhole}
 	Consider the function
 	\[
 		f(x) = \frac{x^2 - 1}{x - 1},
@@ -391,7 +391,7 @@ Finally in this section we will prove something quite important, that is sometim
 
 \topic{Computing Limits}
 
-We have used epsilon-delta explicitly to compute a limit in Example \ref{lec2:linewithhole}, but we will now use the same in the abstract to establish several general rules for how limits may be computed and manipulated.
+We have used epsilon-delta explicitly to compute a limit in Example \ref{lec1:linewithhole}, but we will now use the same in the abstract to establish several general rules for how limits may be computed and manipulated.
 
 \begin{theorem}[Computational rules for limits]
 	Let $f$ and $g$ be some functions such that

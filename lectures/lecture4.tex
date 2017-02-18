@@ -204,15 +204,15 @@ Once again in the language of calculus, this is what we call continuity, and ind
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Illustration of the Mean-value theorem.}
-	\label{lec5:meanval}
+	\label{lec4:meanval}
 \end{figure}
 
 
 \noindent
 That is to say, there must exist some point(s) in the interior of the interval with the same slope as the line segment connecting the two endpoints.
 
-An example of this theorem is demonstrated in Figure \ref{lec5:meanval}, which also demonstrates that the $c$ in the theorem needn't be unique.
-We will prove this in a bit, but for now we will establish some more theory and also motivate why both the continuity and the differentiability is required in Figure \ref{lec5:meanvalcounter}.
+An example of this theorem is demonstrated in Figure \ref{lec4:meanval}, which also demonstrates that the $c$ in the theorem needn't be unique.
+We will prove this in a bit, but for now we will establish some more theory and also motivate why both the continuity and the differentiability is required in Figure \ref{lec4:meanvalcounter}.
 
 \begin{figure}
 	\centering
@@ -355,7 +355,7 @@ We will prove this in a bit, but for now we will establish some more theory and 
 		\caption{Not differentiable at interior point}
 	\end{subfigure}
 	\caption{Counterexamples of the Mean-value theorem where essential conditions are violated.}
-	\label{lec5:meanvalcounter}
+	\label{lec4:meanvalcounter}
 \end{figure}
 
 
@@ -363,7 +363,7 @@ This demonstrates that if we lack continuity anywhere in the closed interval, th
 
 We now prove an intermediary result we need in order to prove the Mean-value theorem.
 
-\begin{lemma}\label{lec5:criticalpoint}
+\begin{lemma}\label{lec4:criticalpoint}
 	If $f$ is defined on an open interval ${]{a, b}[}$ and achieves a maximum (or minimum) at $c \in {]{a, b}[}$, then if $f'(c)$ exists, it must be $0$.
 \end{lemma}
 
@@ -438,7 +438,7 @@ With this we are finally ready to prove the Mean-value theorem.
 	\[
 		g(x) = f(x) - \Big ( f(a) + \frac{f(b) - f(a)}{b - a} \, (x - a) \Big ).
 	\]
-	The expression in the parentheses is the line segment joining $(a, f(a))$ and $(b, f(b))$, whereby $g(x)$ is the vertical distance between this line segment and $f$ itself at each point $x$, as illustrated in Figure \ref{lec5:meanvalproof}.
+	The expression in the parentheses is the line segment joining $(a, f(a))$ and $(b, f(b))$, whereby $g(x)$ is the vertical distance between this line segment and $f$ itself at each point $x$, as illustrated in Figure \ref{lec4:meanvalproof}.
 	\begin{figure}
 		\centering
 		\begin{tikzpicture}
@@ -489,7 +489,7 @@ With this we are finally ready to prove the Mean-value theorem.
 			\end{axis}
 		\end{tikzpicture}
 		\caption{The geometrical construction of $g$ in the proof of the Mean-value theorem.}
-		\label{lec5:meanvalproof}
+		\label{lec4:meanvalproof}
 	\end{figure}
 
 	Since $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$, $g$ is as well.
@@ -536,7 +536,7 @@ With this we are finally ready to prove the Mean-value theorem.
 \noindent
 We end today's lecture with two nice consequences of the Mean-value theorem.
 
-\begin{definition}[Increasing and decreasing functions]\label{lec5:monotonicity}
+\begin{definition}[Increasing and decreasing functions]\label{lec4:monotonicity}
 	Suppose $f$ is defined on some interval $I$ and that $x_1$ and $x_2$ are points on $I$.
 	\begin{romanlist}
 		\item If $f(x_2) > f(x_1)$ whenever $x_2 > x_1$, then $f$ is \keyword{increasing}\index{function!increasing} on $I$.
@@ -553,7 +553,7 @@ We end today's lecture with two nice consequences of the Mean-value theorem.
 \noindent
 In the event that we have differentiability, we can easily detect the above features of a function.
 
-\begin{theorem}\label{lec5:monotonicityproof}
+\begin{theorem}\label{lec4:monotonicityproof}
 	Let $J$ be an open interval and let $I$ be an interval consisting of $J$ and possibly one or both of $J$'s endpoints.
 	Suppose $f$ is continuous on $I$ and differentiable on $J$.
 	\begin{romanlist}
@@ -579,7 +579,7 @@ In the event that we have differentiability, we can easily detect the above feat
 If a function is constant on an interval, then its derivative is $0$ on this interval('s interior), which was one of the exercises left at the end of the last lecture.
 The converse is also true.
 
-\begin{theorem}\label{lec5:constantfunction}
+\begin{theorem}\label{lec4:constantfunction}
 	If $f$ is continuous on an interval $I$ and $f'(x) = 0$ at every interior point of $I$, then $f(x) = k$ is constant.
 \end{theorem}
 

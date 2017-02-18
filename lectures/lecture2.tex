@@ -200,7 +200,7 @@ A trickier result to prove, but one that is extremely useful is the following:
 		\abs[\big]{y - \underbrace{\lim_{x \to c} g(x)}_{= L}} < \delta_1,
 	\]
 	we have that
-	\begin{equation}\label{lec3:fcontinuous}
+	\begin{equation}\label{lec2:fcontinuous}
 		\abs[\Big]{f(y) - f \big ( \lim_{x \to c} g(x) \big ) } < \varepsilon.
 	\end{equation}
 
@@ -209,7 +209,7 @@ A trickier result to prove, but one that is extremely useful is the following:
 
 	We take a moment to point out what happened in the very last step there: in the definition of the limit of $g$, we are able to take \emph{any} $\varepsilon$, so in particular we can fix it to a specific value, namely $\delta_1$, and find a corresponding $\delta_2$ which makes the definition work.
 
-	If we now take $x \in X_{f \circ g}$ such that $\abs{x - c} < \delta_2$, then $\abs{g(x) - L} < \delta_1$, so by the construction of $\delta_1$, Equation \eqref{lec3:fcontinuous} with $y = g(x)$ becomes
+	If we now take $x \in X_{f \circ g}$ such that $\abs{x - c} < \delta_2$, then $\abs{g(x) - L} < \delta_1$, so by the construction of $\delta_1$, Equation \eqref{lec2:fcontinuous} with $y = g(x)$ becomes
 	\[
 		\abs{f(g(x)) - f(L)} = \abs[\Big]{f(g(x)) - f \big ( \lim_{x \to c} g(x) \big )} < \varepsilon,
 	\]
@@ -229,7 +229,7 @@ We demonstrate this by example:
 	\[
 		f(x) = \frac{x^2 - 1}{x - 1}
 	\]
-	from Example \ref{lec2:linewithhole} in the previous lecture.
+	from Example \ref{lec1:linewithhole} in the previous lecture.
 	It is not continuous over all of $\R$, since it isn't even defined in $x = 1$, but it can be redefined to become continuous everywhere.
 
 	Since $\lim\limits_{x \to 1} f(x) = 2$, we \emph{define} a new function $F$ which is $F(x) = f(x)$ for all $x \neq 1$, and $F(1) = 2$, so

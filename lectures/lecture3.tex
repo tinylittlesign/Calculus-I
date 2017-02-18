@@ -76,7 +76,7 @@ Differentiation, ultimately, is the problem of finding the slope\footnote{Or the
 			\end{axis}
 		\end{tikzpicture}
 		\caption{Plot of a less straight line.}
-		\label{lec4:notstraight}
+		\label{lec3:notstraight}
 	\end{subfigure}
 	\caption{Examples of tangents of functions.}
 \end{figure}
@@ -87,7 +87,7 @@ We read of a coefficient, or we compute rise over run, et cetera.
 
 If, on the other hand, the function isn't a straight line, it can be slightly more complicated.
 To do it, we simply fall back on what is essentially basic geometry in order to attempt to approximate the tangent line of the function at the point of interest.
-We demonstrate by drawing on Figure \ref{lec4:notstraight} above, attempting to find the slope at $x = a$.
+We demonstrate by drawing on Figure \ref{lec3:notstraight} above, attempting to find the slope at $x = a$.
 
 \begin{figure}
 	\centering
@@ -167,7 +167,7 @@ Having done this we are ready to formalise the definition of the derivative.
 	If $f'(x)$ exists (at a given $x$), we say that $f$ is \keyword{differentiable}\index{differentiability} at $x$.
 \end{definition}
 
-\begin{remark}\label{lec4:singularpoint}
+\begin{remark}\label{lec3:singularpoint}
 	The domain of $f'$ may be smaller than the domain of $f$, since $f$ need not be differentiable everywhere.
 	Points where $f$ is not differentiable (and that aren't endpoints of closed intervals in the domain) are called \keyword{singular points}\index{singular point}.
 
@@ -202,7 +202,7 @@ If our function is $y = f(x)$, the following all mean the same thing:
 In some of these, the variable $x$ is implied, whereas in others it is explicit.
 For us, doing calculus in only one variable, there will probably never be any ambiguity in not specifying the variable, but once one starts doing calculus in more variables, it becomes a very good idea to specify.
 
-Finally, before we go on to prove various interesting properties of the derivative, we make a note about what happens at endpoints of closed intervals in the domains of functions, thereby also clarifying what we meant by the parentheses in Remark \ref{lec4:singularpoint} above.
+Finally, before we go on to prove various interesting properties of the derivative, we make a note about what happens at endpoints of closed intervals in the domains of functions, thereby also clarifying what we meant by the parentheses in Remark \ref{lec3:singularpoint} above.
 
 \begin{remark}[Left and right derivatives]
 	Suppose our function $f$ that we wish to differentiate is defined on a closed interval $[a, b]$.
@@ -221,7 +221,7 @@ Finally, before we go on to prove various interesting properties of the derivati
 \noindent
 There is an important connection between differentiability and continuity.
 
-\begin{theorem}\label{lec4:diffimpliescont}
+\begin{theorem}\label{lec3:diffimpliescont}
 	If $f$ is differentiable at $x$, then it is also continuous at $x$.
 \end{theorem}
 
@@ -295,7 +295,7 @@ What happens when multiplying two functions together is perhaps less intuitive:
 		          & = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} \cdot g(x + h) + \lim_{h \to 0} f(x) \cdot \frac{g(x + h) - g(x)}{h}  \\
 		          & = \lim_{h \to 0} \frac{f(x + h) - f(x)}{h} \cdot g(x + h) + f(x) \cdot \lim_{h \to 0} \frac{g(x + h) - g(x)}{h}.
 	\end{align*}
-	The crucial last step is to now recall Theorem \ref{lec4:diffimpliescont}, whereby $g$ is continuous, and therefore the above becomes
+	The crucial last step is to now recall Theorem \ref{lec3:diffimpliescont}, whereby $g$ is continuous, and therefore the above becomes
 	\[
 		(f g)'(x) = f'(x) g(x) + f(x) g'(x). \qedhere
 	\]
@@ -373,7 +373,7 @@ In keeping with how we dealt with continuity, after addition, subtraction, multi
 
 	\noindent
 	If we now take $y = g(x)$ and $k = g(x + h) - g(x)$, meaning that $y + k = g(x + h)$, and inserting this into the above equation we get
-	\begin{equation}\label{lec4:chaindiff}
+	\begin{equation}\label{lec3:chaindiff}
 		f(g(x + h)) - f(g(x)) = \big (f'(g(x)) + E(k) \big ) (g(x + h) - g(x)).
 	\end{equation}
 
@@ -384,7 +384,7 @@ In keeping with how we dealt with continuity, after addition, subtraction, multi
 	\]
 	and also that $g$ is continuous at $x$, whereby $\lim\limits_{h \to 0} g(x + h) - g(x) = 0$.
 
-	We are now ready to compute the limit of the difference quotient of the composition, using Equation \ref{lec4:chaindiff} straight away:
+	We are now ready to compute the limit of the difference quotient of the composition, using Equation \ref{lec3:chaindiff} straight away:
 	\[
 		\frac{d}{d x} f(g(x)) = \lim_{h \to 0} \frac{f(g(x + h)) - f(g(x))}{h} = \lim_{h \to 0} (f'(g(x)) + E(k)) \, \frac{g(x + h) - g(x)}{h}.
 	\]
@@ -419,7 +419,7 @@ In closing, we will prove an important limit, which we will use next time to com
 \end{lemma}
 
 \begin{proof}
-	This proof relies very much on the geometrical construction of $\sin$ and $\tan$ found in Figure \ref{lec4:sinx/x}.
+	This proof relies very much on the geometrical construction of $\sin$ and $\tan$ found in Figure \ref{lec3:sinx/x}.
 	Let $0 < x < \pi / 2$.
 
 	\begin{figure}[t]
@@ -450,7 +450,7 @@ In closing, we will prove an important limit, which we will use next time to com
 			\pic[draw, angle eccentricity=1.2, angle radius = 0.7cm, "$\quad\!x$"]{angle=B--A--D};
 		\end{tikzpicture}
 		\caption{A geometrical representation of $\sin$ and $\tan$ on the unit circle.}
-		\label{lec4:sinx/x}
+		\label{lec3:sinx/x}
 	\end{figure}
 
 	We make three claims:

@@ -191,10 +191,10 @@ To see why this is useful, let us attempt to differentiate (some of) the inverse
 		\caption{Tangent}
 	\end{subfigure}
 	\caption{Restricted domains of trigonometric functions.}
-	\label{lec6:inversetrig}
+	\label{lec5:inversetrig}
 \end{figure}
 
-Of course trigonometric functions are periodic and therefore not one-to-one, so in order to invert them we restrict their domains, as demonastrated in Figure \ref{lec6:inversetrig}. We therefore have
+Of course trigonometric functions are periodic and therefore not one-to-one, so in order to invert them we restrict their domains, as demonastrated in Figure \ref{lec5:inversetrig}. We therefore have
 \begin{align*}
 	\arcsin(\sin(x)) & = x, \qquad -\frac{\pi}{2} \leq x \leq \frac{\pi}{2}; \\
 	\sin(\arcsin(x)) & = x, \qquad -1 \leq x \leq 1;                         \\
@@ -240,7 +240,7 @@ We will now \emph{define} a function $\ln(x)$, called the \keyword{natural logar
 This definition might look quite strange, but we will show that it has the properties we expect of logarithms.
 
 \begin{definition}[Natural logarithm]
-	Take $x > 0$ and let $A(x)$ be defined as the area of the plane bounded by the curve $y = 1/t$, the $t$ axis, and the vertical lines $t = 1$ and $t = x$ (see Figure \ref{lec6:lndef}).
+	Take $x > 0$ and let $A(x)$ be defined as the area of the plane bounded by the curve $y = 1/t$, the $t$ axis, and the vertical lines $t = 1$ and $t = x$ (see Figure \ref{lec5:lndef}).
 
 	The function $\ln$ is defined as
 	\[
@@ -299,7 +299,7 @@ This definition might look quite strange, but we will show that it has the prope
 		\end{axis}
 	\end{tikzpicture}
 	\caption{The area under $y = 1/t$.}
-	\label{lec6:lndef}
+	\label{lec5:lndef}
 \end{figure}
 
 \noindent
@@ -316,7 +316,7 @@ This function has a plethora interesting properties, maybe chief amongst which i
 \end{theorem}
 
 \begin{proof}
-	If $x > 0$ and $h > 0$, then $\ln(x + h) - \ln(x)$ is the area bounded by $y = 1/t$, $y = 0$, $t = x$, and $t = x + h$, as illustrated in Figure \ref{lec6:lnareasdiff}.
+	If $x > 0$ and $h > 0$, then $\ln(x + h) - \ln(x)$ is the area bounded by $y = 1/t$, $y = 0$, $t = x$, and $t = x + h$, as illustrated in Figure \ref{lec5:lnareasdiff}.
 
 	\begin{figure}[b]
 		\centering
@@ -367,7 +367,7 @@ This function has a plethora interesting properties, maybe chief amongst which i
 				\end{axis}
 			\end{tikzpicture}
 			\caption{The area $\ln(x + h) - \ln(x)$.}
-			\label{lec6:lnareasdiff}
+			\label{lec5:lnareasdiff}
 		\end{subfigure}
 		\quad
 		\begin{subfigure}{0.45\textwidth}
@@ -418,14 +418,14 @@ This function has a plethora interesting properties, maybe chief amongst which i
 				\end{axis}
 			\end{tikzpicture}
 			\caption{The area $\ln(x + h) - \ln(x)$.}
-			\label{lec6:lnareasbound}
+			\label{lec5:lnareasbound}
 		\end{subfigure}
 		\caption{The area under $y = 1/t$.}
-		\label{lec6:lnareas}
+		\label{lec5:lnareas}
 	\end{figure}
 
-	Clearly this area is greater than $h \cdot \frac{1}{x + h}$ and smaller than $h \cdot \frac{1}{x}$, as illustrated in Figure \ref{lec6:lnareasbound}, meaning that
-	\begin{equation}\label{lec6:eq:lnbound}
+	Clearly this area is greater than $h \cdot \frac{1}{x + h}$ and smaller than $h \cdot \frac{1}{x}$, as illustrated in Figure \ref{lec5:lnareasbound}, meaning that
+	\begin{equation}\label{lec5:eq:lnbound}
 		\frac{h}{x + h} < \ln(x + h) - \ln(x) < \frac{h}{x}.
 	\end{equation}
 
@@ -444,7 +444,7 @@ This function has a plethora interesting properties, maybe chief amongst which i
 	\]
 
 	\noindent
-	Taking $h < 0$ instead (and we also need to guarantee that $x + h > 0$, so take $h$ such that $0 < x + h < x$) we get the following from Equation \eqref{lec6:eq:lnbound}:
+	Taking $h < 0$ instead (and we also need to guarantee that $x + h > 0$, so take $h$ such that $0 < x + h < x$) we get the following from Equation \eqref{lec5:eq:lnbound}:
 	\[
 		\frac{1}{x} < \frac{\ln(x + h) - \ln(x)}{h} < \frac{1}{x + h},
 	\]
@@ -481,11 +481,11 @@ Other interesting properties of the $\ln$ function are those we associate with l
 	\]
 	for all $x > 0$.
 	Since the derivative is $0$ for all $x > 0$,
-	\begin{equation}\label{lec6:eq:lnmult}
+	\begin{equation}\label{lec5:eq:lnmult}
 		\ln(x y) - \ln(x) = C
 	\end{equation}
-	must be constant by Theorem \ref{lec5:constantfunction} last lecture.
-	Take $x = 1$, then $\ln(y) - 0 = C$, so $C = \ln(y)$, whence Equation \eqref{lec6:eq:lnmult} gives
+	must be constant by Theorem \ref{lec4:constantfunction} last lecture.
+	Take $x = 1$, then $\ln(y) - 0 = C$, so $C = \ln(y)$, whence Equation \eqref{lec5:eq:lnmult} gives
 	\[
 		\ln(x y) = \ln(x) + \ln(y).
 	\]

@@ -19,7 +19,7 @@ Note that a function can have at most one global maximum value, and at most one 
 Functions don't always have global extreme values.
 
 \begin{example}
-	The function plotted in Figure \ref{lec8:globalextreme} has no global maximum value, since it goes off to infinity close to the dashed line, however it does have a \keyword{local maximum value} in the right part.
+	The function plotted in Figure \ref{lec7:globalextreme} has no global maximum value, since it goes off to infinity close to the dashed line, however it does have a \keyword{local maximum value} in the right part.
 \end{example}
 
 \begin{figure}[b!]
@@ -67,7 +67,7 @@ Functions don't always have global extreme values.
 		\end{axis}
 	\end{tikzpicture}
 	\caption{A function with no global maximum.}
-	\label{lec8:globalextreme}
+	\label{lec7:globalextreme}
 \end{figure}
 
 \begin{definition}[Local extreme values]
@@ -85,7 +85,7 @@ A function $f$ can have local extreme values only at points of three special typ
 \end{romanlist}
 
 \noindent
-The first item about critical points follows from Lemma \ref{lec5:criticalpoint} related to the Mean-value theorem, and the others are fairly obvious.
+The first item about critical points follows from Lemma \ref{lec4:criticalpoint} related to the Mean-value theorem, and the others are fairly obvious.
 
 A point being a local extreme value implies \fakeitemref{1}, \fakeitemref{2}, or \fakeitemref{3}, but the other way around need not be true; critical points, singular points and endpoints need not be extreme points.
 
@@ -126,7 +126,7 @@ We can decide whether the three types of points are local minimum or maximum val
 \end{theorem}
 
 \begin{exercise}
-	To prove this, recall Definition \ref{lec5:monotonicity}.
+	To prove this, recall Definition \ref{lec4:monotonicity}.
 \end{exercise}
 
 \noindent
@@ -279,7 +279,7 @@ We demonstrate two more interesting examples that exemplify the requirement abou
 			\end{axis}
 		\end{tikzpicture}
 		\caption{No tangent line at $x = a$}
-		\label{lec8:inflectioncounter}
+		\label{lec7:inflectioncounter}
 	\end{subfigure}
 	\quad
 	\begin{subfigure}{0.45\textwidth}
@@ -321,15 +321,15 @@ We demonstrate two more interesting examples that exemplify the requirement abou
 			\end{axis}
 		\end{tikzpicture}
 		\caption{$f(x) = x^{1/3}$ with vertical tangent line at $x = 0$}
-		\label{lec8:inflectionvertical}
+		\label{lec7:inflectionvertical}
 	\end{subfigure}
 	\caption{Counterexamples of the Mean-value theorem where essential conditions are violated.}
 \end{figure}
 
 \begin{examples}
-	In Figure \ref{lec8:inflectioncounter} we see a function which changes concavity around $x = a$, however it is by definition \emph{not} an inflection point since there is no tangent line at this point.
+	In Figure \ref{lec7:inflectioncounter} we see a function which changes concavity around $x = a$, however it is by definition \emph{not} an inflection point since there is no tangent line at this point.
 
-	Moreover in Figure \ref{lec8:inflectionvertical} we demonstrate an inflection point at a point where the function at hand, $f(x) = x^{1/3}$, is not differentiable, but it has a tangent line.
+	Moreover in Figure \ref{lec7:inflectionvertical} we demonstrate an inflection point at a point where the function at hand, $f(x) = x^{1/3}$, is not differentiable, but it has a tangent line.
 	In this sense the condition on the existence of a tangent line is stronger than the existence of the derivative.
 \end{examples}
 
@@ -346,7 +346,7 @@ Since concavity depends on the derivative being increasing or decreasing, we can
 \end{theorem}
 
 \begin{proof}
-	As suggested above, \fakeitemref{1} and \fakeitemref{2} are clear by Theorem \ref{lec5:monotonicityproof}, wherein the sign of the derivative implies that a function is increasing or decreasing.
+	As suggested above, \fakeitemref{1} and \fakeitemref{2} are clear by Theorem \ref{lec4:monotonicityproof}, wherein the sign of the derivative implies that a function is increasing or decreasing.
 
 	For \fakeitemref{3}, if $f$ has an inflection point at $x_0$ and $f''(x_0)$ exists, then $f$ must be differentiable on an open interval containing $x_0$.
 	Since $f'$ is increasing on one side of $x_0$ and decreasing on the other, it must have a local extreme value at $x_0$, and therefore $f''(x_0) = 0$.
@@ -420,7 +420,7 @@ Combining all of this, and maybe some other things, we can quite accurately sket
 	\]
 
 	\noindent
-	Using this we sketch the function in Figure \ref{lec8:sketch1}.
+	Using this we sketch the function in Figure \ref{lec7:sketch1}.
 	Note how we know $x = 0$ is a local maximum point since $f'(0) = 0$ and $f''(0) < 0$.
 \end{example}
 
@@ -480,7 +480,7 @@ Combining all of this, and maybe some other things, we can quite accurately sket
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Plot of $\displaystyle f(x) = \frac{x^2 - 1}{x^2 - 4}$.}
-	\label{lec8:sketch1}
+	\label{lec7:sketch1}
 \end{figure}
 
 \noindent
@@ -573,5 +573,5 @@ Let's now tackle a rather more difficult function to sketch.
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Plot of $y = x e^{-x^2 / 2}$.}
-	\label{lec8:sketch2}
+	\label{lec7:sketch2}
 \end{figure}

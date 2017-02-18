@@ -49,7 +49,7 @@ We will soon have to deal a lot with sums, usually of very many (maybe infinitel
 			\end{axis}
 		\end{tikzpicture}
 		\caption{The precise area under some curve}
-		\label{lec10:realarea}
+		\label{lec9:realarea}
 	\end{subfigure}
 	\begin{subfigure}{0.45\textwidth}
 		\centering
@@ -120,14 +120,14 @@ We will soon have to deal a lot with sums, usually of very many (maybe infinitel
 			\end{axis}
 		\end{tikzpicture}
 		\caption{An approximation of the same area}
-		\label{lec10:approximatearea}
+		\label{lec9:approximatearea}
 	\end{subfigure}
 	\caption{The area under a curve, both exact and as estimated by a sum.}
 \end{figure}
 
 Suppose we have some function $f$, and we want to find the area between $x = a$, $x = b$, the $x$-axis, and $y = f(x)$.
 Now, if this region is a polygon, it's easy, but it isn't necessarily.
-See, for instance, Figure \ref{lec10:realarea}.
+See, for instance, Figure \ref{lec9:realarea}.
 
 It \emph{can} however be estimated using polygons.
 We do this by \keyword{partitioning}\index{partition} (dividing) the interval $[a, b]$ into $n$ parts (not necessarily equal in length),
@@ -137,7 +137,7 @@ We do this by \keyword{partitioning}\index{partition} (dividing) the interval $[
 Thus the smaller sections are $[x_{i - 1}, x_i]$ for all $i = 1, 2, 3, \ldots, n$.
 We denote by $\Delta x_i = x_i - x_{i - 1}$ the length of these subintervals.
 
-The point of this is that we can now approximate the area $A$ we are interested in by taking the sum of the areas of the rectangles we form as in Figure \ref{lec10:approximatearea}, namely
+The point of this is that we can now approximate the area $A$ we are interested in by taking the sum of the areas of the rectangles we form as in Figure \ref{lec9:approximatearea}, namely
 \[
 	S_n = f(x_1) \Delta x_1 + f(x_2) \Delta x_2 + \ldots + f(x_n) \Delta x_n = \sum_{i = 1}^n f(x_i) \Delta x_i.
 \]
@@ -151,7 +151,7 @@ Of course $S_n$ is not \emph{quite} equal to $A$, since it sometimes overestimat
 \begin{example}
 	Find the area of the region bounded by $y = x^2$, $y = 0$, $x = 0$, and $x = b$, where $b > 0$.
 
-	We divide the interval $[0, b]$ into $n$ equal parts, as illustrated in Figure \ref{lec10:x^2area}, each with width $\Delta x_i = b/n$.
+	We divide the interval $[0, b]$ into $n$ equal parts, as illustrated in Figure \ref{lec9:x^2area}, each with width $\Delta x_i = b/n$.
 	The height of the rectangle at $x = x_i$ is then $(i b / n)^2$, whereby\footnote{Feel free to verify on your own, perhaps by induction, that the last step is correct.}
 	\[
 		S_n = \sum_{i = 1}^n f(x_i) \Delta x_i = \sum_{i = 1}^n \Big ( \frac{i b}{n} \Big )^2 \frac{b}{n} = \frac{b^3}{n^3} \sum_{i = 1}^n i^2 = \frac{b^3}{n^3} \frac{n (n + 1)(2n + 1)}{6}.
@@ -223,7 +223,7 @@ Of course $S_n$ is not \emph{quite} equal to $A$, since it sometimes overestimat
 		\end{axis}
 	\end{tikzpicture}
 	\caption{Estimating the area under $y = x^2$ using rectangles.}
-	\label{lec10:x^2area}
+	\label{lec9:x^2area}
 \end{figure}
 
 \noindent

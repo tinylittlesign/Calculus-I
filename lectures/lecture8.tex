@@ -2,7 +2,7 @@
 
 \topic{Proofs of Max-min and Intermediate Value Theorem}
 
-A long time ago (all the way back in Lecture \ref{lec3:continuity}) we stated the Max-min theorem and the Intermediate value theorem, but we did not prove them.
+A long time ago (all the way back in Lecture \ref{lec2:continuity}) we stated the Max-min theorem and the Intermediate value theorem, but we did not prove them.
 We will now, though note that strictly speaking this is not a part of this course.
 
 We will need to remember the definitions of limit, continuity at a point, and what we meant by a function being continuous on an interval.
@@ -73,7 +73,7 @@ The same theorem is true for decreasing sequences bounded below.
 \noindent
 We will now prove some theorems we already established for functions, but this time for sequences.
 
-\begin{theorem}\label{lec9:seqbound}
+\begin{theorem}\label{lec8:seqbound}
 	If $a \leq x_n \leq b$ for all $n = 1, 2, 3, \ldots$, and $\lim\limits_{n \to \infty} x_L = L$, then $a \leq L \leq b$.
 \end{theorem}
 
@@ -90,7 +90,7 @@ We will now prove some theorems we already established for functions, but this t
 	Similarly for $L \geq a$.
 \end{proof}
 
-\begin{theorem}\label{lec9:seqlim}
+\begin{theorem}\label{lec8:seqlim}
 	If $f$ is continuous on $[a, b]$, if $a \leq x_n \leq b$ for all $n = 1, 2, 3, \ldots$, and if $\lim\limits_{n \to \infty} x_n = L$, then
 	\[
 		\lim_{n \to \infty} f(x_n) = f(L).
@@ -132,11 +132,11 @@ These are the tools we require to prove the main result behind the two theorems 
 	\]
 
 	\noindent
-	By Theorem \ref{lec9:seqbound} we have $a \leq L \leq b$, and $f$ is continuous at $L$ so
+	By Theorem \ref{lec8:seqbound} we have $a \leq L \leq b$, and $f$ is continuous at $L$ so
 	\[
 		\lim_{n \to \infty} f(x_n) = f(L)
 	\]
-	exists by Theorem \ref{lec9:seqlim}.
+	exists by Theorem \ref{lec8:seqlim}.
 	But since $f(x_n) \geq n$ for every $n$,
 	\[
 		\lim_{n \to \infty} f(x_n)
