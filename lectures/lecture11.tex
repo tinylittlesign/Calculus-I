@@ -59,7 +59,7 @@ Then $\frac{d u}{d x} = g'(x)$, which, if we treat $d u$ and $d x$ as differenti
 
 	First let $u = 1 + e^x$, whereby $d u = e^x \, d x$, so that
 	\[
-		\int e^x \sqrt{1 + e^x} \, d x = \int \sqrt{u} \, d y = \frac{2}{3} u^{3 / 2} + C = \frac{2}{3} ( 1 + e^x )^{3 / 2} + C. \qedhere
+		\int e^x \sqrt{1 + e^x} \, d x = \int \sqrt{u} \, d u = \frac{2}{3} u^{3 / 2} + C = \frac{2}{3} ( 1 + e^x )^{3 / 2} + C. \qedhere
 	\]
 \end{example}
 
@@ -83,7 +83,7 @@ Regrettably, life isn't always that good:
 	\noindent
 	If we now let $u = x + 2$ we get $d u = d x$, which means that
 	\[
-		\int \frac{d x}{(x + 2)^2 + 1} = \int \frac{d u}{u^2 + 1} = \arctan{u} + C = \arctan{x + 2} + C. \qedhere
+		\int \frac{d x}{(x + 2)^2 + 1} = \int \frac{d u}{u^2 + 1} = \arctan{u} + C = \arctan(x + 2) + C. \qedhere
 	\]
 \end{example}
 
@@ -164,7 +164,7 @@ Unless we switch back before evaluating!
 	We let $u = 2 + \sin(x / 2)$, meaning that $d u = \cos(x / 2) / 2 \, d x$, and if $x = 0$, $u = 0$, and if $x = \pi$, then $u = 3$.
 	Thus
 	\[
-		I = \int_2^3 = u^2 \, d u = \frac{2}{3} u^3 \Big \rvert_2^3 = \frac{2}{3} (27 - 8) = \frac{38}{3}. \qedhere
+		I = 2 \int_2^3 u^2 \, d u = \frac{2}{3} u^3 \Big \rvert_2^3 = \frac{2}{3} (27 - 8) = \frac{38}{3}. \qedhere
 	\]
 \end{example}
 
@@ -199,7 +199,7 @@ We close with another example where the substitution isn't all that obvious.
 
 \begin{example}
 	Integrate $\sqrt{1 - x^2}$ between $x = 0$ and $x = 1$.
-	We let $u = \arcsin(x)$, whereby $x = \sin(u)$, and implicit differentiation $d x = \cos(u) \, d u$.
+	We let $u = \arcsin(x)$, whereby $x = \sin(u)$, and implicit differentiation yields $d x = \cos(u) \, d u$.
 	Thus
 	\begin{align*}
 		\int_0^1 \sqrt{1 - x^2} \, d x & = \int_0^{\pi/2} \underbrace{\sqrt{1 - (\sin(u))^2}}_{=\, \cos(u)} \cos(u) \, d u = \int_0^{\pi/2} (\cos(u))^2 \, d u                         \\
@@ -384,7 +384,7 @@ where we'd again have to split the integral up into the positive parts and the n
 	Find the area lying between $y = \sin(x)$ and $y = \cos(x)$ from $x = 0$ to $x = 2 \pi$, as seen in Figure \ref{lec11:positiveareas}.
 	\begin{align*}
 		A & = \int\limits_0^{\pi/4} \cos(x) - \sin(x) \, d x + \int\limits_{\pi/4}^{5 \pi/4} \sin(x) - \cos(x) \, d x + \int\limits_{5 \pi/4}^{2\pi} \cos(x) - \sin(x) \, d x \\
-		  & = (\sin(x) - \cos(x)) \Big \rvert_0^{\pi/4} - (\cos(x) + \sin(x)) \Big \rvert_{\pi/4}^{5 \pi/4} + (\sin(x) - \cos(x)) \Big \rvert_{5\pi/4}^{2\pi}                 \\
+		  & = (\sin(x) + \cos(x)) \Big \rvert_0^{\pi/4} - (\cos(x) + \sin(x)) \Big \rvert_{\pi/4}^{5 \pi/4} + (\sin(x) - \cos(x)) \Big \rvert_{5\pi/4}^{2\pi}                 \\
 		  & = (\sqrt{2} - 1) + (\sqrt{2} + \sqrt{2}) + (1 + \sqrt{2}) = 4 \sqrt{2}. \qedhere
 	\end{align*}
 \end{example}
