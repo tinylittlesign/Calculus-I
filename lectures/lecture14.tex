@@ -1,0 +1,274 @@
+%!TEX root = ../lectures.tex
+
+\topic{First-Order Differential Equations}
+
+The most simple type of \emph{differential equations}\index{differential equation} are \keyword{first-order}\index{differential equation!first-order}, meaning that they involve only first derivatives, which we generally solve by rearranging and integrating.
+
+\begin{example}
+	Consider the \keyword{logistic growth model}
+	\[
+		\frac{d y}{d t} = k y \Big ( 1 - \frac{y}{L} \Big ),
+	\]
+	where $y(t)$ is the size of a population at time $t$, $k$ is some positive constant describing how quickly and efficiently the population reproduces, and $L$ is the limit of how many individuals can be sustained.
+
+	This is a so-called \keyword{separable equation}\index{separable equation} because we can rewrite it with all $t$ terms on one side and all $y$ terms on the other:
+	\[
+		\frac{L}{y(L - y)} \, d y = k \, d t \qquad \Longleftrightarrow \qquad \frac{1}{y} + \frac{1}{L - y} \, d y = k \, d t.
+	\]
+
+	\noindent
+	By integrating both sides we get, assuming $0 < y < L$,
+	\[
+		\int \frac{1}{y} + \frac{1}{L - y} \, d y = \int k \, d t \qquad \Longleftrightarrow \qquad \ln(y) - \ln(L - y) = k t + C,
+	\]
+	which we can rewrite as
+	\[
+		\frac{y}{L - y} = e^{k t + C} = C_1 e^{k t} \qquad \Longleftrightarrow \qquad y (1 + C_1 e^{k t}) = C_1 L e^{k t},
+	\]
+	which finally becomes
+	\[
+		y(t) = \frac{C_1 L e^{k t}}{1 + C_1 e^{k t}},
+	\]
+	which describes the size of the population at each time $t$.
+\end{example}
+
+\noindent
+Thus in general we try to tell whether the equation can be factored into \emph{separate} $x$ and $y$ terms.
+
+\begin{example}
+	Consider the differential equation
+	\[
+		\frac{d y}{d x} = - \frac{x}{y}.
+	\]
+
+	\noindent
+	By rearranging we get $y \, dy = x \, d x$, so
+	\[
+		\int y \, d y = - \int x \, d x \qquad \Longleftrightarrow \qquad \frac{1}{2} y^2 = - \frac{1}{2} x^2 + C,
+	\]
+	which we rewrite as
+	\[
+		x^2 + y^2 = D,
+	\]
+	which we recognise as the equation of a circle of radius $\sqrt{D}$ (at least if $D$ is nonnegative).
+\end{example}
+
+\begin{example}
+	Solve the integral equation
+	\[
+		y(x) = 3 + 2 \int_1^x t y(t) \, d t.
+	\]
+
+	\noindent
+	We differentiate with respect to $x$ and get
+	\[
+		\frac{d y}{d x} = 2 x y(x)
+	\]
+	by the Fundamental theorem of calculus, whereby
+	\[
+		\frac{d y}{y} = 2 x \, d x \qquad \Longleftrightarrow \qquad \ln\abs{y(x)} = x^2 + C,
+	\]
+	whereby $y = C_1 e^{x^2}$.
+
+	By plugging in $x = 1$ in the original equation we get $y(1) = 3$ as an initial value, whence $y(1) = C_1 e^{1^2} = 3$, ergo $C_1 = 3 / e$, meaning that
+	\[
+		y = 3 e^{x^2 - 1}. \qedhere
+	\]
+\end{example}
+
+\topic{First-Order Linear Differential Equations}
+
+A first-order \keyword{linear}\index{differential equation!linear} differential equation is one on the form
+\[
+	\frac{d y}{d x} + p(x) y = q(x),
+\]
+where $p$ and $q$ are some given functions, let's say continuous.
+
+They are called linear equations because any linear combination of solutions form another solution.
+
+If $q(x) = 0$ for all $x$, then the equation is called \keyword{homogeneous}\index{differential equation!homogeneous}, otherwise \keyword{nonhomogeneous}\index{differential equation!nonhomogeneous}.
+
+The homogeneous equation is separable and easy to solve:
+\[
+	\frac{d y}{y} = - p(x) \, d x,
+\]
+so
+\[
+	\ln(x) = - \underbrace{\int p(x) \, d x}_{=\, \mu(x)},
+\]
+meaning that
+\[
+	y = K e^{- \int p(x) \, d x} = K e^{-\mu(x)}.
+\]
+
+\noindent
+It's not without reason we give the function $\mu$ in the solution to the homogeneous equation as special name.
+Indeed, it is the key to solving the nonhomogeneous equation.
+The method is quite simple: by multiplying both sides of the equation by $e^{\mu(x)}$, called the \keyword{integrating factor}\index{integrating factor}, we see that
+\begin{align*}
+	\frac{d}{d x} \big ( e^{\mu(x)} y(x) \big ) &= e^{\mu(x)} \frac{d y}{d x} + e^{\mu(x)} \underbrace{\frac{d \mu}{d x}}_{=\, p(x)} y(x) \\
+	                                            &= e^{\mu(x)} \Big ( \frac{d y}{d x} + p(x) y \Big ) = e^{\mu(x)} q(x).
+\end{align*}
+
+\noindent
+Integrating both sides we get
+\[
+	e^{\mu(x)} y(x) = \int e^{\mu(x)} q(x) \, d x,
+\]
+meaning that
+\[
+	y(x) = e^{-\mu(x)} \int e^{\mu(x)} q(x) \, d x.
+\]
+
+\begin{example}
+	Solve
+	\[
+		\frac{d y}{d x} + \frac{y}{x} = 1,
+	\]
+	for $x > 0$.
+
+	We identify $p(x) = 1/x$, so
+	\[
+		\mu(x) = \int p(x) \, d x = \ln(x),
+	\]
+	so the integrating factor is $e^{\mu(x)} = e^{\ln(x)} = x$.
+	Therefore
+	\[
+		\frac{d}{d x} (x y) = x \frac{d y}{d x} + y = x \Big ( \frac{d y}{d x} + \frac{y}{x} \Big ) = x,
+	\]
+	so
+	\[
+		x y = \int x \, d x = \frac{1}{2} x^2 + C \qquad \Longleftrightarrow \qquad y = \frac{1}{x} \Big ( \frac{1}{2} x^2 + C \Big ) = \frac{x}{2} + \frac{C}{x}. \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Solve $\frac{d y}{d x} + x y = x^3$.
+
+	We identify $p(x) = x$, whereby
+	\[
+		\mu(x) = \int x \, d x = \frac{x^2}{2},
+	\]
+	so the integrating factor is $e^{\mu(x)} = e^{x^2 / 2}$.
+	This means that
+	\[
+		\frac{d}{d x} \big ( e^{x^2 / 2} y \big ) = e^{x^2 / 2} \frac{d y}{d x} + e^{x^2 / 2} x y = e^{x^2 / 2} \Big ( \frac{d y}{d x} + x y \Big ) = e^{x^2 / 2} x^3.
+	\]
+
+	\noindent
+	Thus we have
+	\[
+		e^{x^2 / 2} y = \int x^3 e^{x^2 / 2} \, d x,
+	\]
+	meaning that we have to solve this integral.
+	We do so by integrating by parts, letting $U(x) = x^2$ and $V'(x) = x^{x^2 / 2}$, meaning that $U'(x) = 2 x$ and $V(x) = e^{x^2 / 2}$.
+	This gives us
+	\[
+		\int x^3 e^{x^2 / 2} \, d x = x^2 e^{x^2 / 2} - 2 \int x e^{x^2 / 2} \, d x = x^2 e^{x^2 / 2} - 2 e^{x^2 / 2} + C.
+	\]
+
+	\noindent
+	Finally then
+	\[
+		y(x) = x^2 - 2 + C e^{-x^2 / 2}. \qedhere
+	\]
+\end{example}
+
+\topic{Second-Order Linear Differential Equations}
+
+A differential equation of the form
+\[
+	a y'' + b y' + c y = 0,
+\]
+where $a \neq 0$, $b$, and $c$ are constants, is called a \keyword{second-order}\index{differential equation!second-order}, \keyword{linear}, \keyword{homogeneous} differential equation with \keyword{constant coefficients}\index{differential equation!constant coefficients}.
+
+It is called linear for the same reason as before: because if $y_1(x)$ and $y_2(x)$ are two solutions, then so is $y(x) = A y_1(x) + B y_2(x)$ for all constants $A$ and $B$.
+(Feel free to check this!)
+
+Inspired by $y' = k y$ having the solution $y = C e^{k x}$, we try to find a solution for this new equation on the same form.
+
+In other words, let $y = e^{r x}$ and we get $y' = r e^{r x}$ and $y'' = r^2 e^{r x}$, which we plug into the equation:
+\[
+	a r^2 e^{r x} + b r e^{r x} + c e^{r x} = 0,
+\]
+and since $e^{r x}$ is nonzero, $y = e^{r x}$ will solve the differential equation if and only if $r$ satisfies the so-called \keyword{auxiliary equation}\index{auxiliary equation}
+\[
+	a r^2 + b r + c = 0.
+\]
+
+\noindent
+This of course has the roots
+\[
+	r = \frac{- b \pm \sqrt{b^2 - 4 a c}}{2 a},
+\]
+in which we call $b^2 - 4 ac$ the \keyword{discriminant}\index{discriminant}, and it being positive, negative, or zero dictates our solution.
+
+\subsubsection*{Case 1: $b^2 - 4 a c > 0$}
+
+In this case the auxiliary equation has two distinct real roots,
+\[
+	r_1 = \frac{- b - \sqrt{b^2 - 4 a c}}{2 a} \qquad \text{and} \qquad r^2 = \frac{- b + \sqrt{b^2 - 4 a c}}{2 a},
+\]
+whereby $y_1(x) = e^{r_1 x}$ and $y_2(x) = e^{r_2 x}$ are two solutions, and so the general solution is
+\[
+	y(x) = A e^{r_1 x} + B e^{r_2 x}.
+\]
+
+\subsubsection*{Case 2: $b^2 - 4 a c = 0$}
+
+With the discriminant being zero we have $r_1 = r_2 = -b / (2a) = r$, so $y = e^{r x}$ is a solution. We find the general solution by taking $y = e^{r x} u(x)$, which gives
+\[
+	y' = e^{r x} (u'(x) + r u(x)) \qquad \text{and} \qquad y'' = e^{r x} (u''(x) + 2 r u'(x) + r^2 u(x)),
+\]
+which if we put it back into the differential equation yields
+\[
+	e^{r x} (a u''(x) + (2 a r + b) u'(x) + (a r^2 + b r + c) u(x)) = 0.
+\]
+
+\noindent
+But since $a \neq 0$, $e^{r x} \neq 0$, $2 a r + b = 0$, and $r$ solves $a r^2 + b r + c = 0$, this reduces to $u''(x) = 0$ for all $x$. For this to be possible, we must have $u(x) = A + B x$ for constants $A$ and $B$.
+
+Therefore the general solution to this case is
+\[
+	y = A e^{r x} + B x e^{r x}.
+\]
+
+\subsubsection*{Case 3: $b^2 - 4 a c < 0$}
+
+Here the auxiliary equation has solutions $r = k \pm i \omega$, with $i$ being the imaginary unit, where
+\[
+	k = - \frac{b}{2 a} \qquad \text{and} \qquad \omega = \frac{\sqrt{4 a c - b^2}}{2 a}.
+\]
+Then $y_1^* (x) = e^{(k + i \omega) x}$ and $y_2^* (x) = e^{(k - i \omega) x}$ are two different solutions, but they are complex.
+
+However since
+\[
+	e^{i x} = \cos(x) + i \sin(x) \qquad \text{and} \qquad e^{- i x} = \cos(x) - i \sin(x),
+\]
+we can find two real-valued functions as linear combinations of the above:
+\begin{align*}
+	y_1(x) &= \frac{1}{2} y_1^*(x) + \frac{1}{2} y_2^*(x) = e^{k x} \cos(\omega x), \\
+	y_2(x) &= \frac{1}{2 i} y_1^*(x) - \frac{1}{2 i} y_2^*(x) = e^{k x} \sin(\omega x)
+\end{align*}
+so the general (real) solution is
+\[
+	y = A e^{k x} \cos(\omega x) + B e^{k x} \sin(\omega x).
+\]
+
+\begin{example}
+	Find the general solution to $y'' + y' - 2y = 0$.
+
+	We set up the auxiliary equation $r^2 + r - 2 = 0$, which has the solutions $r = -2$ and $r = 1$ since $(r + 2)(r - 1) = 0$. Thus the general solution is $y = A e^{-2 x} + B e^{x}$.
+\end{example}
+
+\begin{example}
+	Solve $y'' + 6 y' + 9 y = 0$.
+
+	This has the auxiliary equation $r^2 + 6 r + 9 = 0$, which is equivalent with $(r + 3)^2 = 0$, so $r = -3$ is a repeated root and our general solution is $y = A e^{-3x} + B x e^{-3x}$.
+\end{example}
+
+\begin{example}
+	Solve the differential equation $y'' + 4 y + 13 y = 0$.
+
+	The auxiliary equation has the solutions $r = -2 \pm 3 i$, whereby $k = -2$ and $\omega = 3$. Therefore the general solution is $y = A e^{-2 x} \cos(3 x) + B e^{-2 t} \sin(3 x)$. 
+\end{example}
