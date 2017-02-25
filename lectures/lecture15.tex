@@ -1,0 +1,204 @@
+%!TEX root = ../lectures.tex
+
+\topic{Nonhomogeneous Second-Order Linear Differential Equations}
+
+Let us now consider
+\[
+	a y'' + b y' + c y = f(x),
+\]
+instead of the right-hand side being 0, and let $y_h$ be the general solution to the \emph{homogeneous} equation.
+Further, let $y_p$ be \emph{any} solution to the \emph{nonhomogeneous} equation.
+
+Then $y(x) = y_h(x) + y_p(x)$ is the general solution to the nonhomogeneous equation.
+
+\begin{theorem}
+	If $y_1$ is a solution to the linear homogeneous equation
+	\[
+		a y'' + b y' + c y = 0,
+	\]
+	and $y_2$ is a solution to the linear nonhomogeneous equation
+	\[
+		a y'' + b y' + c y = f(x),
+	\]
+	then $y = y_1 + y_2$ also solves the nonhomogeneous equation.
+\end{theorem}
+
+\begin{proof}
+	We have
+	\[
+		y'(x) = y'_1(x) + y'_2(x) \qquad \text{and} \qquad y''(x) = y''_1(x) + y''_2(x).
+	\]
+	Moreover
+	\begin{align*}
+		a y''(x) + b y'(x) + c y(x) &= a y''_1(x) + a y''_2(x) + b y'_1(x) + b y'_2(x) + c y_1 + c y_2 \\
+		&= 0 + f(x) = f(x). \qedhere
+	\end{align*}
+\end{proof}
+
+\noindent
+This means that in general we need only solve the homogeneous equation and then find \emph{one} particular solution to the nonhomogeneous equation.
+
+This latter problem, of finding a solution to the nonhomogeneous differential equation, is mostly qualified guesswork based on our knowledge of derivatives.
+
+\begin{example}
+	Solve $y'' + y' - 2 y = 4 x$.
+
+	We note first of all that the homogeneous solution is $y_h(x) = A e^{-2 x} + B e^{x}$.
+
+	Now, since $f(x) = 4 x$ is a first-degree polynomial, we guess that a particular solution can be found as such a polynomial.
+	We try $y = C x + D$, whereby $y = C$ and $y'' = 0$.
+
+	Plugging these into the differential equation we get
+	\[
+		- + C - 2(C x + B) = 4 x \qquad \Longleftrightarrow \qquad - (2 C + 4) x + (C - 2 D) = 0,
+	\]
+	which is constantly 0 if $2 C + 4 = 0$ and $C - 2 D = 0$, so $C = -2$ and $D = -1$.
+	Therefore a particular solution is $y_p = - 2 x - 1$, so the general solution is
+	\[
+		y(x) = y_h(x) + y_p(x) = A e^{-2 x} + B e^{x} - 2 x - 1. \qedhere
+	\]
+\end{example}
+
+\begin{example}
+	Solve $y'' + 4 y = \sin(x)$.
+
+	We start by solving the homogeneous equation, which since has the auxiliary equation $r^2 + 4 = 0$, whereby $r = 0 \pm 2 i$.
+	Thus the homogeneous solution is $y_h = A \cos(2 x) + B \sin(2 x)$.
+
+	To find a solution to the nonhomogeneous equation, we consider the fact that, when taking derivatives, $\sin$ goes to $\cos$ goes to $-\sin$ goes to $-\cos$, and so on.
+	Therefore is seems like a good idea to try the particular solution $y_p = C \sin(x) + D \cos(x)$, so
+	\[
+		y'_p = C \cos(x) - D \sin(x) \qquad \text{and} \qquad y''_p = - C \sin(x) - D \cos(x).
+	\]
+	Inserting this into the differential equations, we get
+	\[
+	- C \sin(x) - D \cos(x) + 4 C \sin(x) + 4 D \cos(x) = 3 C \sin(x) + 3 D \cos(x) = \sin(x),
+	\]
+	which will be true for all $x$ if $3 C = 1$ and $3 D = 0$.
+
+	(Note that in this case, since the differential equation involves only even derivatives, $y_p = C \sin(x)$ would have sufficed.)
+
+	The general solution is therefore
+	\[
+		y = A \cos(2 x) + B \sin(2 x) + \frac{1}{3} \sin(x). \qedhere
+	\]
+\end{example}
+
+\noindent
+Occasionally when solving nonhomogeneous differential equations we get into the situation where the sort of ansatz as above appears as a solution to the homogeneous equation, whereby we could only ever solve the homogeneous equation that way. For instance:
+
+\begin{example}
+	Solve $y'' + 4 y = \sin(2 x)$.
+
+	As before we have $y_h = A \cos(2 x) + B \sin(2 x)$ as the homogeneous solution.
+	Thus if we were to try the same sort of particular solution as before, i.e. $y_p = C \sin(2 x) + D \cos(2 x)$, this is just a case of the homogeneous solution for all $A$ and $B$.
+	Therefore $y_h + y_p = 0$, rather than $\sin(2 x)$.
+
+	Here it is instead useful to try $y_p = C x \sin(2 x) + D x \cos(2 x)$, which yields
+	\begin{align*}
+		y'_p  &= C \sin(2 x) + 2 C x \cos(2 x) + D \cos(2 x) - 2 D x \sin(2 x) \\
+		      &= (C - 2 D x) \sin(2 x) + (D + 2 C x) \cos(2 x), \quad \text{and} \\
+		y''_p &= -2 D \sin(2 x) + 2 (C - 2 D x) \cos(2 x) + 2 C \cos(2 x) - 2 (D + 2 C x) \sin(2 x) \\
+		      &= -4 (D + A x) \sin(2 x) + 4 (C - D x) \cos(2 x).
+	\end{align*}
+
+	\noindent
+	Thus in the differential equation $y'' + 4 y = \sin(2 x)$ we get
+	\[
+		-4 D \sin(2 x) + 4 C \cos(2 x) = \sin(2 x),
+	\]
+	so $C = 0$ and $D = - 1 / 4$. Therefore the general solution is
+	\[
+		y = A \cos(2 x) + D \sin(2 x) - \frac{1}{4} x \cos(2 x). \qedhere
+	\]
+\end{example}
+
+\noindent
+We note further that when on occasion one finds a sum or difference in the nonhomogeneous right-hand side, it is practical to use the linearity of these differential equations, i.e. that we can solve with one of term of the sum at a time.
+
+\begin{example}
+	Solve $y'' + 4 y = \sin(x) + \sin(2 x)$.
+
+	We note that if we consider one of the nonhomogeneous parts at a time, we have the differential equations from the two previous examples.
+	Therefore we can take both of the nonhomogeneous solutions from the previous example as our particular solution here, i.e.
+	\[
+		y = A \cos(2 x) + B \sin(2 x) + \frac{1}{3} \sin(x) - \frac{1}{4} x \cos(2 x). \qedhere.
+	\]
+\end{example}
+
+\begin{exercise}
+	Solve the following differential equations:
+	\begin{alignat*}{3}
+		&(a) \quad y'' + y' - 2 y = e^x \qquad &&(b) \quad y'' + 4 y = x^2 \\
+		&(c) \quad y'' + 2 y' + 2 y = e^{-x} \sin(x) \qquad &&(d) \quad y'' + 2 y' + y = x e^{-x}.
+	\end{alignat*}
+\end{exercise}
+
+\noindent
+In closing, we provide for the curious student proof that of the fact that the homogeneous solutions indicated in Lecture \ref{lec14:differentialequations} are indeed the only solutions, at least for the two cases with real roots.
+The situation with complex roots is solved largely analogously, with some care taken when extracting real roots, and is beyond the scope of this course since we are expected not to deal with complex numbers here.
+
+\begin{proof}
+	 We take care of Case 1 and Case 2, with the two distinct real roots and the real double root, respectively.
+	 Suppose $y$ is a solution to the differential equation $a y'' + b y' + c y = 0$, and that $r_1$ is one of the real roots of the auxiliary equation $a r^2 + b r + c = 0$.
+	 Now define a new function
+	 \[
+	 	u = a y' + (a r_1 + b) y.
+	 \]
+
+	 \noindent
+	 We note that since $y$ and $y'$ are differentiable (since $y''$ exists), $u$ must be as well, and in particular
+	 \[
+	 	u' = a y'' + (a r_1 + b) y'.
+	 \]
+
+	 \noindent
+	 Now consider the difference $u' - r_1 u$, namely
+	 \begin{align*}
+		 u' - r_1 u &= a y'' + (a r_1 + b) y' - r_1 y' - r_1 (a r_1 + b) y \\
+		            &= a y'' + b y' - (a r_1^2 + b r_1) y,
+	 \end{align*}
+	 however since $a r_1^2 + b r_1 + c = 0$, we have $a r_1^2 + b r_1 = -c$, whereby
+	 \[
+	 	u' - r_1 u = a y'' + b y' + c y = 0,
+	 \]
+	 so $u$ is a solution to the first-order linear differential equation $u' - r_1 u = 0$.
+	 But by writing this as
+	 \[
+	 	\frac{d u}{d x} - r_1 u = 0 \qquad \Longleftrightarrow \qquad \frac{d u}{u} = r_1 \, d x
+	 \]
+	 we see that it is separable and has the solution $u(x) = C_1 e^{r_1 x}$, with $C_1$ being some constant.
+	 If we now put this back into our definition of $u$, we have
+	 \[
+	 	a y' + (a r_1 + b) y = C_1 e^{r_1 x},
+	 \]
+	 which by dividing by $a$ yields
+	 \[
+	 	y' + \Big (r_1 + \frac{b}{a} \Big ) y = C_2 e^{r_1 x}.
+	 \]
+
+	 \noindent
+	 Now if we let $r_1$ denote the other root of the auxiliary equation (which may be the same at $r_1$), it is easy to verify that $- r_2 = r_1 + b / a$, whereby our new differential equation becomes
+	 \[
+	 	y' - r_2 y = C_2 e^{r_1 x}.
+	 \]
+
+	 \noindent
+	 This we can solve using the integrating factor $e^{- \int r_2 \, d x} = e^{-r_2 x}$, whereby
+	 \[
+	 	y = C_2 e^{r_2 x} \int e^{(r_1 - r_2) x} \, d x.
+	 \]
+
+	 \noindent
+	 There are now two separate cases to consider.
+	 If the two roots are different, we get
+	 \[
+	 	y = C_2 e^{r_2 x} \Big ( \frac{e^{(r_1 - r_2) x}}{r_1 - r_2} + C_3 \Big ) = A e^{r_1 x} + B e^{r_2 x},
+	 \]
+	 where the constants $A$ and $B$ are arbitrary since $C_1$ and $C_2$ were.
+
+	 On the other hand, if $r_1 = r_2$, we get
+	 \[
+	 	y = C_2 e^{r_2 x} \int \, d x = C_2 e^{r_1 x} (x + C_3) = A e^{r_1 x} + B x e^{r_1 x}. \qedhere
+	 \]
+\end{proof}

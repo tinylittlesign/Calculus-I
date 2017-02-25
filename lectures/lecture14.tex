@@ -216,7 +216,8 @@ whereby $y_1(x) = e^{r_1 x}$ and $y_2(x) = e^{r_2 x}$ are two solutions, and so 
 
 \subsubsection*{Case 2: $b^2 - 4 a c = 0$}
 
-With the discriminant being zero we have $r_1 = r_2 = -b / (2a) = r$, so $y = e^{r x}$ is a solution. We find the general solution by taking $y = e^{r x} u(x)$, which gives
+With the discriminant being zero we have $r_1 = r_2 = -b / (2a) = r$, so $y = e^{r x}$ is a solution.
+We find the general solution by taking $y = e^{r x} u(x)$, which gives
 \[
 	y' = e^{r x} (u'(x) + r u(x)) \qquad \text{and} \qquad y'' = e^{r x} (u''(x) + 2 r u'(x) + r^2 u(x)),
 \]
@@ -226,7 +227,8 @@ which if we put it back into the differential equation yields
 \]
 
 \noindent
-But since $a \neq 0$, $e^{r x} \neq 0$, $2 a r + b = 0$, and $r$ solves $a r^2 + b r + c = 0$, this reduces to $u''(x) = 0$ for all $x$. For this to be possible, we must have $u(x) = A + B x$ for constants $A$ and $B$.
+But since $a \neq 0$, $e^{r x} \neq 0$, $2 a r + b = 0$, and $r$ solves $a r^2 + b r + c = 0$, this reduces to $u''(x) = 0$ for all $x$.
+For this to be possible, we must have $u(x) = A + B x$ for constants $A$ and $B$.
 
 Therefore the general solution to this case is
 \[
@@ -258,7 +260,8 @@ so the general (real) solution is
 \begin{example}
 	Find the general solution to $y'' + y' - 2y = 0$.
 
-	We set up the auxiliary equation $r^2 + r - 2 = 0$, which has the solutions $r = -2$ and $r = 1$ since $(r + 2)(r - 1) = 0$. Thus the general solution is $y = A e^{-2 x} + B e^{x}$.
+	We set up the auxiliary equation $r^2 + r - 2 = 0$, which has the solutions $r = -2$ and $r = 1$ since $(r + 2)(r - 1) = 0$.
+	Thus the general solution is $y = A e^{-2 x} + B e^{x}$.
 \end{example}
 
 \begin{example}
@@ -270,5 +273,6 @@ so the general (real) solution is
 \begin{example}
 	Solve the differential equation $y'' + 4 y + 13 y = 0$.
 
-	The auxiliary equation has the solutions $r = -2 \pm 3 i$, whereby $k = -2$ and $\omega = 3$. Therefore the general solution is $y = A e^{-2 x} \cos(3 x) + B e^{-2 t} \sin(3 x)$. 
+	The auxiliary equation has the solutions $r = -2 \pm 3 i$, whereby $k = -2$ and $\omega = 3$.
+	Therefore the general solution is $y = A e^{-2 x} \cos(3 x) + B e^{-2 t} \sin(3 x)$. 
 \end{example}
