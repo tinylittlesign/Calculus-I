@@ -21,7 +21,7 @@ and if we rearrange we get
 \]
 
 \noindent
-This is the chain rule, and it tells us that if we can view a function as the product of some function and the derivative of some other function, we might be able to integrate it more easily.
+This is integration by parts, and it tells us that if we can view a function as the product of some function and the derivative of some other function, we might be able to integrate it more easily.
 
 \begin{example}
 	Compute $\int x e^x \, d x$.
@@ -89,7 +89,7 @@ This is not always the best idea.
 	Therefore
 	\begin{align*}
 		\int x \arctan(x) \, d x &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} \int \frac{1}{1 + x^2} \cdot x^2 \, d x \\
-		                         &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} \int 1 - \frac{1}{1 + x^2} \\
+		                         &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} \int 1 - \frac{1}{1 + x^2} \, d x \\
 		                         &= \frac{1}{2} x^2 \arctan(x) - \frac{1}{2} x + \frac{1}{2} \arctan(x) + C \\
 														 &= \frac{1}{2} ((x^2 + 1) \arctan(x) - x) + C. \qedhere
 	\end{align*}
@@ -183,7 +183,7 @@ When doing this, we will almost always assume that $\deg(P(x)) < \deg(Q(x))$, si
 	\smallskip
 
 	First we perform the polynomial division.
-	\begin{figure}[ht!]
+	\begin{figure}[H]
 		\centering
 		\polylongdiv{x^3 + 3 x^2}{x^2 + 1}
 	\end{figure}
@@ -191,7 +191,7 @@ When doing this, we will almost always assume that $\deg(P(x)) < \deg(Q(x))$, si
 	\noindent
 	Therefore
 	\[
-		\frac{x^2 + 3 x^2}{x^2 + 1} = (x + 3) + \frac{- x - 3}{x^2 + 1},
+		\frac{x^3 + 3 x^2}{x^2 + 1} = (x + 3) + \frac{- x - 3}{x^2 + 1},
 	\]
 	whereby
 	\begin{align*}
@@ -253,7 +253,7 @@ In general, if $Q(x) = (x - \alpha_1)(x - \alpha_2) \cdots (x - \alpha_n)$, wher
 \]
 
 \noindent
-(We won't prove that this always works here; that belongs in an algebra course.)
+(We won't prove that this always works here; that belongs in an algebra course. However the curious student may find the details of the proof in, for example, \cite[Section 4.4]{Nicholson1999}.)
 
 We can find the $A_i$ either by the sytem of equations as before, or by noting that if we multiply $P(x) / Q(x)$ by $x - \alpha_j$, we get
 \[
