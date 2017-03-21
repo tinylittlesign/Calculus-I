@@ -9,7 +9,7 @@ Let us now consider
 instead of the right-hand side being 0, and let $y_h$ be the general solution to the \emph{homogeneous} equation.
 Further, let $y_p$ be \emph{any} solution to the \emph{nonhomogeneous} equation.
 
-Then $y(x) = y_h(x) + y_p(x)$ is the general solution to the nonhomogeneous equation.
+Then $y = y_h + y_p$ is the general solution to the nonhomogeneous equation.
 
 \begin{theorem}
 	If $y_1$ is a solution to the linear homogeneous equation
@@ -26,11 +26,11 @@ Then $y(x) = y_h(x) + y_p(x)$ is the general solution to the nonhomogeneous equa
 \begin{proof}
 	We have
 	\[
-		y'(x) = y'_1(x) + y'_2(x) \qquad \text{and} \qquad y''(x) = y''_1(x) + y''_2(x).
+		y' = y'_1 + y'_2 \qquad \text{and} \qquad y'' = y''_1 + y''_2.
 	\]
 	Moreover
 	\begin{align*}
-		a y''(x) + b y'(x) + c y(x) &= a y''_1(x) + a y''_2(x) + b y'_1(x) + b y'_2(x) + c y_1 + c y_2 \\
+		a y'' + b y' + c y &= a y''_1 + a y''_2 + b y'_1 + b y'_2 + c y_1 + c y_2 \\
 		&= 0 + f(x) = f(x). \qedhere
 	\end{align*}
 \end{proof}
@@ -43,10 +43,10 @@ This latter problem, of finding a solution to the nonhomogeneous differential eq
 \begin{example}
 	Solve $y'' + y' - 2 y = 4 x$.
 
-	We note first of all that the homogeneous solution is $y_h(x) = A e^{-2 x} + B e^{x}$.
+	We note first of all that the homogeneous solution is $y_h = A e^{-2 x} + B e^{x}$.
 
 	Now, since $f(x) = 4 x$ is a first-degree polynomial, we guess that a particular solution can be found as such a polynomial.
-	We try $y = C x + D$, whereby $y = C$ and $y'' = 0$.
+	We try $y = C x + D$, whereby $y' = C$ and $y'' = 0$.
 
 	Plugging these into the differential equation we get
 	\[
@@ -55,7 +55,7 @@ This latter problem, of finding a solution to the nonhomogeneous differential eq
 	which is constantly 0 if $2 C + 4 = 0$ and $C - 2 D = 0$, so $C = -2$ and $D = -1$.
 	Therefore a particular solution is $y_p = - 2 x - 1$, so the general solution is
 	\[
-		y(x) = y_h(x) + y_p(x) = A e^{-2 x} + B e^{x} - 2 x - 1. \qedhere
+		y = y_h + y_p = A e^{-2 x} + B e^{x} - 2 x - 1. \qedhere
 	\]
 \end{example}
 
@@ -99,7 +99,7 @@ Occasionally when solving nonhomogeneous differential equations we get into the 
 		y'_p  &= C \sin(2 x) + 2 C x \cos(2 x) + D \cos(2 x) - 2 D x \sin(2 x) \\
 		      &= (C - 2 D x) \sin(2 x) + (D + 2 C x) \cos(2 x), \quad \text{and} \\
 		y''_p &= -2 D \sin(2 x) + 2 (C - 2 D x) \cos(2 x) + 2 C \cos(2 x) - 2 (D + 2 C x) \sin(2 x) \\
-		      &= -4 (D + A x) \sin(2 x) + 4 (C - D x) \cos(2 x).
+		      &= -4 (D + C x) \sin(2 x) + 4 (C - D x) \cos(2 x).
 	\end{align*}
 
 	\noindent
@@ -122,7 +122,7 @@ We note further that when on occasion one finds a sum or difference in the nonho
 	We note that if we consider one of the nonhomogeneous parts at a time, we have the differential equations from the two previous examples.
 	Therefore we can take both of the nonhomogeneous solutions from the previous example as our particular solution here, i.e.
 	\[
-		y = A \cos(2 x) + B \sin(2 x) + \frac{1}{3} \sin(x) - \frac{1}{4} x \cos(2 x). \qedhere.
+		y = A \cos(2 x) + B \sin(2 x) + \frac{1}{3} \sin(x) - \frac{1}{4} x \cos(2 x). \qedhere
 	\]
 \end{example}
 

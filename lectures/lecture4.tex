@@ -147,8 +147,8 @@ I.e., we can't go from $\SI[per-mode = symbol]{25}{\kilo\metre\per\hour}$ to $\S
 Once again in the language of calculus, this is what we call continuity, and indeed since we have acceleration of some kind everywhere, even if constant, our speed (or velocity) must also have a derivative.
 
 \begin{theorem}[Mean-value theorem]\index{mean-value theorem}
-	Let $f$ be a function continuous on the closed and finite interval $[a, b]$ that is differentiable on $]{a, b}[$.
-	Then there exists a point $c \in {]{a, b}[}$ such that
+	Let $f$ be a function continuous on the closed and finite interval $\interval{a}{b}$ that is differentiable on $\interval[open]{a}{b}$.
+	Then there exists a point $c \in \interval[open]{a}{b}$ such that
 	\[
 		\frac{f(b) - f(a)}{b - a} = f'(c).
 	\]
@@ -364,14 +364,14 @@ This demonstrates that if we lack continuity anywhere in the closed interval, th
 We now prove an intermediary result we need in order to prove the Mean-value theorem.
 
 \begin{lemma}\label{lec4:criticalpoint}
-	If $f$ is defined on an open interval ${]{a, b}[}$ and achieves a maximum (or minimum) at $c \in {]{a, b}[}$, then if $f'(c)$ exists, it must be $0$.
+	If $f$ is defined on an open interval $\interval[open]{a}{b}$ and achieves a maximum (or minimum) at $c \in \interval[open]{a}{b}$, then if $f'(c)$ exists, it must be $0$.
 \end{lemma}
 
 \noindent
 Such points where the derivative is $0$ are called \keyword{critical points}\index{critical point}.
 
 \begin{proof}
-	If $f$ has a maximum at $c \in {]{a, b}[}$, then $f(x) - f(c) \leq 0$ for all $x \in {]{a, b}[}$.
+	If $f$ has a maximum at $c \in \interval[open]{a}{b}$, then $f(x) - f(c) \leq 0$ for all $x \in \interval[open]{a}{b}$.
 	We consider two cases:
 
 	\fakeitem{1} If $c < x < b$, then
@@ -407,23 +407,23 @@ Such points where the derivative is $0$ are called \keyword{critical points}\ind
 We now show a special case of the Mean-value theorem, with which we later prove the full version.
 
 \begin{theorem}[Rolle's theorem]\index{Rolle's theorem}
-	Suppose that $f$ is a continuous function on the closed and finite interval $[a, b]$ and that it is differentiable on ${]{a, b}[}$.
-	If $f(a) = f(b)$, then there exists a point $c \in {]{a, b}[}$ such that $f'(c) = 0$.
+	Suppose that $f$ is a continuous function on the closed and finite interval $\interval{a}{b}$ and that it is differentiable on $\interval[open]{a}{b}$.
+	If $f(a) = f(b)$, then there exists a point $c \in \interval[open]{a}{b}$ such that $f'(c) = 0$.
 \end{theorem}
 
 \begin{proof}
 	There are two cases to consider.
-	If $f(x) = f(a)$ for all $x \in [a, b]$, then $f$ is constant and $f'(c) = 0$ for all $c \in {]{a, b}[}$.
+	If $f(x) = f(a)$ for all $x \in \interval{a}{b}$, then $f$ is constant and $f'(c) = 0$ for all $c \in \interval[open]{a}{b}$.
 
-	Suppose that there exists some $x \in {]{a, b}[}$ such that $f(x) \neq f(a)$, so that either $f(x) > f(a)$ or $f(x) < f(a)$.
+	Suppose that there exists some $x \in\interval[open]{a}{b}$ such that $f(x) \neq f(a)$, so that either $f(x) > f(a)$ or $f(x) < f(a)$.
 
 	Consider the $f(x) > f(a)$ case.
-	Since $f$ is continuous on $[a, b]$, by the Max-min theorem $f$ must have a maximum at some point $c \in [a, b]$.
+	Since $f$ is continuous on $\interval{a}{b}$, by the Max-min theorem $f$ must have a maximum at some point $c \in \interval{a}{b}$.
 	Thus
 	\[
 		f(c) \geq f(x) > f(a) = f(b),
 	\]
-	so $c$ cannot be equal to $a$ or $b$, whereby $c \in {]{a, b}[}$, where by assumption $f$ is differentiable.
+	so $c$ cannot be equal to $a$ or $b$, whereby $c \in \interval[open]{a}{b}$, where by assumption $f$ is differentiable.
 	Thus $f'(c)$ exists, and so by the previous lemma $f'(c) = 0$.
 
 	For the $f(x) < f(a)$ case, we instead use the Max-min theorem to ensure the existence of a minimum, and proceed accordingly.
@@ -433,7 +433,7 @@ We now show a special case of the Mean-value theorem, with which we later prove 
 With this we are finally ready to prove the Mean-value theorem.
 
 \begin{proof}[Proof of Mean-value theorem]
-	Recall that $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$.
+	Recall that $f$ is continuous on $\interval{a}{b}$ and differentiable on $\interval[open]{a}{b}$.
 	We define a new function $g$ by
 	\[
 		g(x) = f(x) - \Big ( f(a) + \frac{f(b) - f(a)}{b - a} \, (x - a) \Big ).
@@ -492,8 +492,8 @@ With this we are finally ready to prove the Mean-value theorem.
 		\label{lec4:meanvalproof}
 	\end{figure}
 
-	Since $f$ is continuous on $[a, b]$ and differentiable on ${]{a, b}[}$, $g$ is as well.
-	Moreover $g(a) = g(b) = 0$ (feel free to verify), whence by Rolle's theorem there exists a $c \in {]{a, b}[}$ such that $g'(c) = 0$.
+	Since $f$ is continuous on $\interval{a}{b}$ and differentiable on $\interval[open]{a}{b}$, $g$ is as well.
+	Moreover $g(a) = g(b) = 0$ (feel free to verify), whence by Rolle's theorem there exists a $c \in \interval[open]{a}{b}$ such that $g'(c) = 0$.
 
 	By differentiating $g$ we get
 	\[
@@ -506,14 +506,14 @@ With this we are finally ready to prove the Mean-value theorem.
 \end{proof}
 
 \begin{corollary}[Generalised Mean-value theorem]
-	If $f$ and $g$ are both continuous on $[a, b]$ and differentiable on ${]{a, b}[})$, and if $g'(x) \neq 0$ for all $x \in {]{a, b}[}$, then there exists a number $c \in {]{a, b}[}$ such that
+	If $f$ and $g$ are both continuous on $\interval{a}{b}$ and differentiable on $\interval[open]{a}{b}$, and if $g'(x) \neq 0$ for all $x \in \interval[open]{a}{b}$, then there exists a number $c \in \interval[open]{a}{b}$ such that
 	\[
 		\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}.
 	\]
 \end{corollary}
 
 \begin{proof}
-	Note that $g(b) \neq g(a)$ since otherwise there would exist an $x \in {]{a, b}[}$ such that $g'(x) = 0$ by the Rolle's theorem.
+	Note that $g(b) \neq g(a)$ since otherwise there would exist an $x \in \interval[open]{a}{b}$ such that $g'(x) = 0$ by the Rolle's theorem.
 	Thus the division in the left-hand side is well-defined.
 
 	We apply the Mean-value theorem to
@@ -522,7 +522,7 @@ With this we are finally ready to prove the Mean-value theorem.
 	\]
 
 	\noindent
-	Since $h(a) = h(b) = 0$ (again, feel free to verify) and $h$ has the appropriate continuity and differentiability, there exists a $c \in {]{a, b}[}$ such that $h'(c) = 0$.
+	Since $h(a) = h(b) = 0$ (again, feel free to verify) and $h$ has the appropriate continuity and differentiability, there exists a $c \in \interval[open]{a}{b}$ such that $h'(c) = 0$.
 	Therefore
 	\[
 		h'(c) = (f(b) - f(a)) g'(c) - (g(b) - g(a)) f'(c) = 0
@@ -566,7 +566,7 @@ In the event that we have differentiability, we can easily detect the above feat
 
 \begin{proof}
 	Let $x_1, x_2 \in I$ with $x_2 > x_1$.
-	By the Mean-value theorem there exists a $c \in (x_1, x_2) \subset J$ such that
+	By the Mean-value theorem there exists a $c \in \interval[open]{x_1}{x_2} \subset J$ such that
 	\[
 		\frac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(c)
 	\]

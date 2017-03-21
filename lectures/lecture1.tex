@@ -119,7 +119,7 @@ We will explain what we mean by this by means of examples.
 \begin{example}
 	For right limits we instead consider \keyword{deleted right neighbourhoods}, like
 	\[
-		\Set{ x \in \R \given 0 < x - 5 < \gamma} = \Set{ x \in \R \given 5 < x < 5 + \gamma} = {]{5, 5 + \gamma}[},
+		\Set{ x \in \R \given 0 < x - 5 < \gamma} = \Set{ x \in \R \given 5 < x < 5 + \gamma} = \interval[open]{5}{5 + \gamma},
 	\]
 	around the point $x = 5$ for all real $\gamma > 0$.
 
@@ -139,7 +139,7 @@ We will explain what we mean by this by means of examples.
 	\noindent
 	Similarly for left limits we use \keyword{deleted left neighbourhoods} such as the following for $x = 3$:
 	\[
-		\Set{ x \in \R \given 0 < 3 - x < \gamma} = \Set{ x \in \R \given 3 - \gamma < x < 3} = {]{3 - \gamma, 3}[}.
+		\Set{ x \in \R \given 0 < 3 - x < \gamma} = \Set{ x \in \R \given 3 - \gamma < x < 3} = \interval[open]{3 - \gamma}{3}.
 	\]
 
 	\begin{figure}[H]
@@ -162,7 +162,7 @@ For limits at infinity (or negative infinity) we also need a deleted neighbourho
 \begin{example}
 	A \keyword{deleted neighbourhood of infinity} consists of all $x$ bigger than some fixed $A \in \R$,
 	\[
-		\Set{x \in \R \given x > A} = {]{A, \infty}[}.
+		\Set{x \in \R \given x > A} = \interval[open]{A}{\infty}.
 	\]
 
 	\begin{figure}[H]

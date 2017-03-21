@@ -109,7 +109,7 @@ In fact, $e^x$ grows faster than any positive power, and $\ln(x)$ increases more
 Let $g(x) = \ln(x) - (x - 1)$ for $x > 0$.
 We have $g(1) = 0$, and $g'(x) = 1/x - 1$, which is positive for $0 < x < 1$ and negative for $x > 1$.
 
-Therefore $g(x)$ is increasing on ${]{0, 1}[}$ and decreasing on ${]{1, \infty}[}$, whence $g(x) \leq g(1) = 0$ for all $x > 0$, meaning that $\ln(x) - (x - 1) \leq 0$, which by adding $x - 1$ to both sides yields $\ln(x) \leq x - 1$.
+Therefore $g(x)$ is increasing on $\interval[open]{0}{1}$ and decreasing on $\interval[open]{1}{\infty}$, whence $g(x) \leq g(1) = 0$ for all $x > 0$, meaning that $\ln(x) - (x - 1) \leq 0$, which by adding $x - 1$ to both sides yields $\ln(x) \leq x - 1$.
 
 This method of studying the derivative of the difference of two functions is a very effective method to show that one function is greater than or less than another function.
 
@@ -178,7 +178,7 @@ Another interesting limit, and one which is sometimes taken to be the definition
 	Clearly $y$ tends to $0$ as $n$ tends to infinity, whereby
 	\begin{align*}
 		\lim_{n \to \infty} \ln \Big ( \Big ( 1 + \frac{x}{n} \Big )^n \Big ) & = \lim_{n \to \infty} n \ln\Big ( 1 + \frac{x}{n} \Big ) = \lim_{n \to \infty} \frac{\frac{x}{n} n \ln \big ( 1 + \frac{x}{n} \big )}{x / n} \\
-		                                                                      & = x \lim_{y \to 0} \frac{\ln(1 + y)}{y} = x \lim_{y \to 0} \frac{\ln(1 + y) - \ln(1)}{y},
+    & = x \lim_{y \to 0} \frac{\ln(1 + y)}{y} = x \lim_{y \to 0} \frac{\ln(1 + y) - \ln(1)}{y},
 	\end{align*}
 	which is of course $x f'(1)$ where $f(x) = \ln(x)$, so the limit is $x \cdot 1/1 = x$.
 	Since $\ln(x)$ is continuous, we can take limits in and out of it, so the above becomes
@@ -189,6 +189,27 @@ Another interesting limit, and one which is sometimes taken to be the definition
 	\[
 		e^x = \lim_{n \to \infty} \Big ( 1 + \frac{x}{n} \Big )^n. \qedhere
 	\]
+\end{proof}
+
+\noindent
+A final interesting limit about the growth speed of the natural logarithm is
+\begin{proposition}
+	$\displaystyle \lim_{x \to 0} \frac{\ln(x + 1)}{x} = 1$.
+\end{proposition}
+
+\noindent
+This result, effectively saying that around the zero of $\ln$ it grows as quickly as a straight line with slope 1, is remarkably easy to prove if looked upon in the right light:
+
+\begin{proof}
+	Recall how $\ln(1) = 0$, whereby the following is true:
+	\[
+		\lim_{x \to 0} \frac{\ln(x + 1)}{x} = \lim_{x \to 0} \frac{\ln(1 + x) - \ln(1)}{x}.
+	\]
+	If we now switch $x$ for $h$ (just for appearances) this starts looking very familiar:
+	\[
+		\lim_{h \to 0} \frac{\ln(1 + h) - \ln(1)}{h} = f'(1),
+	\]
+	if $f(x) = \ln(x)$. Therefore the limit is $1/1 = 1$.
 \end{proof}
 
 \topic{Intermediate Forms and L'H\^{o}pital's Rules}
@@ -221,15 +242,15 @@ Encountering ``$0 / 0$'' is perhaps the most common, and they can often be resol
 Another method for computing limits of the form ``$0 / 0$'' or ``$\infty / \infty$'' are the two l'H\^{o}pital's rules. Most other forms can be made into these two forms by some algebraic manipulation of change of variable.
 
 \begin{theorem}[L'H\^{o}pital's first rule]
-	Suppose $f$ and $g$ are differentiable on ${]{a, b}[}$, and
+	Suppose $f$ and $g$ are differentiable on $\interval[open]{a}{b}$, and
 	\[
 		\lim_{x \to a^+} f(x) = \lim_{x \to a^+} g(x) = 0.
 	\]
-	If $g'(x) \neq 0$ for all $x \in {]{a, b}[}$, and the limit
+	If $g'(x) \neq 0$ for all $x \in \interval[open]{a}{b}$, and the limit
 	\[
 		\lim_{x \to a^+} \frac{f'(x)}{g'(x)} = L
 	\]
-	exists, then $g(x) \neq 0$ for all $x \in {]{a, b}[}$ and
+	exists, then $g(x) \neq 0$ for all $x \in \interval[open]{a}{b}$ and
 	\[
 		\lim_{x \to a^+} \frac{f(x)}{g(x)} = L.
 	\]
@@ -241,14 +262,14 @@ Another method for computing limits of the form ``$0 / 0$'' or ``$\infty / \inft
 
 \begin{proof}
 	This proof is based on defining continuous extensions of $f$ and $g$, namely $F(x) = f(x)$ and $G(x) = g(x)$ for $a < x < b$ and $F(a) = G(a) = 0$.
-	Then $F$ and $G$ are continuous on $[a, x]$ for all $a < x < b$.
+	Then $F$ and $G$ are continuous on $\interval{a}{x}$ for all $a < x < b$.
 	By the Mean-value theorem,
 	\[
 		g(x) = G(x) - G(a) = g'(c) (x - a)
 	\]
-	for some $c \in {]{a, x}[}$, so since $g'(c) \neq 0$ by assumption, we must have $g(x) \neq 0$ for all $a < x < b$, since the right-hand side is never $0$.
+	for some $c \in \interval[open]{a}{x}$, so since $g'(c) \neq 0$ by assumption, we must have $g(x) \neq 0$ for all $a < x < b$, since the right-hand side is never $0$.
 
-	By the Generalised mean-value theorem, for each $x \in {]{a, b}[}$, there exists a $c \in {]{a, x}[}$ (depending on $x$) such that
+	By the Generalised mean-value theorem, for each $x \in \interval[open]{a}{b}$, there exists a $c \in \interval[open]{a}{x}$ (depending on $x$) such that
 	\[
 		\frac{f(x)}{g(x)} = \frac{F(x)}{G(x)} = \frac{F(x) - F(a)}{G(x) - G(a)} = \frac{f'(c)}{g'(c)}.
 	\]
@@ -297,7 +318,7 @@ The second rule of H\^{o}pital concerns the ``$\infty / \infty$'' case:
 	\[
 		\frac{f'(x)}{g'(x)} \to L
 	\]
-	and $\abs{g(x)} \to \infty$ as $x \to a^-$, we can pick an $x_0 < a$ in such a way that $\abs{f'(x) / g'(x) - L} < \varepsilon/2$ and $g(x) \neq 0$ for all $x \in {]{x_0, a}[}$.
+	and $\abs{g(x)} \to \infty$ as $x \to a^-$, we can pick an $x_0 < a$ in such a way that $\abs{f'(x) / g'(x) - L} < \varepsilon/2$ and $g(x) \neq 0$ for all $x \in \interval[open]{x_0}{a}$.
 	The Generalised mean-value theorem gives
 	\[
 		\frac{f(x) - f(x_0)}{g(x) - g(x_0)} = \frac{f'(c)}{g'(c)}

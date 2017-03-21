@@ -5,20 +5,20 @@
 Just like the derivative, definite integrals have a mean-value property.
 
 \begin{theorem}[Mean-value theorem for integrals]\index{mean-value theorem!integrals}
-	If $f$ is continuous on $[a, b]$, then there exists a point $c \in {[a, b]}$ such that
+	If $f$ is continuous on $\interval{a}{b}$, then there exists a point $c \in \interval{a}{b}$ such that
 	\[
 		\int_a^b f(x) \, d x = (b - a) f(c).
 	\]
 \end{theorem}
 
 \begin{proof}
-	Since $f$ is continuous on $[a, b]$, and $[a, b]$ is a closed and finite interval, we know by the Max-min theorem that there exist $\ell, u \in {[a, b]}$ such that
+	Since $f$ is continuous on $\interval{a}{b}$, and $\interval{a}{b}$ is a closed and finite interval, we know by the Max-min theorem that there exist $\ell, u \in \interval{a}{b}$ such that
 	\[
 		m = f(\ell) \leq f(x) \leq f(u) = M
 	\]
 	for all $a \leq x \leq b$.
 
-	Now consider the very simple partition $P_1$ of $[a, b]$ with $a = x_0 < x_1 = b$.
+	Now consider the very simple partition $P_1$ of $\interval{a}{b}$ with $a = x_0 < x_1 = b$.
 	Then
 	\[
 		m (b - a) = L(f, P_1) \leq \int_a^b f(x) \, d x \leq U(f, P_1) = M(b - a).
@@ -114,7 +114,7 @@ This value
 \[
 	\bar{f} = \frac{1}{b - a} \int_a^b f(x) \, d x
 \]
-is often called the \keyword{average value}\index{function!average value} or \keyword{mean value} of $f$ on $[a, b]$.
+is often called the \keyword{average value}\index{function!average value} or \keyword{mean value} of $f$ on $\interval{a}{b}$.
 This is because the area under $f(c)$ and above $f(x)$ is the same as the area above $f(c)$ and below $f(x)$.
 To verify this, try computing $\int_a^b f(x) - \bar{f} \, d x$.
 
@@ -198,7 +198,7 @@ Clearly this function isn't continuous, but equally clearly there is an area und
 
 \begin{definition}[Piecewise continuous function]
 	Let $c_0 < c_1 < c_2 < \ldots < c_n$ be a \emph{finite} set of points.
-	A function $f$ defined on $[c_0, c_n]$, except possibly at some of the $c_i$, for $0 \leq i \leq n$, is called \keyword{piecewise continuous} on the interval if for each $1 \leq i \leq n$ there exists a function $F_i$ continuous on the closed interval $[c_{i - 1}, c_i]$ such that $f(x) = F_i(x)$ on ${]{c_{i - 1}, c_i}[}$.
+	A function $f$ defined on $\interval{c_0}{c_n}$, except possibly at some of the $c_i$, for $0 \leq i \leq n$, is called \keyword{piecewise continuous} on the interval if for each $1 \leq i \leq n$ there exists a function $F_i$ continuous on the closed interval $\interval{c_{i-1}}{c_i}$ such that $f(x) = F_i(x)$ on $\interval[open]{c_{i-1}}{c_i}$.
 
 	In this case we \emph{define} the definite integral of $f$ from $c_0$ to $c_n$ to be
 	\[
@@ -247,7 +247,7 @@ This is no coincidence, and is a special case of the following theorem:
 	\[
 		\lim_{h \to 0} \frac{1}{h} \cdot h \cdot f(c) = \lim_{h \to 0} f(c)
 	\]
-	for some $c \in {[{x, x+h}]}$, with $c$ depending on $h$.
+	for some $c \in \interval{x}{x+h}$, with $c$ depending on $h$.
 	Now as $h \to 0$, clearly $c$ being squeezed between $x$ and $x + h$ forces $c$ to approach $x$, so this is in turn equal to
 	\[
 		\lim_{c \to x} f(c) = f(x),
@@ -310,7 +310,7 @@ so that, for instance,
 \end{example}
 
 \begin{example}
-	Find the average value of $f(x) = e^{-x} + \cos(x)$ on the interval $[{-\pi/2}, 0]$.
+	Find the average value of $f(x) = e^{-x} + \cos(x)$ on the interval $\interval{-\pi/2}{0}$.
 
 	We recall from the Mean-value theorem for integrals that what we want to compute it
 	\[
@@ -333,7 +333,7 @@ We discuss the following example as a cautionary note.
 		\int_{-1}^1 \frac{d x}{x} = \ln\abs{x} \Big \rvert_{-1}^1 = 0 - 0 = 0,
 	\]
 	even though $1/x$ is odd.
-	This is because $1/x$ is undefined at $x = 0$, so $1/x$ is not integrable on $[{-1}, 0]$ or $[0, 1]$.
+	This is because $1/x$ is undefined at $x = 0$, so $1/x$ is not integrable on $\interval{-1}{0}$ or $\interval{0}{1}$.
 
 	All this to say that it might sometimes be important to keep track of where one's integrand is defined.
 

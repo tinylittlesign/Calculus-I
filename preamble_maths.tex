@@ -90,3 +90,8 @@
 \DeclarePairedDelimiterX{\Set}[1]{\{}{\}}{% \Set{ x \given x > 0}
 	\,\renewcommand\given{\nonscript\:\delimsize\vert\nonscript\:\mathopen{}}#1\,
 }
+
+% Set the interval package to use parens for open intervals.
+\intervalconfig{
+	soft open fences
+}

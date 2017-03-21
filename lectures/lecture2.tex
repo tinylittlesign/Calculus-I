@@ -249,7 +249,7 @@ We demonstrate this by example:
 Continuous functions defined on closed and finite intervals have a few special properties.
 
 \begin{theorem}[Max-min theorem]\index{max-min theorem}
-	If $f$ is continuous on the closed finite interval $[a, b]$, then there exists $p, q \in [a, b]$ such that for all $x \in [a, b]$ we have
+	If $f$ is continuous on the closed finite interval $\interval{a}{b}$, then there exists $p, q \in \interval{a}{b}$ such that for all $x \in \interval{a}{b}$ we have
 	\[
 		f(p) \leq f(x) \leq f(q).
 	\]
@@ -296,17 +296,17 @@ Continuous functions defined on closed and finite intervals have a few special p
 A related result (it turns out) is the following:
 
 \begin{theorem}[Intermediate value theorem]\index{intermediate value theorem}
-	If $f$ is continuous on the interval $[a, b]$, with $a < b$ being some constants, and if $s$ is a number between $f(a)$ and $f(b)$, then there exists a number $c \in [a, b]$ such that $f(c) = s$.
+	If $f$ is continuous on the interval $\interval{a}{b}$, with $a < b$ being some constants, and if $s$ is a number between $f(a)$ and $f(b)$, then there exists a number $c \in \interval{a}{b}$ such that $f(c) = s$.
 \end{theorem}
 
 \noindent
 We demonstrate their usefulness by a brief example.
 
 \begin{example}
-	Show that $f(x) = x^3 - 4x + 1$ has a root in the interval $[1, 2]$.
+	Show that $f(x) = x^3 - 4x + 1$ has a root in the interval $\interval{1}{2}$.
 
 	Note first that $f(1) = 1^3 - 4 (1) + 1 = 1 - 4 + 1 = -2$, and $f(2) = 2^3 - 4(2) + 1 = 8 - 8 + 1 = 1$.
-	Moreover, since $-2 \leq 0 \leq 1$, and since $f$ is continuous (since all polynomials are continuous everywhere), by the intermediate value theorem there must exist some $c \in [1, 2]$ such that $f(c) = 0$.
+	Moreover, since $-2 \leq 0 \leq 1$, and since $f$ is continuous (since all polynomials are continuous everywhere), by the intermediate value theorem there must exist some $c \in \interval{1}{2}$ such that $f(c) = 0$.
 
 	Note that this tells us that a root of the polynomial exists in this interval, but it doesn't tell us what exactly it is!
 \end{example}

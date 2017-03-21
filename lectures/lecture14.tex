@@ -13,7 +13,7 @@ The most simple type of \emph{differential equations}\index{differential equatio
 
 	This is a so-called \keyword{separable equation}\index{separable equation} because we can rewrite it with all $t$ terms on one side and all $y$ terms on the other:
 	\[
-		\frac{L}{y(L - y)} \, d y = k \, d t \qquad \Longleftrightarrow \qquad \frac{1}{y} + \frac{1}{L - y} \, d y = k \, d t.
+		\frac{L}{y \cdot (L - y)} \, d y = k \, d t \qquad \Longleftrightarrow \qquad \frac{1}{y} + \frac{1}{L - y} \, d y = k \, d t.
 	\]
 
 	\noindent
@@ -23,7 +23,7 @@ The most simple type of \emph{differential equations}\index{differential equatio
 	\]
 	which we can rewrite as
 	\[
-		\frac{y}{L - y} = e^{k t + C} = C_1 e^{k t} \qquad \Longleftrightarrow \qquad y (1 + C_1 e^{k t}) = C_1 L e^{k t},
+		\frac{y}{L - y} = e^{k t + C} = C_1 e^{k t} \qquad \Longleftrightarrow \qquad y \cdot (1 + C_1 e^{k t}) = C_1 L e^{k t},
 	\]
 	which finally becomes
 	\[
@@ -56,17 +56,17 @@ Thus in general we try to tell whether the equation can be factored into \emph{s
 \begin{example}
 	Solve the integral equation
 	\[
-		y(x) = 3 + 2 \int_1^x t y(t) \, d t.
+		y = 3 + 2 \int_1^x t y(t) \, d t.
 	\]
 
 	\noindent
 	We differentiate with respect to $x$ and get
 	\[
-		\frac{d y}{d x} = 2 x y(x)
+		\frac{d y}{d x} = 2 x y
 	\]
 	by the Fundamental theorem of calculus, whereby
 	\[
-		\frac{d y}{y} = 2 x \, d x \qquad \Longleftrightarrow \qquad \ln\abs{y(x)} = x^2 + C,
+		\frac{d y}{y} = 2 x \, d x \qquad \Longleftrightarrow \qquad \ln\abs{y} = x^2 + C,
 	\]
 	whereby $y = C_1 e^{x^2}$.
 
@@ -94,7 +94,7 @@ The homogeneous equation is separable and easy to solve:
 \]
 so
 \[
-	\ln(x) = - \underbrace{\int p(x) \, d x}_{=\, \mu(x)},
+	\ln(y) = - \underbrace{\int p(x) \, d x}_{=\, \mu(x)},
 \]
 meaning that
 \[
@@ -106,18 +106,18 @@ It's not without reason we give the function $\mu$ in the solution to the homoge
 Indeed, it is the key to solving the nonhomogeneous equation.
 The method is quite simple: by multiplying both sides of the equation by $e^{\mu(x)}$, called the \keyword{integrating factor}\index{integrating factor}, we see that
 \begin{align*}
-	\frac{d}{d x} \big ( e^{\mu(x)} y(x) \big ) &= e^{\mu(x)} \frac{d y}{d x} + e^{\mu(x)} \underbrace{\frac{d \mu}{d x}}_{=\, p(x)} y(x) \\
+	\frac{d}{d x} \big ( e^{\mu(x)} y \big ) &= e^{\mu(x)} \frac{d y}{d x} + e^{\mu(x)} \underbrace{\frac{d \mu}{d x}}_{=\, p(x)} y \\
 	                                            &= e^{\mu(x)} \Big ( \frac{d y}{d x} + p(x) y \Big ) = e^{\mu(x)} q(x).
 \end{align*}
 
 \noindent
 Integrating both sides we get
 \[
-	e^{\mu(x)} y(x) = \int e^{\mu(x)} q(x) \, d x,
+	e^{\mu(x)} y = \int e^{\mu(x)} q(x) \, d x,
 \]
 meaning that
 \[
-	y(x) = e^{-\mu(x)} \int e^{\mu(x)} q(x) \, d x.
+	y = e^{-\mu(x)} \int e^{\mu(x)} q(x) \, d x.
 \]
 
 \begin{example}
@@ -161,7 +161,7 @@ meaning that
 		e^{x^2 / 2} y = \int x^3 e^{x^2 / 2} \, d x,
 	\]
 	meaning that we have to solve this integral.
-	We do so by integrating by parts, letting $U(x) = x^2$ and $V'(x) = x^{x^2 / 2}$, meaning that $U'(x) = 2 x$ and $V(x) = e^{x^2 / 2}$.
+	We do so by integrating by parts, letting $U(x) = x^2$ and $V'(x) = x e^{x^2 / 2}$, meaning that $U'(x) = 2 x$ and $V(x) = e^{x^2 / 2}$.
 	This gives us
 	\[
 		\int x^3 e^{x^2 / 2} \, d x = x^2 e^{x^2 / 2} - 2 \int x e^{x^2 / 2} \, d x = x^2 e^{x^2 / 2} - 2 e^{x^2 / 2} + C.
@@ -170,7 +170,7 @@ meaning that
 	\noindent
 	Finally then
 	\[
-		y(x) = x^2 - 2 + C e^{-x^2 / 2}. \qedhere
+		y = x^2 - 2 + C e^{-x^2 / 2}. \qedhere
 	\]
 \end{example}
 
@@ -182,7 +182,7 @@ A differential equation of the form
 \]
 where $a \neq 0$, $b$, and $c$ are constants, is called a \keyword{second-order}\index{differential equation!second-order}, \keyword{linear}, \keyword{homogeneous} differential equation with \keyword{constant coefficients}\index{differential equation!constant coefficients}.
 
-It is called linear for the same reason as before: because if $y_1(x)$ and $y_2(x)$ are two solutions, then so is $y(x) = A y_1(x) + B y_2(x)$ for all constants $A$ and $B$.
+It is called linear for the same reason as before: because if $y_1$ and $y_2$ are two solutions, then so is $y = A y_1 + B y_2$ for all constants $A$ and $B$.
 (Feel free to check this!)
 
 Inspired by $y' = k y$ having the solution $y = C e^{k x}$, we try to find a solution for this new equation on the same form.
@@ -209,9 +209,9 @@ In this case the auxiliary equation has two distinct real roots,
 \[
 	r_1 = \frac{- b - \sqrt{b^2 - 4 a c}}{2 a} \qquad \text{and} \qquad r^2 = \frac{- b + \sqrt{b^2 - 4 a c}}{2 a},
 \]
-whereby $y_1(x) = e^{r_1 x}$ and $y_2(x) = e^{r_2 x}$ are two solutions, and so the general solution is
+whereby $y_1 = e^{r_1 x}$ and $y_2 = e^{r_2 x}$ are two solutions, and so the general solution is
 \[
-	y(x) = A e^{r_1 x} + B e^{r_2 x}.
+	y = A e^{r_1 x} + B e^{r_2 x}.
 \]
 
 \subsubsection*{Case 2: $b^2 - 4 a c = 0$}
@@ -241,7 +241,7 @@ Here the auxiliary equation has solutions $r = k \pm i \omega$, with $i$ being t
 \[
 	k = - \frac{b}{2 a} \qquad \text{and} \qquad \omega = \frac{\sqrt{4 a c - b^2}}{2 a}.
 \]
-Then $y_1^* (x) = e^{(k + i \omega) x}$ and $y_2^* (x) = e^{(k - i \omega) x}$ are two different solutions, but they are complex.
+Then $y_1^* = e^{(k + i \omega) x}$ and $y_2^* = e^{(k - i \omega) x}$ are two different solutions, but they are complex.
 
 However since
 \[
@@ -249,8 +249,8 @@ However since
 \]
 we can find two real-valued functions as linear combinations of the above:
 \begin{align*}
-	y_1(x) &= \frac{1}{2} y_1^*(x) + \frac{1}{2} y_2^*(x) = e^{k x} \cos(\omega x), \\
-	y_2(x) &= \frac{1}{2 i} y_1^*(x) - \frac{1}{2 i} y_2^*(x) = e^{k x} \sin(\omega x)
+	y_1 &= \frac{1}{2} y_1^* + \frac{1}{2} y_2^* = e^{k x} \cos(\omega x), \\
+	y_2 &= \frac{1}{2 i} y_1^* - \frac{1}{2 i} y_2^* = e^{k x} \sin(\omega x)
 \end{align*}
 so the general (real) solution is
 \[
@@ -274,5 +274,5 @@ so the general (real) solution is
 	Solve the differential equation $y'' + 4 y + 13 y = 0$.
 
 	The auxiliary equation has the solutions $r = -2 \pm 3 i$, whereby $k = -2$ and $\omega = 3$.
-	Therefore the general solution is $y = A e^{-2 x} \cos(3 x) + B e^{-2 t} \sin(3 x)$. 
+	Therefore the general solution is $y = A e^{-2 x} \cos(3 x) + B e^{-2 x} \sin(3 x)$.
 \end{example}

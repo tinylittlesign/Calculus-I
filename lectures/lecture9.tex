@@ -269,8 +269,8 @@ such that
 \]
 
 \noindent
-Now since $f$ is continuous on $[a, b]$, it must also be continuous on the subintervals $[x_{i - 1}, x_i]$ of $P$.
-Since it is continuous on a closed interval, there must exist $\ell_i, u_i \in [x_{i - 1}, x_i]$ such that
+Now since $f$ is continuous on $\interval{a}{b}$, it must also be continuous on the subintervals $\interval{x_{i-1}}{x_1}$ of $P$.
+Since it is continuous on a closed interval, there must exist $\ell_i, u_i \in \interval{x_{i-1}}{x_i}$ such that
 \[
 	f(\ell_i) \leq f(x) \leq f(u_i)
 \]
@@ -300,11 +300,11 @@ Draw different partitions!)
 
 \begin{definition}[Definite integral]
 	Let $f$ be a function, not necessarily continuous.
-	Suppose there is exactly one number $I$ such that for \emph{every} partition $P$ of $[a, b]$ we have
+	Suppose there is exactly one number $I$ such that for \emph{every} partition $P$ of $\interval{a}{b}$ we have
 	\[
 		L(f, P) \leq I \leq U(f, P),
 	\]
-	then we say that $f$ is (Riemann) \keyword{integrable}\index{integrability} on $[a, b]$, and we call $I$ the \keyword{definite integral}\index{definite integral} of $f$ on $[a, b]$.
+	then we say that $f$ is (Riemann) \keyword{integrable}\index{integrability} on $\interval{a}{b}$, and we call $I$ the \keyword{definite integral}\index{definite integral} of $f$ on $\interval{a}{b}$.
 
 	We use the notation
 	\[
@@ -325,7 +325,7 @@ we can think of the definite integral as the sum of areas of infinitely many rec
 We will learn next time how to efficiently calculate these sorts of quantities, but for now we close with an important theorem, the proof of which, like the Max-min theorem and the Intermediate value theorem strictly speaking doesn't belong to the course:
 
 \begin{theorem}
-	If $f$ is continuous on $[a, b]$, then $f$ is integrable on $[a, b]$.
+	If $f$ is continuous on $\interval{a}{b}$, then $f$ is integrable on $\interval{a}{b}$.
 \end{theorem}
 
 \noindent

@@ -19,9 +19,9 @@ As suggested back then, part of the mystery behind the proofs has to do with upp
 \end{definition}
 
 \begin{example}
-	Let $S_1 = [2, 3]$. Any $u \geq 3$ is an upper bound for $S_1$, with $\sup(S_1) = 3$.
+	Let $S_1 = \interval{2}{3}$. Any $u \geq 3$ is an upper bound for $S_1$, with $\sup(S_1) = 3$.
 
-	On the other hand, $S_2 = {]{2, \infty}[}$ has no upper bound, but many lower bounds ($\ell \leq 2$), and $\inf(S_2) = 2$.
+	On the other hand, $S_2 = \interval[open]{2}{\infty}$ has no upper bound, but many lower bounds ($\ell \leq 2$), and $\inf(S_2) = 2$.
 \end{example}
 
 \noindent
@@ -91,7 +91,7 @@ We will now prove some theorems we already established for functions, but this t
 \end{proof}
 
 \begin{theorem}\label{lec8:seqlim}
-	If $f$ is continuous on $[a, b]$, if $a \leq x_n \leq b$ for all $n = 1, 2, 3, \ldots$, and if $\lim\limits_{n \to \infty} x_n = L$, then
+	If $f$ is continuous on $\interval{a}{b}$, if $a \leq x_n \leq b$ for all $n = 1, 2, 3, \ldots$, and if $\lim\limits_{n \to \infty} x_n = L$, then
 	\[
 		\lim_{n \to \infty} f(x_n) = f(L).
 	\]
@@ -105,7 +105,7 @@ We will now prove some theorems we already established for functions, but this t
 These are the tools we require to prove the main result behind the two theorems we are after.
 
 \begin{theorem}
-	If $f$ is continuous on $[a, b]$, then $f$ is bounded there (i.e there exists some $K$ such that $\abs{f(x)} \leq K$ for all $x \in [a, b]$).
+	If $f$ is continuous on $\interval{a}{b}$, then $f$ is bounded there (i.e there exists some $K$ such that $\abs{f(x)} \leq K$ for all $x \in \interval{a}{b}$).
 \end{theorem}
 
 \begin{proof}
@@ -113,7 +113,7 @@ These are the tools we require to prove the main result behind the two theorems 
 
 	For each positive integer $n$, let
 	\[
-		S_n = \Set{x \in [a, b] \given f(x) > n}.
+		S_n = \Set{x \in \interval{a}{b} \given f(x) > n}.
 	\]
 	Note that this is the set of $x$ values that makes this happen.
 
@@ -123,7 +123,7 @@ These are the tools we require to prove the main result behind the two theorems 
 	Suppose $S_n$ is nonempty for all $n$.
 	For each $n = 1, 2, 3, \ldots$, since $S_n$ is bounded below ($a$ is a lower bound by construction), by the Supremum axiom there exists a greatest lower bound, call it $x_n$.
 
-	Since $f(x) > n$ at some point in $[a, b]$, and continuous at that point, $f(x) > n$ on some interval contained in $[a, b]$.
+	Since $f(x) > n$ at some point in $\interval{a}{b}$, and continuous at that point, $f(x) > n$ on some interval contained in $\interval{a}{b}$.
 	Thus $x_n < b$ and $f(x_n) \geq n$ (otherwise by continuity $f(x) < n$ for some distance to the right of $x_n$ and $x_n$ could not be $\inf(S_n)$).
 
 	For each $n$, $S_{n + 1} \subseteq S_n$ implies that $x_{n + 1} \geq x_n$, so $x_1, x_2, \ldots, x_n, \ldots$ is an increasing sequence bounded above by $b$, meaning that it converges to, say,
@@ -142,7 +142,7 @@ These are the tools we require to prove the main result behind the two theorems 
 		\lim_{n \to \infty} f(x_n)
 	\]
 	cannot exist, since it grows arbitrarily large, so we have a contradiction.
-	Therefore our assumption of $S_n$ always being nonempty is wrong, ergo there exists some $n$ such that $S_n$ is empty, whereby $f$ is bounded above on $[a, b]$.
+	Therefore our assumption of $S_n$ always being nonempty is wrong, ergo there exists some $n$ such that $S_n$ is empty, whereby $f$ is bounded above on $\interval{a}{b}$.
 
 	For boundedness below do almost the same thing.
 \end{proof}
@@ -151,29 +151,29 @@ These are the tools we require to prove the main result behind the two theorems 
 We are now able to prove the Max-min theorem and the Intermediate value theorem.
 
 \begin{theorem}[Max-min theorem]
-	If $f$ is continuous on $[a, b]$, then there exists some $u, v \in [a, b]$ such that $f(v) \leq f(x) \leq f(u)$ for all $x \in [a, b]$.
+	If $f$ is continuous on $\interval{a}{b}$, then there exists some $u, v \in \interval{a}{b}$ such that $f(v) \leq f(x) \leq f(u)$ for all $x \in \interval{a}{b}$.
 \end{theorem}
 
 \begin{proof}
-	By the previous theorem, $S = \Set{f(x) \given x \in [a, b]}$ has an upper bound and by the Supremum axiom it also has a least upper bound, call it $M = \sup(S)$.
-	Suppose there is no $u \in [a, b]$ such that $f(u) = M$.
-	Then $1 / (M - f(x))$ is continuous on $[a, b]$ so again by the last theorem there exists some $K$ such that $1 / (M - f(x)) \leq K$ for all $x \in [a, b]$.
+	By the previous theorem, $S = \Set{f(x) \given x \in \interval{a}{b}}$ has an upper bound and by the Supremum axiom it also has a least upper bound, call it $M = \sup(S)$.
+	Suppose there is no $u \in \interval{a}{b}$ such that $f(u) = M$.
+	Then $1 / (M - f(x))$ is continuous on $\interval{a}{b}$ so again by the last theorem there exists some $K$ such that $1 / (M - f(x)) \leq K$ for all $x \in \interval{a}{b}$.
 
 	By rearranging, this implies that
 	\[
 		f(x) \leq M - \frac{1}{K},
 	\]
-	which contradicts $M$ being the \emph{least} upper bound for $S$, therefore there must exist some $u \in [a, b]$ such that $f(x) \leq f(u) = M$.
+	which contradicts $M$ being the \emph{least} upper bound for $S$, therefore there must exist some $u \in \interval{a}{b}$ such that $f(x) \leq f(u) = M$.
 
 	The existence of $v$ is similar.
 \end{proof}
 
 \begin{theorem}[Intermediate value theorem]
-	If $f$ is continuous on $[a, b]$ and $s$ is a number between $f(a)$ and $f(b)$, then there exists some $c \in [a, b]$ such that $f(c) = s$.
+	If $f$ is continuous on $\interval{a}{b}$ and $s$ is a number between $f(a)$ and $f(b)$, then there exists some $c \in \interval{a}{b}$ such that $f(c) = s$.
 \end{theorem}
 
 \begin{proof}
-	Assume $f(a) < s < f(b)$ (the other case, where $f(b) < s < f(a)$ is treated in almost the same way) and let $S = \Set{x \in [a, b] \given f(x) \leq s}$.
+	Assume $f(a) < s < f(b)$ (the other case, where $f(b) < s < f(a)$ is treated in almost the same way) and let $S = \Set{x \in \interval{a}{b} \given f(x) \leq s}$.
 
 	The set $S$ is nonempty (at the very least it contains $a$) and bounded above ($b$ is an upper bound), so by the Supremum axiom there exists a least upper bound $\sup(S) = c$.
 
@@ -312,7 +312,7 @@ and we see that this is a differential equation.
 	\]
 	whereby $C = 7/2$.
 
-	This $y = -3 / x + 2 x + 7/2$ is a solution to the initial-value problem on ${]{-\infty, 0}[}$ (because this is the largest interval which contains the initial point $x = -2$ but not $x = 0$, where $y$ (and $y'$) is undefined).
+	This $y = -3 / x + 2 x + 7/2$ is a solution to the initial-value problem on $\interval[open]{-\infty}{0}$ (because this is the largest interval which contains the initial point $x = -2$ but not $x = 0$, where $y$ (and $y'$) is undefined).
 \end{example}
 
 \noindent
