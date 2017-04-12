@@ -50,7 +50,8 @@
 
 % Alias for \section with optional footnote for date.
 \newcommand{\lecture}[2][]{% \lecture[Date]{Title}
-	\section[#2]{#2\ifblank{#1}{}{\blfootnote{Date: #1.}}}%
+	%\section[#2]{#2\ifblank{#1}{}{\blfootnote{Date: #1.}}}%
+	\section{#2}%
 }
 
 % Alias for \subsection that is more semantic.
